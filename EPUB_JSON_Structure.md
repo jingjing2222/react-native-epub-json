@@ -1,6 +1,8 @@
-# EPUB JSON 구조 및 React Native 파싱 가이드
+# EPUB JSON 구조 및 React Native 렌더링 가이드
 
-이 문서는 Rust로 생성된 EPUB JSON의 구조와 React Native에서 웹뷰 없이 네이티브 컴포넌트로 렌더링하는 방법을 설명합니다.
+이 문서는 Rust에서 HTML을 완전히 파싱하여 React Native 컴포넌트 구조로 변환한 JSON의 구조와 사용법을 설명합니다.
+
+**핵심 개념**: Rust에서 모든 파싱(HTML, CSS, 이미지)을 완료하고, React Native는 구조화된 데이터만 렌더링합니다. **웹뷰 필요 없음!**
 
 ## TypeScript 타입 정의
 
@@ -39,27 +41,40 @@ interface SpineItemInfo {
   linear: boolean;
 }
 
-// 리소스 데이터 타입 (Union Type)
-type ResourceData =
-  | { type: "Text"; data: string } // CSS, XHTML 등
-  | { type: "Binary"; data: string } // 이미지 등 (base64)
-  | { type: "Error"; message: string }; // 읽기 실패
-
-// 리소스 내용 타입
-interface ResourceContent {
-  path: string;
-  mime_type: string;
-  content: ResourceData;
+// React Native 스타일 타입 (Rust에서 변환됨)
+interface RnStyles {
+  fontSize?: number;
+  fontWeight?: string;
+  fontFamily?: string;
+  color?: string;
+  backgroundColor?: string;
+  textAlign?: string;
+  marginTop?: number;
+  marginBottom?: number;
+  marginLeft?: number;
+  marginRight?: number;
+  paddingTop?: number;
+  paddingBottom?: number;
+  paddingLeft?: number;
+  paddingRight?: number;
+  lineHeight?: number;
+  textDecorationLine?: string;
+  fontStyle?: string;
 }
 
-// 챕터 내용 타입
-interface ChapterContent {
+// React Native 노드 구조 (Rust에서 HTML을 변환)
+type RnNode =
+  | { type: "Text"; content: string; styles?: RnStyles }
+  | { type: "View"; children: RnNode[]; styles?: RnStyles }
+  | { type: "Image"; source: string; alt?: string; styles?: RnStyles }
+  | { type: "ScrollView"; children: RnNode[]; styles?: RnStyles };
+
+// 챕터 구조 타입
+interface ChapterStructure {
   spine_index: number;
   idref: string;
-  path: string;
-  mime_type: string;
-  content: string | null;
-  error: string | null;
+  title?: string;
+  content: RnNode; // HTML이 이미 RN 노드로 변환됨
 }
 
 // 최상위 EPUB 정보 타입
@@ -68,12 +83,13 @@ interface CompleteEpubInfo {
   structure: EpubStructure;
   toc: TocItem[];
   spine: SpineItemInfo[];
-  resources: Record<string, ResourceContent>;
-  chapters: ChapterContent[];
+  styles: Record<string, RnStyles>; // CSS → RN 스타일 변환 완료
+  images: Record<string, string>; // 이미지 ID → base64 data URI
+  chapters: ChapterStructure[]; // HTML → RN 노드 구조 변환 완료
 }
 ```
 
-## React Native에서 파싱하는 방법
+## React Native에서 렌더링하는 방법
 
 ### 1. JSON 로딩
 
@@ -87,197 +103,87 @@ const loadEpubData = async (): Promise<CompleteEpubInfo> => {
 };
 ```
 
-### 2. HTML → React Native 컴포넌트 변환
+### 2. RnNode를 React Native 컴포넌트로 렌더링
 
-웹뷰 없이 HTML을 RN 컴포넌트로 변환하려면 HTML 파서가 필요합니다:
-
-```bash
-npm install react-native-render-html
-# 또는
-npm install htmlparser2 react-native-super-grid
-```
+**이제 HTML 파싱이 필요 없습니다!** Rust에서 이미 RN 노드 구조로 변환되었기 때문입니다.
 
 ```typescript
-import RenderHtml from "react-native-render-html";
-import { Dimensions } from "react-native";
+import React from "react";
+import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
 
-const { width } = Dimensions.get("window");
+// RnNode를 React Native 컴포넌트로 직접 렌더링
+const RnNodeRenderer: React.FC<{ node: RnNode }> = ({ node }) => {
+  switch (node.type) {
+    case "Text":
+      return (
+        <Text style={node.styles ? convertStyles(node.styles) : undefined}>
+          {node.content}
+        </Text>
+      );
 
-// HTML을 RN 컴포넌트로 렌더링
-const EpubChapter: React.FC<{ chapter: ChapterContent }> = ({ chapter }) => {
-  if (!chapter.content) return null;
+    case "View":
+      return (
+        <View style={node.styles ? convertStyles(node.styles) : undefined}>
+          {node.children.map((child, index) => (
+            <RnNodeRenderer key={index} node={child} />
+          ))}
+        </View>
+      );
 
-  // HTML에서 body 내용만 추출
-  const htmlContent = extractBodyContent(chapter.content);
+    case "Image":
+      return (
+        <Image
+          source={{ uri: node.source }} // 이미 base64 data URI로 변환됨
+          alt={node.alt}
+          style={[
+            { width: "100%", height: 200, resizeMode: "contain" },
+            node.styles ? convertStyles(node.styles) : undefined,
+          ]}
+        />
+      );
 
-  return (
-    <RenderHtml
-      contentWidth={width}
-      source={{ html: htmlContent }}
-      tagsStyles={getCustomStyles()}
-    />
-  );
-};
+    case "ScrollView":
+      return (
+        <ScrollView
+          style={node.styles ? convertStyles(node.styles) : undefined}
+        >
+          {node.children.map((child, index) => (
+            <RnNodeRenderer key={index} node={child} />
+          ))}
+        </ScrollView>
+      );
 
-// HTML에서 body 태그 내용만 추출
-const extractBodyContent = (html: string): string => {
-  const bodyMatch = html.match(/<body[^>]*>(.*?)<\/body>/s);
-  return bodyMatch ? bodyMatch[1] : html;
-};
-```
-
-### 3. CSS → StyleSheet 변환
-
-CSS를 React Native StyleSheet으로 변환:
-
-```typescript
-import { StyleSheet } from "react-native";
-
-// CSS 리소스에서 스타일 추출
-const parseCssStyles = (epubData: CompleteEpubInfo) => {
-  const styles: Record<string, any> = {};
-
-  Object.entries(epubData.resources).forEach(([id, resource]) => {
-    if (resource.mime_type === "text/css" && resource.content.type === "Text") {
-      const cssText = resource.content.data;
-      const parsedStyles = parseCssToRnStyles(cssText);
-      Object.assign(styles, parsedStyles);
-    }
-  });
-
-  return StyleSheet.create(styles);
-};
-
-// 간단한 CSS → RN 스타일 변환기
-const parseCssToRnStyles = (css: string): Record<string, any> => {
-  const styles: Record<string, any> = {};
-
-  // CSS 규칙 매칭 (간단한 버전)
-  const ruleRegex = /([^{]+){([^}]+)}/g;
-  let match;
-
-  while ((match = ruleRegex.exec(css)) !== null) {
-    const selector = match[1].trim();
-    const declarations = match[2].trim();
-
-    const style = parseDeclarations(declarations);
-    styles[selectorToStyleName(selector)] = style;
+    default:
+      return null;
   }
-
-  return styles;
 };
 
-// CSS 선언을 RN 스타일로 변환
-const parseDeclarations = (declarations: string): any => {
+// Rust의 RnStyles를 React Native StyleSheet로 변환
+const convertStyles = (rnStyles: RnStyles) => {
   const style: any = {};
 
-  declarations.split(";").forEach((decl) => {
-    const [property, value] = decl.split(":").map((s) => s.trim());
-    if (!property || !value) return;
-
-    const rnProperty = cssPropertyToRn(property);
-    const rnValue = cssValueToRn(value);
-
-    if (rnProperty && rnValue !== null) {
-      style[rnProperty] = rnValue;
+  // 모든 스타일 속성이 이미 React Native 형식으로 변환되어 있음
+  Object.entries(rnStyles).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      style[key] = value;
     }
   });
 
   return style;
 };
-
-// CSS 속성을 RN 속성으로 매핑
-const cssPropertyToRn = (property: string): string | null => {
-  const mapping: Record<string, string> = {
-    "font-size": "fontSize",
-    "font-weight": "fontWeight",
-    "font-family": "fontFamily",
-    color: "color",
-    "background-color": "backgroundColor",
-    "text-align": "textAlign",
-    margin: "margin",
-    "margin-top": "marginTop",
-    "margin-bottom": "marginBottom",
-    "margin-left": "marginLeft",
-    "margin-right": "marginRight",
-    padding: "padding",
-    "padding-top": "paddingTop",
-    "padding-bottom": "paddingBottom",
-    "padding-left": "paddingLeft",
-    "padding-right": "paddingRight",
-    "line-height": "lineHeight",
-  };
-
-  return mapping[property] || null;
-};
-
-// CSS 값을 RN 값으로 변환
-const cssValueToRn = (value: string): any => {
-  // px 단위 제거
-  if (value.endsWith("px")) {
-    return parseInt(value.replace("px", ""));
-  }
-
-  // em을 대략적인 px로 변환 (16px = 1em)
-  if (value.endsWith("em")) {
-    return parseInt(value.replace("em", "")) * 16;
-  }
-
-  // 색상 값
-  if (value.startsWith("#") || value.startsWith("rgb")) {
-    return value;
-  }
-
-  // 폰트 굵기
-  if (value === "bold") return "bold";
-  if (value === "normal") return "normal";
-
-  // 텍스트 정렬
-  if (["left", "center", "right", "justify"].includes(value)) {
-    return value;
-  }
-
-  return value;
-};
 ```
 
-### 4. 이미지 처리
-
-Base64 이미지를 React Native에서 사용:
-
-```typescript
-import { Image } from "react-native";
-
-// Base64 이미지 컴포넌트
-const EpubImage: React.FC<{
-  resourceId: string;
-  epubData: CompleteEpubInfo;
-}> = ({ resourceId, epubData }) => {
-  const resource = epubData.resources[resourceId];
-
-  if (!resource || resource.content.type !== "Binary") {
-    return null;
-  }
-
-  const base64Data = resource.content.data;
-  const mimeType = resource.mime_type;
-  const dataUri = `data:${mimeType};base64,${base64Data}`;
-
-  return (
-    <Image
-      source={{ uri: dataUri }}
-      style={{ width: "100%", height: 200 }}
-      resizeMode="contain"
-    />
-  );
-};
-```
-
-### 5. 완전한 EPUB 리더 컴포넌트
+### 3. 완전한 EPUB 리더 컴포넌트
 
 ```typescript
 import React, { useState, useEffect } from "react";
-import { View, ScrollView, Text, StyleSheet } from "react-native";
+import {
+  View,
+  ScrollView,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+} from "react-native";
 
 const EpubReader: React.FC<{ jsonPath: string }> = ({ jsonPath }) => {
   const [epubData, setEpubData] = useState<CompleteEpubInfo | null>(null);
@@ -301,13 +207,35 @@ const EpubReader: React.FC<{ jsonPath: string }> = ({ jsonPath }) => {
         <Text style={styles.author}>{epubData.metadata.author}</Text>
       </View>
 
-      {/* 챕터 내용 */}
+      {/* 챕터 내용 - 이미 RN 노드 구조로 변환됨 */}
       <ScrollView style={styles.content}>
-        <EpubChapter chapter={chapter} />
+        <RnNodeRenderer node={chapter.content} />
       </ScrollView>
 
       {/* 네비게이션 */}
-      <View style={styles.navigation}>{/* 이전/다음 버튼 등 */}</View>
+      <View style={styles.navigation}>
+        <TouchableOpacity
+          onPress={() => setCurrentChapter(Math.max(0, currentChapter - 1))}
+          disabled={currentChapter === 0}
+        >
+          <Text style={styles.navButton}>이전</Text>
+        </TouchableOpacity>
+
+        <Text style={styles.chapterInfo}>
+          {currentChapter + 1} / {epubData.chapters.length}
+        </Text>
+
+        <TouchableOpacity
+          onPress={() =>
+            setCurrentChapter(
+              Math.min(epubData.chapters.length - 1, currentChapter + 1)
+            )
+          }
+          disabled={currentChapter === epubData.chapters.length - 1}
+        >
+          <Text style={styles.navButton}>다음</Text>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -338,68 +266,165 @@ const styles = StyleSheet.create({
   navigation: {
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     padding: 20,
     borderTopWidth: 1,
     borderTopColor: "#eee",
   },
+  navButton: {
+    fontSize: 16,
+    color: "#007AFF",
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+  },
+  chapterInfo: {
+    fontSize: 14,
+    color: "#666",
+  },
 });
 ```
 
-## 고급 파싱 기법
-
-### 1. 커스텀 HTML 파서
-
-더 정밀한 제어를 원한다면 커스텀 파서 구현:
+### 4. 목차(TOC) 컴포넌트
 
 ```typescript
-import { XMLParser } from "fast-xml-parser";
+const TableOfContents: React.FC<{
+  toc: TocItem[];
+  chapters: ChapterStructure[];
+  onChapterSelect: (chapterIndex: number) => void;
+}> = ({ toc, chapters, onChapterSelect }) => {
+  return (
+    <ScrollView style={styles.tocContainer}>
+      <Text style={styles.tocTitle}>목차</Text>
+      {toc.map((item, index) => {
+        // TOC 항목을 챕터 인덱스와 매칭
+        const chapterIndex = chapters.findIndex(
+          (chapter) =>
+            chapter.title === item.label ||
+            chapter.idref.includes(item.content_path)
+        );
 
-const parseHtmlToRnElements = (html: string) => {
-  const parser = new XMLParser({
-    ignoreAttributes: false,
-    attributeNamePrefix: "",
-  });
-
-  const parsed = parser.parse(html);
-  return convertToRnElements(parsed);
-};
-
-const convertToRnElements = (node: any): React.ReactNode => {
-  // HTML 노드를 RN 컴포넌트로 재귀적 변환
-  // p -> Text, div -> View, img -> Image 등
+        return (
+          <TouchableOpacity
+            key={index}
+            style={styles.tocItem}
+            onPress={() => chapterIndex >= 0 && onChapterSelect(chapterIndex)}
+          >
+            <Text style={styles.tocLabel}>{item.label}</Text>
+          </TouchableOpacity>
+        );
+      })}
+    </ScrollView>
+  );
 };
 ```
 
-### 2. 스타일 상속 처리
+### 5. 스타일 커스터마이징
 
-CSS 스타일 상속을 RN에서 처리:
+이제 Rust에서 변환된 스타일을 사용자 취향에 맞게 오버라이드할 수 있습니다:
 
 ```typescript
-const applyInheritedStyles = (element: any, parentStyles: any) => {
-  // CSS 상속 규칙을 RN에 적용
-  return {
-    ...parentStyles,
-    ...element.styles,
+const createCustomStyles = (baseStyles: Record<string, RnStyles>) => {
+  // 기본 스타일에 사용자 정의 스타일 추가
+  const customStyles = {
+    ...baseStyles,
+    // 사용자 정의 스타일
+    readingMode: {
+      backgroundColor: "#f5f5dc", // 베이지 배경
+      color: "#2f2f2f",
+    },
+    nightMode: {
+      backgroundColor: "#1a1a1a", // 다크 배경
+      color: "#e0e0e0",
+    },
   };
+
+  return customStyles;
+};
+
+// 다크 모드 지원
+const DarkModeProvider: React.FC<{
+  children: React.ReactNode;
+  isDark: boolean;
+}> = ({ children, isDark }) => {
+  const themeStyle = isDark
+    ? { backgroundColor: "#1a1a1a", color: "#e0e0e0" }
+    : { backgroundColor: "#ffffff", color: "#000000" };
+
+  return <View style={[styles.container, themeStyle]}>{children}</View>;
 };
 ```
 
-## 추천 라이브러리
+## 주요 장점
 
-웹뷰 없는 EPUB 렌더링을 위한 유용한 라이브러리들:
+### ✅ 성능 최적화
+
+- **Rust에서 파싱 완료**: HTML, CSS, 이미지 모든 처리가 사전 완료
+- **React Native는 렌더링만**: 파싱 오버헤드 없음
+- **메모리 효율성**: 구조화된 데이터만 로드
+
+### ✅ 완전한 네이티브 경험
+
+- **웹뷰 불필요**: 모든 콘텐츠가 네이티브 컴포넌트
+- **플랫폼별 최적화**: iOS/Android 각각 최적화된 렌더링
+- **사용자 정의 가능**: 폰트, 색상, 레이아웃 자유자재로 변경
+
+### ✅ 오프라인 지원
+
+- **Self-contained JSON**: 원본 EPUB 파일 불필요
+- **임베디드 이미지**: Base64로 인코딩된 모든 이미지
+- **스타일 포함**: CSS가 RN StyleSheet로 사전 변환
+
+## 생성된 JSON 구조 예시
+
+```json
+{
+  "metadata": {
+    "title": "The Old Man and the Sea",
+    "author": "Ernest Hemingway",
+    "language": "en"
+  },
+  "styles": {
+    "h1": {
+      "fontSize": 24,
+      "fontWeight": "bold",
+      "textAlign": "center"
+    }
+  },
+  "images": {
+    "cover.jpg": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQ..."
+  },
+  "chapters": [
+    {
+      "spine_index": 0,
+      "idref": "chapter1",
+      "title": "Chapter 1",
+      "content": {
+        "type": "View",
+        "children": [
+          {
+            "type": "Text",
+            "content": "He was an old man who fished alone...",
+            "styles": {
+              "fontSize": 16,
+              "lineHeight": 24
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
+```
+
+## 필요한 의존성
+
+React Native 프로젝트에서는 추가 의존성이 필요하지 않습니다! 모든 파싱이 Rust에서 완료되었기 때문입니다.
 
 ```bash
-# HTML 렌더링
-npm install react-native-render-html
-
-# XML/HTML 파싱
-npm install fast-xml-parser
-
-# CSS 파싱
-npm install css-tree
-
-# 이미지 처리
-npm install react-native-fast-image
+# 추가 설치 필요 없음 - React Native 기본 컴포넌트만 사용
+# npm install react-native-render-html (불필요)
+# npm install htmlparser2 (불필요)
+# npm install css-tree (불필요)
 ```
 
-이제 이 JSON 구조를 사용해서 완전히 네이티브 React Native 컴포넌트로 EPUB을 렌더링할 수 있습니다! 🚀
+**🎉 이제 웹뷰 없이 완전히 네이티브 React Native 컴포넌트로 EPUB을 렌더링할 수 있습니다!**
