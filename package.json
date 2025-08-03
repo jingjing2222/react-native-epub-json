@@ -8,15 +8,16 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "npm run build:wasm && npm run build:ts",
-    "build:wasm": "cd packages/react-native-epub-json-rust && rm -rf pkg && wasm-pack build --target nodejs && mkdir -p ../react-native-epub-json/src/lib && rsync -a --exclude 'package.json' --exclude '.gitignore' pkg/ ../react-native-epub-json/src/lib/",
-    "build:ts": "cd packages/react-native-epub-json && yarn && yarn build",
-    "test": "cd packages/react-native-epub-json && node test.js",
-    "clean": "rm -rf packages/react-native-epub-json-rust/pkg packages/react-native-epub-json-rust/target packages/react-native-epub-json/*",
-    "dev": "cd packages/react-native-epub-json-rust && cargo run",
-    "prepare": "npm run build",
+    "build": "nx run-many --target=build --all",
+    "build:wasm": "nx build react-native-epub-json-rust",
+    "build:ts": "nx build react-native-epub-json",
+    "test": "nx test react-native-epub-json",
+    "clean": "nx run-many --target=clean --all",
+    "dev": "nx serve react-native-epub-json-rust",
+
     "lint": "biome check .",
-    "lint:fix": "biome check . --write"
+    "lint:fix": "biome check . --write",
+    "typecheck": "nx run-many --target=typecheck --all"
   },
   "keywords": [
     "epub",
@@ -30,7 +31,8 @@
   "author": "jingjing2222",
   "license": "MIT",
   "devDependencies": {
-    "@biomejs/biome": "^2.1.3"
+    "@biomejs/biome": "^2.1.3",
+    "nx": "^21.3.11"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

@@ -1,0 +1,546 @@
+{
+  "examples/v80": {
+    "root": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.android": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.android.executor": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.android.options": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.android.metadata": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.android.options.script": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.android.metadata.scriptContent": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.android.metadata.runCommand": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ios": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ios.executor": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ios.options": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ios.metadata": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ios.options.script": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ios.metadata.scriptContent": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.ios.metadata.runCommand": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.install": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.install.executor": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.install.options": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.install.options.command": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.start": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.start.executor": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.start.options": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.start.options.command": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.command": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.executor": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options.command": [
+      "examples/v80/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "examples/v80-server": {
+    "root": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.executor": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.dev.options.command": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.start": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.start.executor": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.start.options": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.start.options.command": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.executor": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options.command": [
+      "examples/v80-server/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "packages/react-native-epub-json": {
+    "root": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "tags": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:public": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:epub": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:react-native": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:converter": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:ebook": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:parser": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.description": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageExports": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageMain": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.executor": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.options": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.metadata": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.options.script": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.metadata.scriptContent": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.prepublishOnly.metadata.runCommand": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "projectType": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.executor": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.test.options.command": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.clean": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.clean.executor": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.clean.options": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.clean.options.command": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.executor": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.typecheck.options.command": [
+      "packages/react-native-epub-json/project.json",
+      "nx/core/project-json"
+    ]
+  },
+  "packages/react-native-epub-json-rust": {
+    "root": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "name": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "projectType": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "sourceRoot": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.executor": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.build.options.command": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.executor": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.serve.options.command": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.clean": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.clean.executor": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.clean.options": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ],
+    "targets.clean.options.command": [
+      "packages/react-native-epub-json-rust/project.json",
+      "nx/core/project-json"
+    ]
+  }
+}

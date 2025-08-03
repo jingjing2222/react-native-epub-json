@@ -1,21 +1,16 @@
 declare namespace react_native_epub_json_d_exports {
-  export {
-    epubBytesToJson$1 as epubBytesToJson,
-    epubToJson$1 as epubToJson,
-    epubToJsonString$1 as epubToJsonString,
-    main,
-  };
+  export { epubBytesToJson$1 as epubBytesToJson, epubToJson$1 as epubToJson, epubToJsonString$1 as epubToJsonString, main };
 }
 /* tslint:disable */
 /* eslint-disable */
 declare function main(): void;
 /**
  * Node.js에서 사용할 EPUB → JSON 변환 함수
- *
+ * 
  * # JavaScript 사용법
  * ```javascript
  * import { epubToJson } from 'react-native-epub-json';
- *
+ * 
  * const result = epubToJson('path/to/book.epub', './output');
  * console.log(result.metadata.title);
  * ```
@@ -23,11 +18,11 @@ declare function main(): void;
 declare function epubToJson$1(epub_path: string, output_dir: string): any;
 /**
  * 메모리에서 EPUB 바이트를 JSON 문자열로 변환 (파일 저장 없이)
- *
+ * 
  * # JavaScript 사용법
  * ```javascript
  * import { epubBytesToJson } from 'epub-to-rn';
- *
+ * 
  * const fileBuffer = fs.readFileSync('book.epub');
  * const result = epubBytesToJson(new Uint8Array(fileBuffer));
  * ```
@@ -35,11 +30,11 @@ declare function epubToJson$1(epub_path: string, output_dir: string): any;
 declare function epubBytesToJson$1(epub_bytes: Uint8Array): any;
 /**
  * 간단한 버전: EPUB 경로를 받아서 JSON 문자열만 반환
- *
+ * 
  * # JavaScript 사용법
  * ```javascript
  * import { epubToJsonString } from 'epub-to-rn';
- *
+ * 
  * const jsonString = epubToJsonString('book.epub');
  * const data = JSON.parse(jsonString);
  * ```
@@ -103,23 +98,23 @@ interface RnStyles {
 }
 type RnNode = TextNode | ViewNode | ImageNode | ScrollViewNode;
 interface TextNode {
-  type: "Text";
+  type: 'Text';
   content: string;
   styles?: RnStyles;
 }
 interface ViewNode {
-  type: "View";
+  type: 'View';
   children: RnNode[];
   styles?: RnStyles;
 }
 interface ImageNode {
-  type: "Image";
+  type: 'Image';
   source: string;
   alt?: string;
   styles?: RnStyles;
 }
 interface ScrollViewNode {
-  type: "ScrollView";
+  type: 'ScrollView';
   children: RnNode[];
   styles?: RnStyles;
 }
@@ -153,22 +148,5 @@ declare function epubBytesToJson(epub_bytes: Uint8Array): CompleteEpubInfo;
  */
 declare const wasmModule: typeof react_native_epub_json_d_exports;
 //#endregion
-export {
-  ChapterStructure,
-  CompleteEpubInfo,
-  EpubMetadata,
-  EpubStructure,
-  ImageNode,
-  RnNode,
-  RnStyles,
-  ScrollViewNode,
-  SpineItemInfo,
-  TextNode,
-  TocItem,
-  ViewNode,
-  epubBytesToJson,
-  epubToJson,
-  epubToJsonString,
-  wasmModule,
-};
+export { ChapterStructure, CompleteEpubInfo, EpubMetadata, EpubStructure, ImageNode, RnNode, RnStyles, ScrollViewNode, SpineItemInfo, TextNode, TocItem, ViewNode, epubBytesToJson, epubToJson, epubToJsonString, wasmModule };
 //# sourceMappingURL=index.d.ts.map

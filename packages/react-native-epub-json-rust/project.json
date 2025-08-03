@@ -1,0 +1,26 @@
+{
+  "name": "react-native-epub-json-rust",
+  "root": "packages/react-native-epub-json-rust",
+  "projectType": "library",
+  "sourceRoot": "packages/react-native-epub-json-rust/src",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd packages/react-native-epub-json-rust && rm -rf pkg && wasm-pack build --target nodejs && mkdir -p ../react-native-epub-json/src/lib && rsync -a --exclude 'package.json' --exclude '.gitignore' pkg/ ../react-native-epub-json/src/lib/"
+      }
+    },
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd packages/react-native-epub-json-rust && cargo run"
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "rm -rf packages/react-native-epub-json-rust/pkg packages/react-native-epub-json-rust/target"
+      }
+    }
+  }
+}

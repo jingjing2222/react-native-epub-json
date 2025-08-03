@@ -12,3 +12,5 @@ node_modules
 test_output_script
 test_output
 dist
+
+.nx/cache

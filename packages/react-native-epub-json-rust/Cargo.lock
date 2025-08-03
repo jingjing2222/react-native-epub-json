@@ -574,7 +574,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "react-native-epub-json"
+name = "react-native-epub-json-rust"
 version = "0.1.0"
 dependencies = [
  "base64",

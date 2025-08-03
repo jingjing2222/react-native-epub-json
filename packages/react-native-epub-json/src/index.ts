@@ -1,6 +1,6 @@
-import * as fs from "node:fs";
-import * as path from "node:path";
-import * as wasm from "./lib/react_native_epub_json";
+import * as fs from 'node:fs';
+import * as path from 'node:path';
+import * as wasm from './lib/react_native_epub_json';
 
 export interface CompleteEpubInfo {
   metadata: EpubMetadata;
@@ -65,26 +65,26 @@ export interface RnStyles {
 export type RnNode = TextNode | ViewNode | ImageNode | ScrollViewNode;
 
 export interface TextNode {
-  type: "Text";
+  type: 'Text';
   content: string;
   styles?: RnStyles;
 }
 
 export interface ViewNode {
-  type: "View";
+  type: 'View';
   children: RnNode[];
   styles?: RnStyles;
 }
 
 export interface ImageNode {
-  type: "Image";
+  type: 'Image';
   source: string;
   alt?: string;
   styles?: RnStyles;
 }
 
 export interface ScrollViewNode {
-  type: "ScrollView";
+  type: 'ScrollView';
   children: RnNode[];
   styles?: RnStyles;
 }
@@ -102,16 +102,21 @@ export interface ChapterStructure {
  * @param output_dir Directory to save the output JSON file.
  * @returns The converted JSON object.
  */
-export function epubToJson(epub_path: string, output_dir: string): CompleteEpubInfo {
+export function epubToJson(
+  epub_path: string,
+  output_dir: string,
+): CompleteEpubInfo {
   try {
     const fileBuffer = fs.readFileSync(epub_path);
-    const result: CompleteEpubInfo = wasm.epubBytesToJson(new Uint8Array(fileBuffer));
+    const result: CompleteEpubInfo = wasm.epubBytesToJson(
+      new Uint8Array(fileBuffer),
+    );
 
     if (!fs.existsSync(output_dir)) {
       fs.mkdirSync(output_dir, { recursive: true });
     }
 
-    const outputPath = path.join(output_dir, "book.json");
+    const outputPath = path.join(output_dir, 'book.json');
     const jsonString = JSON.stringify(result, null, 2);
     fs.writeFileSync(outputPath, jsonString);
 
@@ -132,7 +137,9 @@ export function epubToJson(epub_path: string, output_dir: string): CompleteEpubI
 export function epubToJsonString(epub_path: string): string {
   try {
     const fileBuffer = fs.readFileSync(epub_path);
-    const result: CompleteEpubInfo = wasm.epubBytesToJson(new Uint8Array(fileBuffer));
+    const result: CompleteEpubInfo = wasm.epubBytesToJson(
+      new Uint8Array(fileBuffer),
+    );
     return JSON.stringify(result, null, 2);
   } catch (error: unknown) {
     if (error instanceof Error) {

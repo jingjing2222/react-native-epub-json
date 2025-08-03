@@ -1,0 +1,31 @@
+{
+  "name": "v80-server",
+  "root": "examples/v80-server",
+  "projectType": "application",
+  "targets": {
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd examples/v80-server && yarn dev"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd examples/v80-server && yarn build"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd examples/v80-server && yarn start"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd examples/v80-server && tsc --noEmit"
+      }
+    }
+  }
+}
