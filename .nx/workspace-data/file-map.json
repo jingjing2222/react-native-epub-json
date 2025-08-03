@@ -5,6 +5,53 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
+      "react-native-epub-json": [
+        {
+          "file": "packages/react-native-epub-json/package.json",
+          "hash": "4308870438143722861",
+          "deps": ["npm:@types/node", "npm:tsdown", "npm:typescript"]
+        },
+        {
+          "file": "packages/react-native-epub-json/project.json",
+          "hash": "2381296736675018480"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/index.ts",
+          "hash": "4880171518881675385"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json.d.ts",
+          "hash": "65771589695547750"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json.js",
+          "hash": "9976402497037615728"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.js",
+          "hash": "8375753161706912119"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.wasm",
+          "hash": "13976221653049230673"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.wasm.d.ts",
+          "hash": "7293751373101772103"
+        },
+        {
+          "file": "packages/react-native-epub-json/test.js",
+          "hash": "15916758426428006177"
+        },
+        {
+          "file": "packages/react-native-epub-json/tsconfig.json",
+          "hash": "2062062927074877327"
+        },
+        {
+          "file": "packages/react-native-epub-json/tsdown.config.ts",
+          "hash": "4257820808304440966"
+        }
+      ],
       "v80": [
         {
           "file": "examples/v80/.bundle/config",
@@ -255,91 +302,6 @@
           "hash": "5056789769330716879"
         }
       ],
-      "react-native-epub-json": [
-        {
-          "file": "packages/react-native-epub-json/package.json",
-          "hash": "4308870438143722861",
-          "deps": [
-            "npm:@types/node",
-            "npm:tsdown",
-            "npm:typescript"
-          ]
-        },
-        {
-          "file": "packages/react-native-epub-json/project.json",
-          "hash": "2381296736675018480"
-        },
-        {
-          "file": "packages/react-native-epub-json/src/index.ts",
-          "hash": "4880171518881675385"
-        },
-        {
-          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json.d.ts",
-          "hash": "65771589695547750"
-        },
-        {
-          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json.js",
-          "hash": "9976402497037615728"
-        },
-        {
-          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.js",
-          "hash": "8375753161706912119"
-        },
-        {
-          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.wasm",
-          "hash": "13976221653049230673"
-        },
-        {
-          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.wasm.d.ts",
-          "hash": "7293751373101772103"
-        },
-        {
-          "file": "packages/react-native-epub-json/test.js",
-          "hash": "15916758426428006177"
-        },
-        {
-          "file": "packages/react-native-epub-json/tsconfig.json",
-          "hash": "2062062927074877327"
-        },
-        {
-          "file": "packages/react-native-epub-json/tsdown.config.ts",
-          "hash": "4257820808304440966"
-        }
-      ],
-      "v80-server": [
-        {
-          "file": "examples/v80-server/.gitignore",
-          "hash": "13759582651390510797"
-        },
-        {
-          "file": "examples/v80-server/README.md",
-          "hash": "4913168686649881444"
-        },
-        {
-          "file": "examples/v80-server/package.json",
-          "hash": "2743493344215983195",
-          "deps": [
-            "npm:@types/node",
-            "npm:tsx",
-            "npm:typescript",
-            "npm:@hono/node-server",
-            "npm:hono",
-            "react-native-epub-json"
-          ]
-        },
-        {
-          "file": "examples/v80-server/project.json",
-          "hash": "7175023920973252086"
-        },
-        {
-          "file": "examples/v80-server/src/index.ts",
-          "hash": "2649292475269331019"
-        },
-        {
-          "file": "examples/v80-server/tsconfig.json",
-          "hash": "343149074949445622"
-        }
-      ],
       "react-native-epub-json-rust": [
         {
           "file": "packages/react-native-epub-json-rust/.cargo/config.toml",
@@ -393,6 +355,40 @@
           "file": "packages/react-native-epub-json-rust/src/utils.rs",
           "hash": "6584819943839054860"
         }
+      ],
+      "v80-server": [
+        {
+          "file": "examples/v80-server/.gitignore",
+          "hash": "13759582651390510797"
+        },
+        {
+          "file": "examples/v80-server/README.md",
+          "hash": "4913168686649881444"
+        },
+        {
+          "file": "examples/v80-server/package.json",
+          "hash": "2743493344215983195",
+          "deps": [
+            "npm:@types/node",
+            "npm:tsx",
+            "npm:typescript",
+            "npm:@hono/node-server",
+            "npm:hono",
+            "react-native-epub-json"
+          ]
+        },
+        {
+          "file": "examples/v80-server/project.json",
+          "hash": "7175023920973252086"
+        },
+        {
+          "file": "examples/v80-server/src/index.ts",
+          "hash": "2649292475269331019"
+        },
+        {
+          "file": "examples/v80-server/tsconfig.json",
+          "hash": "343149074949445622"
+        }
       ]
     },
     "nonProjectFiles": [
@@ -402,19 +398,23 @@
       },
       {
         "file": ".github/workflows/ci.yml",
-        "hash": "17474930112069667989"
+        "hash": "6497285721616309476"
       },
       {
         "file": ".gitignore",
-        "hash": "6513666654597408177"
+        "hash": "11378298142753436342"
       },
       {
         "file": "README.md",
         "hash": "11880328608142032060"
       },
       {
+        "file": "biome.json",
+        "hash": "10981958923574808084"
+      },
+      {
         "file": "package.json",
-        "hash": "486885982501127398"
+        "hash": "12199944231373430783"
       },
       {
         "file": "test-output.js",
@@ -422,7 +422,7 @@
       },
       {
         "file": "yarn.lock",
-        "hash": "10561682707473918827"
+        "hash": "1873271084085643394"
       }
     ]
   }

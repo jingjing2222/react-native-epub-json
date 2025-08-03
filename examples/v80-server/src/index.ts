@@ -1,8 +1,8 @@
 import { serve } from "@hono/node-server";
-import { Hono } from "hono";
 import fs from "fs";
-import path from "path";
+import { Hono } from "hono";
 import { createRequire } from "module";
+import path from "path";
 
 // ES 모듈 환경에서 CommonJS 모듈을 불러오기 위한 설정
 const require = createRequire(import.meta.url);
@@ -12,8 +12,7 @@ const app = new Hono();
 
 // 루트 경로에서 EPUB 파일을 실시간으로 JSON으로 변환하여 내려주기
 app.get("/", (c) => {
-  const epubPath =
-    "/Users/kimhyeongjeong/Desktop/code/ebook/hemingway-old-man-and-the-sea.epub";
+  const epubPath = "/Users/kimhyeongjeong/Desktop/code/ebook/hemingway-old-man-and-the-sea.epub";
 
   // const epubPath = "/Users/kimhyeongjeong/Downloads/khj.epub";
 

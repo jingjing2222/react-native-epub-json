@@ -14,11 +14,7 @@ if (!fs.existsSync("./dist")) {
 
 try {
   // 패키지 로드
-  const {
-    epubToJson,
-    epubToJsonString,
-    epubBytesToJson,
-  } = require("./dist/index.js");
+  const { epubToJson, epubToJsonString, epubBytesToJson } = require("./dist/index.js");
 
   console.log("✅ 패키지 로드 성공");
   console.log("📋 사용 가능한 함수들:");
@@ -27,9 +23,7 @@ try {
   console.log("   • epubBytesToJson:", typeof epubBytesToJson);
 
   // 테스트 EPUB 파일 찾기
-  const testFiles = [
-    "/Users/kimhyeongjeong/Desktop/code/ebook/hemingway-old-man-and-the-sea.epub",
-  ];
+  const testFiles = ["/Users/kimhyeongjeong/Desktop/code/ebook/hemingway-old-man-and-the-sea.epub"];
 
   let testFile = null;
   for (const file of testFiles) {
@@ -59,9 +53,7 @@ try {
       result1.styles instanceof Map
         ? result1.styles.size
         : Object.keys(result1.styles || {}).length;
-    console.log(
-      `   📊 챕터: ${result1.chapters.length}개, 스타일: ${stylesCount}개`
-    );
+    console.log(`   📊 챕터: ${result1.chapters.length}개, 스타일: ${stylesCount}개`);
   } catch (error) {
     console.log(`   ❌ 실패: ${error.message}`);
   }

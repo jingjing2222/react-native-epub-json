@@ -1080,6 +1080,87 @@
         "hash": "sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw=="
       }
     },
+    "npm:@biomejs/biome": {
+      "type": "npm",
+      "name": "npm:@biomejs/biome",
+      "data": {
+        "version": "2.1.3",
+        "packageName": "@biomejs/biome",
+        "hash": "sha512-KE/tegvJIxTkl7gJbGWSgun7G6X/n2M6C35COT6ctYrAy7SiPyNvi6JtoQERVK/VRbttZfgGq96j2bFmhmnH4w=="
+      }
+    },
+    "npm:@biomejs/cli-darwin-arm64": {
+      "type": "npm",
+      "name": "npm:@biomejs/cli-darwin-arm64",
+      "data": {
+        "version": "2.1.3",
+        "packageName": "@biomejs/cli-darwin-arm64",
+        "hash": "sha512-LFLkSWRoSGS1wVUD/BE6Nlt2dSn0ulH3XImzg2O/36BoToJHKXjSxzPEMAqT9QvwVtk7/9AQhZpTneERU9qaXA=="
+      }
+    },
+    "npm:@biomejs/cli-darwin-x64@2.1.3": {
+      "type": "npm",
+      "name": "npm:@biomejs/cli-darwin-x64@2.1.3",
+      "data": {
+        "version": "2.1.3",
+        "packageName": "@biomejs/cli-darwin-x64",
+        "hash": "sha512-Q/4OTw8P9No9QeowyxswcWdm0n2MsdCwWcc5NcKQQvzwPjwuPdf8dpPPf4r+x0RWKBtl1FLiAUtJvBlri6DnYw=="
+      }
+    },
+    "npm:@biomejs/cli-linux-arm64-musl@2.1.3": {
+      "type": "npm",
+      "name": "npm:@biomejs/cli-linux-arm64-musl@2.1.3",
+      "data": {
+        "version": "2.1.3",
+        "packageName": "@biomejs/cli-linux-arm64-musl",
+        "hash": "sha512-KXouFSBnoxAWZYDQrnNRzZBbt5s9UJkIm40hdvSL9mBxSSoxRFQJbtg1hP3aa8A2SnXyQHxQfpiVeJlczZt76w=="
+      }
+    },
+    "npm:@biomejs/cli-linux-arm64@2.1.3": {
+      "type": "npm",
+      "name": "npm:@biomejs/cli-linux-arm64@2.1.3",
+      "data": {
+        "version": "2.1.3",
+        "packageName": "@biomejs/cli-linux-arm64",
+        "hash": "sha512-2hS6LgylRqMFmAZCOFwYrf77QMdUwJp49oe8PX/O8+P2yKZMSpyQTf3Eo5ewnsMFUEmYbPOskafdV1ds1MZMJA=="
+      }
+    },
+    "npm:@biomejs/cli-linux-x64-musl@2.1.3": {
+      "type": "npm",
+      "name": "npm:@biomejs/cli-linux-x64-musl@2.1.3",
+      "data": {
+        "version": "2.1.3",
+        "packageName": "@biomejs/cli-linux-x64-musl",
+        "hash": "sha512-KaLAxnROouzIWtl6a0Y88r/4hW5oDUJTIqQorOTVQITaKQsKjZX4XCUmHIhdEk8zMnaiLZzRTAwk1yIAl+mIew=="
+      }
+    },
+    "npm:@biomejs/cli-linux-x64@2.1.3": {
+      "type": "npm",
+      "name": "npm:@biomejs/cli-linux-x64@2.1.3",
+      "data": {
+        "version": "2.1.3",
+        "packageName": "@biomejs/cli-linux-x64",
+        "hash": "sha512-NxlSCBhLvQtWGagEztfAZ4WcE1AkMTntZV65ZvR+J9jp06+EtOYEBPQndA70ZGhHbEDG57bR6uNvqkd1WrEYVA=="
+      }
+    },
+    "npm:@biomejs/cli-win32-arm64@2.1.3": {
+      "type": "npm",
+      "name": "npm:@biomejs/cli-win32-arm64@2.1.3",
+      "data": {
+        "version": "2.1.3",
+        "packageName": "@biomejs/cli-win32-arm64",
+        "hash": "sha512-V9CUZCtWH4u0YwyCYbQ3W5F4ZGPWp2C2TYcsiWFNNyRfmOW1j/TY/jAurl33SaRjgZPO5UUhGyr9m6BN9t84NQ=="
+      }
+    },
+    "npm:@biomejs/cli-win32-x64@2.1.3": {
+      "type": "npm",
+      "name": "npm:@biomejs/cli-win32-x64@2.1.3",
+      "data": {
+        "version": "2.1.3",
+        "packageName": "@biomejs/cli-win32-x64",
+        "hash": "sha512-dxy599q6lgp8ANPpR8sDMscwdp9oOumEsVXuVCVT9N2vAho8uYXlCz53JhxX6LtJOXaE73qzgkGQ7QqvFlMC0g=="
+      }
+    },
     "npm:@emnapi/core": {
       "type": "npm",
       "name": "npm:@emnapi/core",
@@ -9399,6 +9480,46 @@
     {
       "source": "npm:@babel/types",
       "target": "npm:@babel/helper-validator-identifier",
+      "type": "static"
+    },
+    {
+      "source": "npm:@biomejs/biome",
+      "target": "npm:@biomejs/cli-darwin-arm64",
+      "type": "static"
+    },
+    {
+      "source": "npm:@biomejs/biome",
+      "target": "npm:@biomejs/cli-darwin-x64@2.1.3",
+      "type": "static"
+    },
+    {
+      "source": "npm:@biomejs/biome",
+      "target": "npm:@biomejs/cli-linux-arm64@2.1.3",
+      "type": "static"
+    },
+    {
+      "source": "npm:@biomejs/biome",
+      "target": "npm:@biomejs/cli-linux-arm64-musl@2.1.3",
+      "type": "static"
+    },
+    {
+      "source": "npm:@biomejs/biome",
+      "target": "npm:@biomejs/cli-linux-x64@2.1.3",
+      "type": "static"
+    },
+    {
+      "source": "npm:@biomejs/biome",
+      "target": "npm:@biomejs/cli-linux-x64-musl@2.1.3",
+      "type": "static"
+    },
+    {
+      "source": "npm:@biomejs/biome",
+      "target": "npm:@biomejs/cli-win32-arm64@2.1.3",
+      "type": "static"
+    },
+    {
+      "source": "npm:@biomejs/biome",
+      "target": "npm:@biomejs/cli-win32-x64@2.1.3",
       "type": "static"
     },
     {
