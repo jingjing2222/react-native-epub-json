@@ -190,8 +190,7 @@
           "targetGroups": {
             "NPM Scripts": [
               "android",
-              "ios",
-              "lint"
+              "ios"
             ]
           },
           "js": {
@@ -220,18 +219,6 @@
             "metadata": {
               "scriptContent": "react-native run-ios",
               "runCommand": "yarn ios"
-            },
-            "configurations": {},
-            "parallelism": true
-          },
-          "lint": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "lint"
-            },
-            "metadata": {
-              "scriptContent": "eslint .",
-              "runCommand": "yarn lint"
             },
             "configurations": {},
             "parallelism": true
@@ -16337,5 +16324,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1754241583753
+  "computedAt": 1754242372928
 }

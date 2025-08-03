@@ -32,10 +32,6 @@
       "examples/v80/package.json",
       "nx/core/package-json"
     ],
-    "metadata.targetGroups.NPM Scripts.2": [
-      "examples/v80/package.json",
-      "nx/core/package-json"
-    ],
     "metadata.js": [
       "examples/v80/package.json",
       "nx/core/package-json"
@@ -105,34 +101,6 @@
       "nx/core/package-json"
     ],
     "targets.ios.metadata.runCommand": [
-      "examples/v80/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.lint": [
-      "examples/v80/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.lint.executor": [
-      "examples/v80/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.lint.options": [
-      "examples/v80/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.lint.metadata": [
-      "examples/v80/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.lint.options.script": [
-      "examples/v80/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.lint.metadata.scriptContent": [
-      "examples/v80/package.json",
-      "nx/core/package-json"
-    ],
-    "targets.lint.metadata.runCommand": [
       "examples/v80/package.json",
       "nx/core/package-json"
     ],

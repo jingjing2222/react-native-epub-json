@@ -98,23 +98,23 @@ interface RnStyles {
 }
 type RnNode = TextNode | ViewNode | ImageNode | ScrollViewNode;
 interface TextNode {
-  type: "Text";
+  type: 'Text';
   content: string;
   styles?: RnStyles;
 }
 interface ViewNode {
-  type: "View";
+  type: 'View';
   children: RnNode[];
   styles?: RnStyles;
 }
 interface ImageNode {
-  type: "Image";
+  type: 'Image';
   source: string;
   alt?: string;
   styles?: RnStyles;
 }
 interface ScrollViewNode {
-  type: "ScrollView";
+  type: 'ScrollView';
   children: RnNode[];
   styles?: RnStyles;
 }
