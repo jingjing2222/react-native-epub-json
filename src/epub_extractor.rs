@@ -77,22 +77,69 @@ fn extract_styles_and_images<R: Read + Seek>(
     let mut styles = HashMap::new();
     let mut images = HashMap::new();
     
-    // CSS 파일들을 RN 스타일로 변환
-    for (id, (_, mime_type)) in resources_map.iter() {
+    println!("\n📦 리소스 분석 중...");
+    println!("   총 리소스 수: {} 개", resources_map.len());
+    
+    let mut css_files = Vec::new();
+    let mut image_files = Vec::new();
+    let mut other_files = Vec::new();
+    
+    // 리소스 타입별 분류
+    for (id, (path, mime_type)) in resources_map.iter() {
         if mime_type == "text/css" {
-            if let Some((css_content, _)) = doc.get_resource_str(id) {
-                let parsed_styles = parse_css_to_rn_styles(&css_content);
-                styles.extend(parsed_styles);
-            }
+            css_files.push((id, path));
         } else if mime_type.starts_with("image/") {
-            // 이미지를 base64로 변환
-            if let Some((data, _)) = doc.get_resource(id) {
-                let base64_data = general_purpose::STANDARD.encode(&data);
-                let data_uri = format!("data:{};base64,{}", mime_type, base64_data);
-                images.insert(id.clone(), data_uri);
-            }
+            image_files.push((id, path, mime_type));
+        } else {
+            other_files.push((id, mime_type));
         }
     }
+    
+    println!("   🎨 CSS 파일: {} 개", css_files.len());
+    println!("   🖼️  이미지 파일: {} 개", image_files.len());
+    println!("   📄 기타 파일: {} 개", other_files.len());
+    
+    // CSS 파일들을 RN 스타일로 변환
+    for (index, (id, path)) in css_files.iter().enumerate() {
+        println!("\n🎨 CSS 파일 #{} 처리 중: {} ({})", index + 1, path.display(), id);
+        
+        if let Some((css_content, _)) = doc.get_resource_str(id) {
+            println!("   📄 CSS 내용 크기: {} 바이트", css_content.len());
+            
+            if css_content.len() > 0 {
+                let parsed_styles = parse_css_to_rn_styles(&css_content);
+                let styles_count = parsed_styles.len();
+                styles.extend(parsed_styles);
+                
+                println!("   ✅ {} 개 스타일 규칙이 추가됨", styles_count);
+            } else {
+                println!("   ⚠️  CSS 파일이 비어있음");
+            }
+        } else {
+            println!("   ❌ CSS 파일 읽기 실패: {}", id);
+        }
+    }
+    
+    // 이미지들을 base64로 변환
+    println!("\n🖼️  이미지 처리 중...");
+    for (index, (id, path, mime_type)) in image_files.iter().enumerate() {
+        if let Some((data, _)) = doc.get_resource(id) {
+            let base64_data = general_purpose::STANDARD.encode(&data);
+            let data_uri = format!("data:{};base64,{}", mime_type, base64_data);
+            let size_kb = data.len() / 1024;
+            
+            println!("   🖼️  이미지 #{}: {} ({} KB, {})", 
+                     index + 1, path.display(), size_kb, mime_type);
+            
+            images.insert(id.to_string(), data_uri);
+        } else {
+            println!("   ❌ 이미지 읽기 실패: {}", id);
+        }
+    }
+    
+    println!("\n📊 스타일 & 이미지 처리 완료:");
+    println!("   🎨 총 스타일 규칙: {} 개", styles.len());
+    println!("   🖼️  총 이미지: {} 개", images.len());
     
     (styles, images)
 }

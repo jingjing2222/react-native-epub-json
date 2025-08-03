@@ -5,21 +5,64 @@ use crate::types::RnStyles;
 pub fn parse_css_to_rn_styles(css: &str) -> HashMap<String, RnStyles> {
     let mut styles = HashMap::new();
     
-    // 간단한 CSS 파싱 (실제로는 더 복잡한 파서가 필요)
-    let rules: Vec<&str> = css.split('}').collect();
+    println!("🎨 CSS 파싱 시작 (총 {} 바이트)", css.len());
     
-    for rule in rules {
+    // CSS를 }로 분할하고 유효한 규칙만 필터링
+    let all_rules: Vec<&str> = css.split('}').collect();
+    let valid_rules: Vec<&str> = all_rules.iter()
+        .map(|rule| rule.trim())
+        .filter(|rule| !rule.is_empty() && rule.contains('{'))
+        .copied()
+        .collect();
+    
+    println!("   📝 전체 분할된 조각: {} 개", all_rules.len());
+    println!("   ✨ 유효한 CSS 규칙: {} 개", valid_rules.len());
+    
+    let mut parsed_count = 0;
+    let mut failed_count = 0;
+    
+    for (index, rule) in valid_rules.iter().enumerate() {
         if let Some(pos) = rule.find('{') {
             let selector = rule[..pos].trim();
             let declarations = rule[pos + 1..].trim();
             
-            if !selector.is_empty() && !declarations.is_empty() {
+            if selector.is_empty() {
+                println!("   ⚠️  규칙 #{}: 선택자가 비어있음", index + 1);
+                failed_count += 1;
+            } else if declarations.is_empty() {
+                println!("   ⚠️  규칙 #{}: 선언이 비어있음 - 선택자: '{}'", index + 1, selector);
+                failed_count += 1;
+            } else {
                 let rn_style = parse_css_declarations(declarations);
                 let style_name = css_selector_to_style_name(selector);
+                
+                // 첫 5개 규칙은 상세 로그
+                if index < 5 {
+                    println!("   🔍 규칙 #{}: '{}' → '{}' (선언: {})", 
+                             index + 1, selector, style_name, declarations);
+                }
+                
                 styles.insert(style_name, rn_style);
+                parsed_count += 1;
             }
+        } else {
+            // 이 경우는 이제 발생하지 않아야 함 (필터링에서 제외됨)
+            println!("   🚨 예상치 못한 오류: '{{'를 찾을 수 없음 - 내용: '{}'", rule);
+            failed_count += 1;
         }
     }
+    
+    let success_rate = if valid_rules.len() > 0 {
+        (parsed_count as f32 / valid_rules.len() as f32 * 100.0).round()
+    } else {
+        100.0
+    };
+    
+    println!("   ✅ 성공적으로 파싱된 스타일: {} 개", parsed_count);
+    if failed_count > 0 {
+        println!("   ❌ 파싱 실패: {} 개", failed_count);
+    }
+    println!("   🎯 파싱 성공률: {:.0}%", success_rate);
     
     styles
 }
@@ -46,6 +89,8 @@ pub fn parse_css_declarations(declarations: &str) -> RnStyles {
         fontStyle: None,
     };
     
+    let mut property_count = 0;
+    
     for declaration in declarations.split(';') {
         let parts: Vec<&str> = declaration.split(':').collect();
         if parts.len() == 2 {
@@ -53,30 +98,36 @@ pub fn parse_css_declarations(declarations: &str) -> RnStyles {
             let value = parts[1].trim();
             
             match property {
-                "font-size" => style.fontSize = parse_size_value(value),
-                "font-weight" => style.fontWeight = Some(value.to_string()),
-                "font-family" => style.fontFamily = Some(value.trim_matches('"').to_string()),
-                "color" => style.color = Some(value.to_string()),
-                "background-color" => style.backgroundColor = Some(value.to_string()),
-                "text-align" => style.textAlign = Some(value.to_string()),
-                "margin-top" => style.marginTop = parse_size_value(value),
-                "margin-bottom" => style.marginBottom = parse_size_value(value),
-                "margin-left" => style.marginLeft = parse_size_value(value),
-                "margin-right" => style.marginRight = parse_size_value(value),
-                "padding-top" => style.paddingTop = parse_size_value(value),
-                "padding-bottom" => style.paddingBottom = parse_size_value(value),
-                "padding-left" => style.paddingLeft = parse_size_value(value),
-                "padding-right" => style.paddingRight = parse_size_value(value),
-                "line-height" => style.lineHeight = parse_size_value(value),
+                "font-size" => { style.fontSize = parse_size_value(value); property_count += 1; },
+                "font-weight" => { style.fontWeight = Some(value.to_string()); property_count += 1; },
+                "font-family" => { style.fontFamily = Some(value.trim_matches('"').to_string()); property_count += 1; },
+                "color" => { style.color = Some(value.to_string()); property_count += 1; },
+                "background-color" => { style.backgroundColor = Some(value.to_string()); property_count += 1; },
+                "text-align" => { style.textAlign = Some(value.to_string()); property_count += 1; },
+                "margin-top" => { style.marginTop = parse_size_value(value); property_count += 1; },
+                "margin-bottom" => { style.marginBottom = parse_size_value(value); property_count += 1; },
+                "margin-left" => { style.marginLeft = parse_size_value(value); property_count += 1; },
+                "margin-right" => { style.marginRight = parse_size_value(value); property_count += 1; },
+                "padding-top" => { style.paddingTop = parse_size_value(value); property_count += 1; },
+                "padding-bottom" => { style.paddingBottom = parse_size_value(value); property_count += 1; },
+                "padding-left" => { style.paddingLeft = parse_size_value(value); property_count += 1; },
+                "padding-right" => { style.paddingRight = parse_size_value(value); property_count += 1; },
+                "line-height" => { style.lineHeight = parse_size_value(value); property_count += 1; },
                 "text-decoration" => {
                     if value.contains("underline") {
                         style.textDecorationLine = Some("underline".to_string());
+                        property_count += 1;
                     }
                 }
-                "font-style" => style.fontStyle = Some(value.to_string()),
-                _ => {}
+                "font-style" => { style.fontStyle = Some(value.to_string()); property_count += 1; },
+                _ => {} // 지원하지 않는 속성
             }
         }
+    }
+    
+    // 속성이 많은 경우만 로그 (너무 많은 로그 방지)
+    if property_count > 3 {
+        println!("     💎 리치 스타일 발견: {} 개 속성 변환됨", property_count);
     }
     
     style
@@ -128,4 +179,4 @@ pub fn merge_styles(class_style: Option<RnStyles>, inline_style: Option<RnStyles
         (None, Some(inline)) => Some(inline),
         (None, None) => None,
     }
-} 
+}

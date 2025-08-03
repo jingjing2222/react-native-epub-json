@@ -52,7 +52,48 @@
     }
   ],
   "styles": {
-    "divequation-title": {
+    "/*_end_of_styles_in_formalxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_verbatimxsl_*/\n\ndivprogramlisting": {
+      "fontFamily": "monospace"
+    },
+    "divsynopsis": {
+      "fontFamily": "monospace"
+    },
+    "center": {
+      "textAlign": "center"
+    },
+    "titlepage_copyright,_titlepage_legalnotice_p": {
+      "textAlign": "left"
+    },
+    "mediaobject_caption": {
+      "marginBottom": 32.0,
+      "fontStyle": "italic"
+    },
+    "divscreen": {
+      "fontFamily": "monospace"
+    },
+    "spanmsgsub-title": {
+      "fontWeight": "bold"
+    },
+    "divsidebar-title": {
+      "fontWeight": "bold"
+    },
+    "spanmsgrel-title": {
+      "fontWeight": "bold"
+    },
+    "divblockquote-title": {
+      "fontWeight": "bold",
+      "marginTop": 16.0,
+      "marginBottom": 16.0
+    },
+    "divsidebar": {
+      "marginTop": 16.0,
+      "marginBottom": 16.0
+    },
+    "tablesimplelist_tr_td": {},
+    "subtitle": {
+      "fontStyle": "italic"
+    },
+    "spanmsgmain-title": {
       "fontWeight": "bold"
     },
     "titlepage_authorgroup_editor_h3": {
@@ -62,107 +103,66 @@
       "marginTop": 16.0,
       "marginBottom": 16.0
     },
+    "/********************************/\n/*_start_of_styles_in_blockxsl_*/\n\nformalpara-title": {
+      "fontWeight": "bold"
+    },
+    "guide": {},
     "titlepage": {
       "marginBottom": 48.0
+    },
+    "nav_ol_li": {},
+    "/*_end_of_styles_in_autotocxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_formalxsl_*/\n\ndivfigure-title": {
+      "fontWeight": "bold"
+    },
+    "h1,_h2,_titlepage_*": {
+      "textAlign": "center"
     },
     "toc_toc-title": {
       "fontSize": 24.0,
       "textAlign": "center"
     },
-    "/********************************/\n/*_start_of_styles_in_blockxsl_*/\n\nformalpara-title": {
+    "divexample-title": {
       "fontWeight": "bold"
     },
-    "divscreen": {
-      "fontFamily": "monospace"
+    "titlepage_copyright": {
+      "marginTop": 16.0,
+      "paddingTop": 16.0
     },
-    "mediaobject": {
-      "textAlign": "center"
-    },
-    "subtitle": {
-      "fontStyle": "italic"
-    },
-    "tablesimplelist_tr_td": {},
-    "titlepage_copyright,_titlepage_legalnotice_p": {
-      "textAlign": "left"
-    },
-    "center": {
-      "textAlign": "center"
-    },
-    "spanmsgsub-title": {
-      "fontWeight": "bold"
-    },
-    "divsynopsis": {
-      "fontFamily": "monospace"
-    },
-    "spanmsglevel-title,_spanmsgorig-title,_spanmsgaud-title": {
-      "fontWeight": "bold"
-    },
-    "/*_end_of_styles_in_autotocxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_formalxsl_*/\n\ndivfigure-title": {
-      "fontWeight": "bold"
+    "titlepage_authorgroup_h4editedby": {
+      "marginBottom": 0.0
     },
     "divmsglevel,_divmsgorig,_divmsgaud": {
+      "marginTop": 16.0,
+      "marginBottom": 16.0
+    },
+    "mediaobject_img": {},
+    "/*_end_of_styles_in_blockxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_autotocxsl_*/\n\n/*_top_level_entries_*/\nnav>ol>li>a": {
       "marginTop": 16.0,
       "marginBottom": 16.0
     },
     "spanmsgexplan-title": {
       "fontWeight": "bold"
     },
-    "spanmsgrel-title": {
-      "fontWeight": "bold"
-    },
-    "divexample-title": {
-      "fontWeight": "bold"
+    "tablesimplelist": {
+      "marginBottom": 16.0
     },
     "title": {},
     "/*_end_of_styles_in_verbatimxsl_*/\n/********************************/\n\n/********************************/\n/*_NAVIGATION_*/\n\nnav_ol": {},
-    "mediaobject_caption": {
-      "marginBottom": 32.0,
-      "fontStyle": "italic"
-    },
-    "titlepage_copyright": {
-      "marginTop": 16.0,
-      "paddingTop": 16.0
-    },
-    "/*_end_of_styles_in_blockxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_autotocxsl_*/\n\n/*_top_level_entries_*/\nnav>ol>li>a": {
-      "marginTop": 16.0,
-      "marginBottom": 16.0
-    },
-    "mediaobject_img": {},
-    "divtable-title": {
-      "fontWeight": "bold"
-    },
-    "divsidebar": {
-      "marginTop": 16.0,
-      "marginBottom": 16.0
+    "mediaobject": {
+      "textAlign": "center"
     },
     "nav_ol_li_a": {
       "fontFamily": "sans-serif",
       "color": "black"
     },
-    "divblockquote-title": {
-      "fontWeight": "bold",
-      "marginTop": 16.0,
-      "marginBottom": 16.0
-    },
-    "nav_ol_li": {},
-    "divsidebar-title": {
+    "spanmsglevel-title,_spanmsgorig-title,_spanmsgaud-title": {
       "fontWeight": "bold"
     },
-    "/*_end_of_styles_in_formalxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_verbatimxsl_*/\n\ndivprogramlisting": {
-      "fontFamily": "monospace"
-    },
-    "guide": {},
-    "titlepage_authorgroup_h4editedby": {
-      "marginBottom": 0.0
-    },
-    "tablesimplelist": {
-      "marginBottom": 16.0
-    },
-    "spanmsgmain-title": {
+    "divequation-title": {
       "fontWeight": "bold"
     },
-    "h1,_h2,_titlepage_*": {
-      "textAlign": "center"
+    "divtable-title": {
+      "fontWeight": "bold"
     }
   },
   "images": {
