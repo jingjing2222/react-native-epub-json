@@ -43,15 +43,23 @@ export interface SpineItemInfo {
 }
 
 export interface RnStyles {
+  // 텍스트 스타일
   fontSize?: number;
   fontWeight?: string;
   fontFamily?: string;
   fontStyle?: string;
   color?: string;
-  backgroundColor?: string;
   textAlign?: string;
-  lineHeight?: number;
   textDecorationLine?: string;
+  textTransform?: string;
+  lineHeight?: number;
+  textIndent?: number;
+
+  // 배경 및 색상
+  backgroundColor?: string;
+  opacity?: number;
+
+  // 여백
   marginTop?: number;
   marginBottom?: number;
   marginLeft?: number;
@@ -60,6 +68,51 @@ export interface RnStyles {
   paddingBottom?: number;
   paddingLeft?: number;
   paddingRight?: number;
+
+  // 크기 및 레이아웃
+  width?: number;
+  height?: number;
+  minWidth?: number;
+  maxWidth?: number;
+  minHeight?: number;
+  maxHeight?: number;
+
+  // 포지셔닝
+  position?: string;
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+  zIndex?: number;
+
+  // Flexbox
+  display?: string;
+  flexDirection?: string;
+  justifyContent?: string;
+  alignItems?: string;
+  alignSelf?: string;
+  flexWrap?: string;
+  flex?: number;
+  flexGrow?: number;
+  flexShrink?: number;
+  flexBasis?: number;
+
+  // 테두리
+  borderWidth?: number;
+  borderTopWidth?: number;
+  borderBottomWidth?: number;
+  borderLeftWidth?: number;
+  borderRightWidth?: number;
+  borderColor?: string;
+  borderTopColor?: string;
+  borderBottomColor?: string;
+  borderLeftColor?: string;
+  borderRightColor?: string;
+  borderRadius?: number;
+  borderStyle?: string;
+
+  // 오버플로우
+  overflow?: string;
 }
 
 export type RnNode = TextNode | ViewNode | ImageNode | ScrollViewNode;

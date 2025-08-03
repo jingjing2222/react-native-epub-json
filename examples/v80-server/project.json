@@ -6,19 +6,19 @@
     "dev": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd examples/v80-server && yarn dev"
+        "command": "cd examples/v80-server && pnpm dev"
       }
     },
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd examples/v80-server && yarn build"
+        "command": "cd examples/v80-server && pnpm build"
       }
     },
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd examples/v80-server && yarn start"
+        "command": "cd examples/v80-server && pnpm start"
       }
     },
     "typecheck": {
