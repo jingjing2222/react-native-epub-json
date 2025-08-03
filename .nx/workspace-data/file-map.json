@@ -5,6 +5,53 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
+      "react-native-epub-json": [
+        {
+          "file": "packages/react-native-epub-json/package.json",
+          "hash": "4308870438143722861",
+          "deps": [
+            "npm:@types/node",
+            "npm:tsdown",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/react-native-epub-json/project.json",
+          "hash": "2865812164817593958"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/index.ts",
+          "hash": "1021406132130480845"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json.d.ts",
+          "hash": "65771589695547750"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json.js",
+          "hash": "9976402497037615728"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.wasm",
+          "hash": "14394489717519402026"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.wasm.d.ts",
+          "hash": "7293751373101772103"
+        },
+        {
+          "file": "packages/react-native-epub-json/test.js",
+          "hash": "14767006551579934265"
+        },
+        {
+          "file": "packages/react-native-epub-json/tsconfig.json",
+          "hash": "2062062927074877327"
+        },
+        {
+          "file": "packages/react-native-epub-json/tsdown.config.ts",
+          "hash": "4257820808304440966"
+        }
+      ],
       "v80": [
         {
           "file": "examples/v80/.bundle/config",
@@ -344,6 +391,8 @@
           "file": "examples/v80-server/tsconfig.json",
           "hash": "16444456094620456137"
         }
+<<<<<<< HEAD
+=======
       ],
       "react-native-epub-json": [
         {
@@ -391,6 +440,7 @@
           "file": "packages/react-native-epub-json/tsdown.config.ts",
           "hash": "4257820808304440966"
         }
+>>>>>>> main
       ]
     },
     "nonProjectFiles": [
@@ -400,7 +450,11 @@
       },
       {
         "file": ".github/workflows/ci.yml",
+<<<<<<< HEAD
+        "hash": "6325019243253222489"
+=======
         "hash": "17056557480931915659"
+>>>>>>> main
       },
       {
         "file": ".gitignore",
