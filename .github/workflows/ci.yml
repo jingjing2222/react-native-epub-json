@@ -37,7 +37,7 @@ jobs:
       run: yarn install --frozen-lockfile
 
     - name: Run typecheck
-      run: yarn nx typecheck
+      run: yarn nx run-many --target=typecheck --all
 
     - name: Run lint
       run: yarn nx lint
