@@ -15,6 +15,16 @@ jobs:
       with:
         node-version: '20'
 
+    - name: Install Rust toolchain
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+        profile: minimal
+        override: true
+
+    - name: Install wasm-pack
+      run: cargo install wasm-pack
+
     - name: Install dependencies
       run: yarn install --frozen-lockfile
 

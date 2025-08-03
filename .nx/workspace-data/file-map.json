@@ -5,60 +5,6 @@
   "nxJsonPlugins": [],
   "fileMap": {
     "projectFileMap": {
-      "react-native-epub-json-rust": [
-        {
-          "file": "packages/react-native-epub-json-rust/.cargo/config.toml",
-          "hash": "2487967050367282486"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/.gitignore",
-          "hash": "1654711916329814962"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/Cargo.lock",
-          "hash": "578968432204690416"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/Cargo.toml",
-          "hash": "9581713612204154561"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/JSON_TYPES.md",
-          "hash": "12981027675914843704"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/project.json",
-          "hash": "11021433010536636871"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/src/css_parser.rs",
-          "hash": "7590260861367679449"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/src/epub_extractor.rs",
-          "hash": "8796689519042246333"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/src/html_parser.rs",
-          "hash": "1902054564587246189"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/src/lib.rs",
-          "hash": "13039838069738763707"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/src/main.rs",
-          "hash": "11264274074729292458"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/src/types.rs",
-          "hash": "14604665804918126190"
-        },
-        {
-          "file": "packages/react-native-epub-json-rust/src/utils.rs",
-          "hash": "6584819943839054860"
-        }
-      ],
       "v80": [
         {
           "file": "examples/v80/.bundle/config",
@@ -309,40 +255,6 @@
           "hash": "5056789769330716879"
         }
       ],
-      "v80-server": [
-        {
-          "file": "examples/v80-server/.gitignore",
-          "hash": "13759582651390510797"
-        },
-        {
-          "file": "examples/v80-server/README.md",
-          "hash": "4913168686649881444"
-        },
-        {
-          "file": "examples/v80-server/package.json",
-          "hash": "2743493344215983195",
-          "deps": [
-            "npm:@types/node",
-            "npm:tsx",
-            "npm:typescript",
-            "npm:@hono/node-server",
-            "npm:hono",
-            "react-native-epub-json"
-          ]
-        },
-        {
-          "file": "examples/v80-server/project.json",
-          "hash": "7175023920973252086"
-        },
-        {
-          "file": "examples/v80-server/src/index.ts",
-          "hash": "2649292475269331019"
-        },
-        {
-          "file": "examples/v80-server/tsconfig.json",
-          "hash": "343149074949445622"
-        }
-      ],
       "react-native-epub-json": [
         {
           "file": "packages/react-native-epub-json/package.json",
@@ -393,6 +305,94 @@
           "file": "packages/react-native-epub-json/tsdown.config.ts",
           "hash": "4257820808304440966"
         }
+      ],
+      "v80-server": [
+        {
+          "file": "examples/v80-server/.gitignore",
+          "hash": "13759582651390510797"
+        },
+        {
+          "file": "examples/v80-server/README.md",
+          "hash": "4913168686649881444"
+        },
+        {
+          "file": "examples/v80-server/package.json",
+          "hash": "2743493344215983195",
+          "deps": [
+            "npm:@types/node",
+            "npm:tsx",
+            "npm:typescript",
+            "npm:@hono/node-server",
+            "npm:hono",
+            "react-native-epub-json"
+          ]
+        },
+        {
+          "file": "examples/v80-server/project.json",
+          "hash": "7175023920973252086"
+        },
+        {
+          "file": "examples/v80-server/src/index.ts",
+          "hash": "2649292475269331019"
+        },
+        {
+          "file": "examples/v80-server/tsconfig.json",
+          "hash": "343149074949445622"
+        }
+      ],
+      "react-native-epub-json-rust": [
+        {
+          "file": "packages/react-native-epub-json-rust/.cargo/config.toml",
+          "hash": "2487967050367282486"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/.gitignore",
+          "hash": "1654711916329814962"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/Cargo.lock",
+          "hash": "578968432204690416"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/Cargo.toml",
+          "hash": "9581713612204154561"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/JSON_TYPES.md",
+          "hash": "12981027675914843704"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/project.json",
+          "hash": "11021433010536636871"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/css_parser.rs",
+          "hash": "7590260861367679449"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/epub_extractor.rs",
+          "hash": "8796689519042246333"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/html_parser.rs",
+          "hash": "1902054564587246189"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/lib.rs",
+          "hash": "13039838069738763707"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/main.rs",
+          "hash": "11264274074729292458"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/types.rs",
+          "hash": "14604665804918126190"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/utils.rs",
+          "hash": "6584819943839054860"
+        }
       ]
     },
     "nonProjectFiles": [
@@ -402,7 +402,7 @@
       },
       {
         "file": ".github/workflows/ci.yml",
-        "hash": "11939081350613642172"
+        "hash": "17474930112069667989"
       },
       {
         "file": ".gitignore",
