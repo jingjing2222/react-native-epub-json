@@ -1,4 +1,0 @@
-> cd examples/v80 && yarn build
-
-[2K[1G[31merror[39m Command "build" not found.
-[2K[1G[34minfo[39m Visit [1mhttps://yarnpkg.com/en/docs/cli/run[22m for documentation about this command.
