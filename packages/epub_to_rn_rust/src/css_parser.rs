@@ -2,16 +2,38 @@ use std::collections::HashMap;
 use cssparser::{Parser, ParserInput, Token};
 use crate::types::RnStyles;
 
+// WASM 환경에서 console.log 사용을 위한 매크로
+#[cfg(target_arch = "wasm32")]
+macro_rules! log {
+    ($($t:tt)*) => {
+        web_sys::console::log_1(&format!($($t)*).into());
+    }
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+macro_rules! log {
+    ($($t:tt)*) => {
+        println!($($t)*);
+    }
+}
+
 /// 전문 CSS 파서로 React Native 스타일 변환
 pub fn parse_css_to_rn_styles(css: &str) -> HashMap<String, RnStyles> {
     let mut styles = HashMap::new();
     
-    println!("🎨 전문 CSS 파서로 파싱 시작 (총 {} 바이트)", css.len());
+    log!("🎨 전문 CSS 파서로 파싱 시작 (총 {} 바이트)", css.len());
+    
+    // CSS 내용의 첫 부분을 로그로 출력 (디버깅용)
+    if css.len() > 100 {
+        log!("   📄 CSS 내용 미리보기: {}", &css[..100]);
+    } else if css.len() > 0 {
+        log!("   📄 CSS 내용 전체: {}", css);
+    }
     
     // CSS 규칙 추출
     let rules = extract_css_rules(css);
     
-    println!("   📝 발견된 CSS 규칙: {} 개", rules.len());
+    log!("   📝 발견된 CSS 규칙: {} 개", rules.len());
     
     let mut parsed_count = 0;
     let mut failed_count = 0;
@@ -60,6 +82,8 @@ fn extract_css_rules(css: &str) -> Vec<(String, String)> {
     let mut brace_count = 0;
     let mut in_rule = false;
     
+    log!("   🔍 CSS 규칙 추출 시작...");
+    
     for ch in css.chars() {
         match ch {
             '{' => {
@@ -77,7 +101,13 @@ fn extract_css_rules(css: &str) -> Vec<(String, String)> {
                         let selector = current_rule[..pos].trim().to_string();
                         let declarations = current_rule[pos + 1..current_rule.len() - 1].trim().to_string();
                         if !selector.is_empty() && !declarations.is_empty() {
+                            // 처음 몇 개 규칙은 로그 출력
+                            if rules.len() < 10 {
+                                log!("   📝 규칙 #{}: '{}' → '{}'", rules.len() + 1, selector, declarations);
+                            }
                             rules.push((selector, declarations));
+                        } else {
+                            log!("   ⚠️  빈 규칙 건너뜀: selector='{}', declarations='{}'", selector, declarations);
                         }
                     }
                     current_rule.clear();
@@ -89,6 +119,8 @@ fn extract_css_rules(css: &str) -> Vec<(String, String)> {
             }
         }
     }
+    
+    log!("   ✅ CSS 규칙 추출 완료: {} 개 규칙 발견", rules.len());
     
     rules
 }

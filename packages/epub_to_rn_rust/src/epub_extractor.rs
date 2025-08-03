@@ -3,6 +3,21 @@ use std::collections::HashMap;
 use base64::{Engine as _, engine::general_purpose};
 use std::io::{Read, Seek, Cursor};
 
+// WASM 환경에서 console.log 사용을 위한 매크로
+#[cfg(target_arch = "wasm32")]
+macro_rules! log {
+    ($($t:tt)*) => {
+        web_sys::console::log_1(&format!($($t)*).into());
+    }
+}
+
+#[cfg(not(target_arch = "wasm32"))]
+macro_rules! log {
+    ($($t:tt)*) => {
+        println!($($t)*);
+    }
+}
+
 use crate::types::*;
 use crate::css_parser::parse_css_to_rn_styles;
 use crate::html_parser::{parse_html_to_rn_nodes, extract_title_from_html};
@@ -55,6 +70,12 @@ fn extract_epub_data<R: Read + Seek>(doc: &mut EpubDoc<R>) -> Result<CompleteEpu
     // 챕터 내용을 RN 노드 구조로 변환
     let chapters = extract_chapters(doc, &spine_items, &resources_map, &styles, &images);
     
+    log!("\n🎯 최종 결과 생성 중...");
+    log!("   📚 메타데이터: {}", metadata.title.as_deref().unwrap_or("N/A"));
+    log!("   🎨 스타일 수: {} 개", styles.len());
+    log!("   🖼️  이미지 수: {} 개", images.len());
+    log!("   📄 챕터 수: {} 개", chapters.len());
+    
     Ok(CompleteEpubInfo {
         metadata,
         structure,
@@ -89,8 +110,8 @@ fn extract_styles_and_images<R: Read + Seek>(
     let mut styles = HashMap::new();
     let mut images = HashMap::new();
     
-    println!("\n📦 리소스 분석 중...");
-    println!("   총 리소스 수: {} 개", resources_map.len());
+    log!("\n📦 리소스 분석 중...");
+    log!("   총 리소스 수: {} 개", resources_map.len());
     
     let mut css_files = Vec::new();
     let mut image_files = Vec::new();
@@ -98,6 +119,7 @@ fn extract_styles_and_images<R: Read + Seek>(
     
     // 리소스 타입별 분류
     for (id, (path, mime_type)) in resources_map.iter() {
+        log!("   🔍 리소스 발견: {} -> {} ({})", id, path.display(), mime_type);
         if mime_type == "text/css" {
             css_files.push((id, path));
         } else if mime_type.starts_with("image/") {
@@ -107,30 +129,33 @@ fn extract_styles_and_images<R: Read + Seek>(
         }
     }
     
-    println!("   🎨 CSS 파일: {} 개", css_files.len());
-    println!("   🖼️  이미지 파일: {} 개", image_files.len());
-    println!("   📄 기타 파일: {} 개", other_files.len());
+    log!("   🎨 CSS 파일: {} 개", css_files.len());
+    log!("   🖼️  이미지 파일: {} 개", image_files.len());
+    log!("   📄 기타 파일: {} 개", other_files.len());
     
     // CSS 파일들을 RN 스타일로 변환
     for (index, (id, path)) in css_files.iter().enumerate() {
-        println!("\n🎨 CSS 파일 #{} 처리 중: {} ({})", index + 1, path.display(), id);
+        log!("\n🎨 CSS 파일 #{} 처리 중: {} ({})", index + 1, path.display(), id);
         
         if let Some((css_content, _)) = doc.get_resource_str(id) {
-            println!("   📄 CSS 내용 크기: {} 바이트", css_content.len());
+            log!("   📄 CSS 내용 크기: {} 바이트", css_content.len());
             
             if css_content.len() > 0 {
                 let parsed_styles = parse_css_to_rn_styles(&css_content);
                 let styles_count = parsed_styles.len();
                 styles.extend(parsed_styles);
                 
-                println!("   ✅ {} 개 스타일 규칙이 추가됨", styles_count);
+                log!("   ✅ {} 개 스타일 규칙이 추가됨", styles_count);
+                log!("   📊 현재 총 스타일 수: {} 개", styles.len());
             } else {
-                println!("   ⚠️  CSS 파일이 비어있음");
+                log!("   ⚠️  CSS 파일이 비어있음");
             }
         } else {
-            println!("   ❌ CSS 파일 읽기 실패: {}", id);
+            log!("   ❌ CSS 파일 읽기 실패: {}", id);
         }
     }
+    
+    log!("\n🎨 CSS 처리 완료 - 최종 스타일 수: {} 개", styles.len());
     
     // 이미지들을 base64로 변환
     println!("\n🖼️  이미지 처리 중...");

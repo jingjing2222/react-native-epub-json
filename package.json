@@ -1,30 +1,31 @@
 {
-  "name": "epub-to-rn-builder",
+  "name": "epub-to-rn-monorepo",
   "version": "0.1.0",
-  "description": "EPUB to React Native converter with WASM build tools",
-  "main": "pkg/index.js",
+  "description": "EPUB to React Native converter monorepo with WASM build tools",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
-    "build": "./build-wasm.sh",
-    "build:wasm": "RUSTFLAGS=\"--cfg getrandom_backend=\\\"wasm_js\\\"\" wasm-pack build --target nodejs",
-    "test": "node test.js",
-    "clean": "rm -rf pkg target",
-    "dev": "cargo run",
+    "build": "cd packages/epub_to_rn_rust && ./build-wasm.sh && cd ../.. && npm run copy-build",
+    "build:wasm": "cd packages/epub_to_rn_rust && RUSTFLAGS=\"--cfg getrandom_backend=\\\"wasm_js\\\"\" wasm-pack build --target nodejs",
+    "copy-build": "rm -rf packages/epub_to_rn/* && cp -r packages/epub_to_rn_rust/pkg/* packages/epub_to_rn/",
+    "test": "cd packages/epub_to_rn_rust && node test.js",
+    "clean": "rm -rf packages/epub_to_rn_rust/pkg packages/epub_to_rn_rust/target packages/epub_to_rn/*",
+    "dev": "cd packages/epub_to_rn_rust && cargo run",
     "prepare": "npm run build"
   },
   "keywords": [
-    "epub", 
-    "react-native", 
-    "wasm", 
-    "converter", 
-    "ebook", 
-    "parser"
+    "epub",
+    "react-native",
+    "wasm",
+    "converter",
+    "ebook",
+    "parser",
+    "monorepo"
   ],
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {},
-  "files": [
-    "pkg/",
-    "build-wasm.sh",
-    "wrapper.js"
-  ]
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

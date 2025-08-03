@@ -1,0 +1,27 @@
+{
+  "name": "epub_to_rn",
+  "collaborators": [
+    "gudwjd1208@koreatech.ac.kr"
+  ],
+  "description": "Convert EPUB files to React Native component structures without WebView",
+  "version": "0.1.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jingjing2222/epub-to-rn"
+  },
+  "files": [
+    "epub_to_rn_bg.wasm",
+    "epub_to_rn.js",
+    "epub_to_rn.d.ts"
+  ],
+  "main": "epub_to_rn.js",
+  "types": "epub_to_rn.d.ts",
+  "keywords": [
+    "epub",
+    "react-native",
+    "converter",
+    "ebook",
+    "parser"
+  ]
+}
