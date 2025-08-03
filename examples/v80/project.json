@@ -1,0 +1,37 @@
+{
+  "name": "v80",
+  "root": "examples/v80",
+  "projectType": "application",
+  "targets": {
+    "install": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd examples/v80 && pnpm install"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd examples/v80 && pnpm build"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd examples/v80 && pnpm start"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd examples/v80 && pnpm test"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd examples/v80 && tsc --noEmit"
+      }
+    }
+  }
+}
