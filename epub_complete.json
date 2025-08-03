@@ -52,117 +52,117 @@
     }
   ],
   "styles": {
-    "/*_end_of_styles_in_formalxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_verbatimxsl_*/\n\ndivprogramlisting": {
-      "fontFamily": "monospace"
-    },
-    "divsynopsis": {
-      "fontFamily": "monospace"
-    },
-    "center": {
-      "textAlign": "center"
-    },
-    "titlepage_copyright,_titlepage_legalnotice_p": {
-      "textAlign": "left"
-    },
-    "mediaobject_caption": {
-      "marginBottom": 32.0,
-      "fontStyle": "italic"
-    },
-    "divscreen": {
-      "fontFamily": "monospace"
-    },
-    "spanmsgsub-title": {
-      "fontWeight": "bold"
-    },
-    "divsidebar-title": {
-      "fontWeight": "bold"
-    },
-    "spanmsgrel-title": {
-      "fontWeight": "bold"
-    },
-    "divblockquote-title": {
-      "fontWeight": "bold",
-      "marginTop": 16.0,
-      "marginBottom": 16.0
-    },
-    "divsidebar": {
-      "marginTop": 16.0,
-      "marginBottom": 16.0
-    },
-    "tablesimplelist_tr_td": {},
-    "subtitle": {
-      "fontStyle": "italic"
-    },
-    "spanmsgmain-title": {
-      "fontWeight": "bold"
-    },
-    "titlepage_authorgroup_editor_h3": {
-      "fontWeight": "normal"
-    },
-    "divmsgexplan": {
-      "marginTop": 16.0,
-      "marginBottom": 16.0
-    },
-    "/********************************/\n/*_start_of_styles_in_blockxsl_*/\n\nformalpara-title": {
-      "fontWeight": "bold"
-    },
-    "guide": {},
-    "titlepage": {
-      "marginBottom": 48.0
-    },
-    "nav_ol_li": {},
-    "/*_end_of_styles_in_autotocxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_formalxsl_*/\n\ndivfigure-title": {
-      "fontWeight": "bold"
-    },
-    "h1,_h2,_titlepage_*": {
-      "textAlign": "center"
-    },
     "toc_toc-title": {
       "fontSize": 24.0,
       "textAlign": "center"
     },
-    "divexample-title": {
+    "spanmsgmain-title": {
+      "fontWeight": "bold"
+    },
+    "subtitle": {
+      "fontStyle": "italic"
+    },
+    "mediaobject": {
+      "textAlign": "center"
+    },
+    "/*_end_of_styles_in_autotocxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_formalxsl_*/\n\ndivfigure-title": {
       "fontWeight": "bold"
     },
     "titlepage_copyright": {
       "marginTop": 16.0,
       "paddingTop": 16.0
     },
-    "titlepage_authorgroup_h4editedby": {
-      "marginBottom": 0.0
+    "spanmsgexplan-title": {
+      "fontWeight": "bold"
+    },
+    "mediaobject_img": {},
+    "divexample-title": {
+      "fontWeight": "bold"
+    },
+    "titlepage_authorgroup_editor_h3": {
+      "fontWeight": "normal"
+    },
+    "divsynopsis": {
+      "fontFamily": "monospace"
+    },
+    "nav_ol_li": {},
+    "/********************************/\n/*_start_of_styles_in_blockxsl_*/\n\nformalpara-title": {
+      "fontWeight": "bold"
+    },
+    "mediaobject_caption": {
+      "marginBottom": 32.0,
+      "fontStyle": "italic"
+    },
+    "spanmsglevel-title,_spanmsgorig-title,_spanmsgaud-title": {
+      "fontWeight": "bold"
+    },
+    "divscreen": {
+      "fontFamily": "monospace"
+    },
+    "divblockquote-title": {
+      "fontWeight": "bold",
+      "marginTop": 16.0,
+      "marginBottom": 16.0
+    },
+    "tablesimplelist": {
+      "marginBottom": 16.0
+    },
+    "divequation-title": {
+      "fontWeight": "bold"
+    },
+    "divsidebar-title": {
+      "fontWeight": "bold"
+    },
+    "/*_end_of_styles_in_formalxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_verbatimxsl_*/\n\ndivprogramlisting": {
+      "fontFamily": "monospace"
+    },
+    "/*_end_of_styles_in_blockxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_autotocxsl_*/\n\n/*_top_level_entries_*/\nnav>ol>li>a": {
+      "marginTop": 16.0,
+      "marginBottom": 16.0
+    },
+    "divmsgexplan": {
+      "marginTop": 16.0,
+      "marginBottom": 16.0
+    },
+    "titlepage": {
+      "marginBottom": 48.0
+    },
+    "titlepage_copyright,_titlepage_legalnotice_p": {
+      "textAlign": "left"
+    },
+    "h1,_h2,_titlepage_*": {
+      "textAlign": "center"
     },
     "divmsglevel,_divmsgorig,_divmsgaud": {
       "marginTop": 16.0,
       "marginBottom": 16.0
     },
-    "mediaobject_img": {},
-    "/*_end_of_styles_in_blockxsl_*/\n/********************************/\n\n/********************************/\n/*_start_of_styles_in_autotocxsl_*/\n\n/*_top_level_entries_*/\nnav>ol>li>a": {
-      "marginTop": 16.0,
-      "marginBottom": 16.0
-    },
-    "spanmsgexplan-title": {
+    "title": {},
+    "tablesimplelist_tr_td": {},
+    "spanmsgsub-title": {
       "fontWeight": "bold"
     },
-    "tablesimplelist": {
-      "marginBottom": 16.0
-    },
-    "title": {},
-    "/*_end_of_styles_in_verbatimxsl_*/\n/********************************/\n\n/********************************/\n/*_NAVIGATION_*/\n\nnav_ol": {},
-    "mediaobject": {
+    "center": {
       "textAlign": "center"
+    },
+    "guide": {},
+    "divtable-title": {
+      "fontWeight": "bold"
+    },
+    "/*_end_of_styles_in_verbatimxsl_*/\n/********************************/\n\n/********************************/\n/*_NAVIGATION_*/\n\nnav_ol": {},
+    "spanmsgrel-title": {
+      "fontWeight": "bold"
     },
     "nav_ol_li_a": {
       "fontFamily": "sans-serif",
       "color": "black"
     },
-    "spanmsglevel-title,_spanmsgorig-title,_spanmsgaud-title": {
-      "fontWeight": "bold"
+    "divsidebar": {
+      "marginTop": 16.0,
+      "marginBottom": 16.0
     },
-    "divequation-title": {
-      "fontWeight": "bold"
-    },
-    "divtable-title": {
-      "fontWeight": "bold"
+    "titlepage_authorgroup_h4editedby": {
+      "marginBottom": 0.0
     }
   },
   "images": {

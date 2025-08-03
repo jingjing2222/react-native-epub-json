@@ -1,7 +1,63 @@
 use std::collections::HashMap;
 use scraper::{Html, Selector};
 use crate::types::{RnNode, RnStyles};
-use crate::css_parser::{parse_css_declarations, merge_styles};
+use crate::css_parser::{merge_styles};
+
+/// 인라인 CSS 선언을 파싱하는 래퍼 함수
+fn parse_css_declarations(declarations: &str) -> RnStyles {
+    match crate::css_parser::parse_css_declarations_with_cssparser(declarations) {
+        Ok(style) => style,
+        Err(_) => {
+            // 폴백: 간단한 파싱
+            let mut style = RnStyles {
+                fontSize: None, fontWeight: None, fontFamily: None, color: None,
+                backgroundColor: None, textAlign: None, marginTop: None, marginBottom: None,
+                marginLeft: None, marginRight: None, paddingTop: None, paddingBottom: None,
+                paddingLeft: None, paddingRight: None, lineHeight: None, textDecorationLine: None,
+                fontStyle: None,
+            };
+            
+            for declaration in declarations.split(';') {
+                let parts: Vec<&str> = declaration.split(':').collect();
+                if parts.len() == 2 {
+                    let property = parts[0].trim();
+                    let value = parts[1].trim();
+                    apply_simple_css_property(&mut style, property, value);
+                }
+            }
+            
+            style
+        }
+    }
+}
+
+/// 간단한 CSS 속성 적용 (폴백용)
+fn apply_simple_css_property(style: &mut RnStyles, property: &str, value: &str) {
+    match property {
+        "font-size" => style.fontSize = crate::css_parser::parse_size_value(value),
+        "font-weight" => style.fontWeight = Some(value.to_string()),
+        "font-family" => style.fontFamily = Some(value.trim_matches('"').to_string()),
+        "color" => style.color = Some(value.to_string()),
+        "background-color" => style.backgroundColor = Some(value.to_string()),
+        "text-align" => style.textAlign = Some(value.to_string()),
+        "margin-top" => style.marginTop = crate::css_parser::parse_size_value(value),
+        "margin-bottom" => style.marginBottom = crate::css_parser::parse_size_value(value),
+        "margin-left" => style.marginLeft = crate::css_parser::parse_size_value(value),
+        "margin-right" => style.marginRight = crate::css_parser::parse_size_value(value),
+        "padding-top" => style.paddingTop = crate::css_parser::parse_size_value(value),
+        "padding-bottom" => style.paddingBottom = crate::css_parser::parse_size_value(value),
+        "padding-left" => style.paddingLeft = crate::css_parser::parse_size_value(value),
+        "padding-right" => style.paddingRight = crate::css_parser::parse_size_value(value),
+        "line-height" => style.lineHeight = crate::css_parser::parse_size_value(value),
+        "text-decoration" => {
+            if value.contains("underline") {
+                style.textDecorationLine = Some("underline".to_string());
+            }
+        }
+        "font-style" => style.fontStyle = Some(value.to_string()),
+        _ => {}
+    }
+}
 
 /// HTML을 React Native 노드 구조로 변환
 pub fn parse_html_to_rn_nodes(html: &str, styles: &HashMap<String, RnStyles>, images: &HashMap<String, String>) -> RnNode {
