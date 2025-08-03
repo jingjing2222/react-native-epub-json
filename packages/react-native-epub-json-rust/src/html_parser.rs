@@ -363,13 +363,9 @@ fn extract_inline_styles(element: scraper::ElementRef) -> Option<RnStyles> {
 /// CSS 클래스 스타일 추출
 fn extract_class_styles(element: scraper::ElementRef, styles: &HashMap<String, RnStyles>) -> Option<RnStyles> {
     if let Some(class_attr) = element.value().attr("class") {
-        log!("   🔍 클래스 속성 발견: '{}'", class_attr);
         for class_name in class_attr.split_whitespace() {
-            log!("     - 클래스 '{}' 찾는 중...", class_name);
-            
             // 1. 정확한 클래스명으로 먼저 찾기
             if let Some(style) = styles.get(class_name) {
-                log!("     ✅ 스타일 매칭 성공 (정확): {} → {:?}", class_name, style);
                 return Some(style.clone());
             }
             
@@ -378,23 +374,20 @@ fn extract_class_styles(element: scraper::ElementRef, styles: &HashMap<String, R
                 // "toc_toc-title" → "toc-title"로 매칭
                 // "titlepage_copyright" → "copyright"로 매칭
                 if key.contains('_') && key.ends_with(class_name) {
-                    log!("     ✅ 복합 선택자 매칭 성공: {} ← {} → {:?}", class_name, key, style);
                     return Some(style.clone());
                 }
                 // "titlepage_copyright,_titlepage_legalnotice_p" 같은 경우도 처리
                 if key.contains(class_name) && (key.contains('_') || key.contains(',')) {
-                    log!("     ✅ 복잡한 선택자 매칭 성공: {} ← {} → {:?}", class_name, key, style);
                     return Some(style.clone());
                 }
             }
             
             // 3. 일반적인 클래스명에 대한 기본 스타일 제공
             if let Some(default_style) = get_default_class_style(class_name) {
-                log!("     ✅ 기본 스타일 적용: {} → {:?}", class_name, default_style);
                 return Some(default_style);
             }
             
-            log!("     ❌ 스타일 없음: {}", class_name);
+            log!("     ❌ No style found: {}", class_name);
         }
     }
     None

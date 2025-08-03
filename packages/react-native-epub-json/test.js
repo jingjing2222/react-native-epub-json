@@ -6,9 +6,9 @@ const path = require("path");
 console.log("🧪 EPUB to React Native WASM 패키지 테스트\n");
 
 // pkg 디렉토리가 존재하는지 확인
-if (!fs.existsSync("./pkg")) {
-  console.log("❌ pkg 디렉토리가 없습니다. 먼저 빌드를 실행하세요:");
-  console.log("   npm run build");
+if (!fs.existsSync("./dist")) {
+  console.log("❌ dist 디렉토리가 없습니다. 먼저 빌드를 실행하세요:");
+  console.log("  yarn build");
   process.exit(1);
 }
 
@@ -18,7 +18,7 @@ try {
     epubToJson,
     epubToJsonString,
     epubBytesToJson,
-  } = require("./pkg/index.js");
+  } = require("./dist/index.js");
 
   console.log("✅ 패키지 로드 성공");
   console.log("📋 사용 가능한 함수들:");
@@ -27,7 +27,9 @@ try {
   console.log("   • epubBytesToJson:", typeof epubBytesToJson);
 
   // 테스트 EPUB 파일 찾기
-  const testFiles = ["./hemingway.epub", "./test.epub", "./sample.epub"];
+  const testFiles = [
+    "/Users/kimhyeongjeong/Desktop/code/ebook/hemingway-old-man-and-the-sea.epub",
+  ];
 
   let testFile = null;
   for (const file of testFiles) {

@@ -21,19 +21,8 @@ macro_rules! log {
 pub fn parse_css_to_rn_styles(css: &str) -> HashMap<String, RnStyles> {
     let mut styles = HashMap::new();
     
-    log!("🎨 전문 CSS 파서로 파싱 시작 (총 {} 바이트)", css.len());
-    
-    // CSS 내용의 첫 부분을 로그로 출력 (디버깅용)
-    if css.len() > 100 {
-        log!("   📄 CSS 내용 미리보기: {}", &css[..100]);
-    } else if css.len() > 0 {
-        log!("   📄 CSS 내용 전체: {}", css);
-    }
-    
     // CSS 규칙 추출
-    let rules = extract_css_rules(css);
-    
-    log!("   📝 발견된 CSS 규칙: {} 개", rules.len());
+    let rules = extract_css_rules(css);    
     
     let mut parsed_count = 0;
     let mut failed_count = 0;
@@ -43,18 +32,10 @@ pub fn parse_css_to_rn_styles(css: &str) -> HashMap<String, RnStyles> {
             Ok(rn_style) => {
                 let style_name = css_selector_to_style_name(selector);
                 
-                // 첫 5개 규칙은 상세 로그
-                if index < 5 {
-                    println!("   🔍 규칙 #{}: '{}' → '{}' (✅ 전문 파서)", 
-                             index + 1, selector, style_name);
-                }
-                
                 styles.insert(style_name, rn_style);
                 parsed_count += 1;
             }
             Err(e) => {
-                println!("   ❌ 규칙 #{}: 파싱 실패 - {} (선택자: {})", 
-                         index + 1, e, selector);
                 failed_count += 1;
             }
         }
@@ -66,12 +47,6 @@ pub fn parse_css_to_rn_styles(css: &str) -> HashMap<String, RnStyles> {
         100.0
     };
     
-    println!("   ✅ 성공적으로 파싱된 스타일: {} 개", parsed_count);
-    if failed_count > 0 {
-        println!("   ❌ 파싱 실패: {} 개", failed_count);
-    }
-    println!("   🎯 파싱 성공률: {:.0}% (전문 CSS 파서 사용)", success_rate);
-    
     styles
 }
 
@@ -81,8 +56,6 @@ fn extract_css_rules(css: &str) -> Vec<(String, String)> {
     let mut current_rule = String::new();
     let mut brace_count = 0;
     let mut in_rule = false;
-    
-    log!("   🔍 CSS 규칙 추출 시작...");
     
     for ch in css.chars() {
         match ch {
@@ -101,13 +74,8 @@ fn extract_css_rules(css: &str) -> Vec<(String, String)> {
                         let selector = current_rule[..pos].trim().to_string();
                         let declarations = current_rule[pos + 1..current_rule.len() - 1].trim().to_string();
                         if !selector.is_empty() && !declarations.is_empty() {
-                            // 처음 몇 개 규칙은 로그 출력
-                            if rules.len() < 10 {
-                                log!("   📝 규칙 #{}: '{}' → '{}'", rules.len() + 1, selector, declarations);
-                            }
                             rules.push((selector, declarations));
                         } else {
-                            log!("   ⚠️  빈 규칙 건너뜀: selector='{}', declarations='{}'", selector, declarations);
                         }
                     }
                     current_rule.clear();
@@ -119,8 +87,6 @@ fn extract_css_rules(css: &str) -> Vec<(String, String)> {
             }
         }
     }
-    
-    log!("   ✅ CSS 규칙 추출 완료: {} 개 규칙 발견", rules.len());
     
     rules
 }
@@ -149,10 +115,6 @@ pub fn parse_css_declarations_with_cssparser(declarations: &str) -> Result<RnSty
             apply_css_property_to_rn_style(&mut style, &property, &value);
             property_count += 1;
         }
-    }
-    
-    if property_count > 3 {
-        println!("     💎 리치 스타일 발견: {} 개 속성 변환됨 (전문 파서)", property_count);
     }
     
     Ok(style)

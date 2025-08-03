@@ -10,15 +10,29 @@
     "type": "git",
     "url": "https://github.com/jingjing2222/epub-to-rn"
   },
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "files": [
-    "react_native_epub_json_bg.wasm",
-    "react_native_epub_json.js",
-    "react_native_epub_json.d.ts",
-    "index.js",
-    "index.d.ts"
+    "dist",
+    "src/lib"
   ],
-  "main": "index.js",
-  "types": "index.d.ts",
+  "scripts": {
+    "build": "tsdown && cp src/lib/*.wasm dist/",
+    "prepublishOnly": "yarn build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.24",
+    "tsdown": "^0.13.2",
+    "typescript": "^5.3.3"
+  },
   "keywords": [
     "epub",
     "react-native",

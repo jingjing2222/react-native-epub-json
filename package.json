@@ -4,13 +4,14 @@
   "description": "EPUB to React Native converter monorepo with WASM build tools",
   "private": true,
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "examples/*"
   ],
   "scripts": {
-    "build": "cd packages/react-native-epub-json-rust && ./build-wasm.sh && cd ../.. && npm run copy-build",
-    "build:wasm": "cd packages/react-native-epub-json-rust && RUSTFLAGS=\"--cfg getrandom_backend=\\\"wasm_js\\\"\" wasm-pack build --target nodejs",
-    "copy-build": "rm -rf packages/react-native-epub-json/* && cp -r packages/react-native-epub-json-rust/pkg/* packages/react-native-epub-json/",
-    "test": "cd packages/react-native-epub-json-rust && node test.js",
+    "build": "npm run build:wasm && npm run build:ts",
+    "build:wasm": "cd packages/react-native-epub-json-rust && rm -rf pkg && wasm-pack build --target nodejs && mkdir -p ../react-native-epub-json/src/lib && rsync -a --exclude 'package.json' --exclude '.gitignore' pkg/ ../react-native-epub-json/src/lib/",
+    "build:ts": "cd packages/react-native-epub-json && yarn && yarn build",
+    "test": "cd packages/react-native-epub-json && node test.js",
     "clean": "rm -rf packages/react-native-epub-json-rust/pkg packages/react-native-epub-json-rust/target packages/react-native-epub-json/*",
     "dev": "cd packages/react-native-epub-json-rust && cargo run",
     "prepare": "npm run build"
@@ -24,7 +25,7 @@
     "parser",
     "monorepo"
   ],
-  "author": "Your Name",
+  "author": "jingjing2222",
   "license": "MIT",
   "devDependencies": {},
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"

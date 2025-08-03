@@ -70,12 +70,6 @@ fn extract_epub_data<R: Read + Seek>(doc: &mut EpubDoc<R>) -> Result<CompleteEpu
     // 챕터 내용을 RN 노드 구조로 변환
     let chapters = extract_chapters(doc, &spine_items, &resources_map, &styles, &images);
     
-    log!("\n🎯 최종 결과 생성 중...");
-    log!("   📚 메타데이터: {}", metadata.title.as_deref().unwrap_or("N/A"));
-    log!("   🎨 스타일 수: {} 개", styles.len());
-    log!("   🖼️  이미지 수: {} 개", images.len());
-    log!("   📄 챕터 수: {} 개", chapters.len());
-    
     Ok(CompleteEpubInfo {
         metadata,
         structure,
@@ -110,16 +104,12 @@ fn extract_styles_and_images<R: Read + Seek>(
     let mut styles = HashMap::new();
     let mut images = HashMap::new();
     
-    log!("\n📦 리소스 분석 중...");
-    log!("   총 리소스 수: {} 개", resources_map.len());
-    
     let mut css_files = Vec::new();
     let mut image_files = Vec::new();
     let mut other_files = Vec::new();
     
     // 리소스 타입별 분류
     for (id, (path, mime_type)) in resources_map.iter() {
-        log!("   🔍 리소스 발견: {} -> {} ({})", id, path.display(), mime_type);
         if mime_type == "text/css" {
             css_files.push((id, path));
         } else if mime_type.starts_with("image/") {
@@ -129,54 +119,34 @@ fn extract_styles_and_images<R: Read + Seek>(
         }
     }
     
-    log!("   🎨 CSS 파일: {} 개", css_files.len());
-    log!("   🖼️  이미지 파일: {} 개", image_files.len());
-    log!("   📄 기타 파일: {} 개", other_files.len());
-    
     // CSS 파일들을 RN 스타일로 변환
     for (index, (id, path)) in css_files.iter().enumerate() {
-        log!("\n🎨 CSS 파일 #{} 처리 중: {} ({})", index + 1, path.display(), id);
-        
         if let Some((css_content, _)) = doc.get_resource_str(id) {
-            log!("   📄 CSS 내용 크기: {} 바이트", css_content.len());
-            
             if css_content.len() > 0 {
                 let parsed_styles = parse_css_to_rn_styles(&css_content);
                 let styles_count = parsed_styles.len();
                 styles.extend(parsed_styles);
                 
-                log!("   ✅ {} 개 스타일 규칙이 추가됨", styles_count);
-                log!("   📊 현재 총 스타일 수: {} 개", styles.len());
             } else {
-                log!("   ⚠️  CSS 파일이 비어있음");
+                log!("   ⚠️  CSS file is empty");
             }
         } else {
-            log!("   ❌ CSS 파일 읽기 실패: {}", id);
+            log!("   ❌ Failed to read CSS file: {}", id);
         }
     }
     
-    log!("\n🎨 CSS 처리 완료 - 최종 스타일 수: {} 개", styles.len());
     
-    // 이미지들을 base64로 변환
-    println!("\n🖼️  이미지 처리 중...");
     for (index, (id, path, mime_type)) in image_files.iter().enumerate() {
         if let Some((data, _)) = doc.get_resource(id) {
             let base64_data = general_purpose::STANDARD.encode(&data);
             let data_uri = format!("data:{};base64,{}", mime_type, base64_data);
             let size_kb = data.len() / 1024;
             
-            println!("   🖼️  이미지 #{}: {} ({} KB, {})", 
-                     index + 1, path.display(), size_kb, mime_type);
-            
             images.insert(id.to_string(), data_uri);
         } else {
-            println!("   ❌ 이미지 읽기 실패: {}", id);
+            log!("   ❌ Failed to read image: {}", id);
         }
     }
-    
-    println!("\n📊 스타일 & 이미지 처리 완료:");
-    println!("   🎨 총 스타일 규칙: {} 개", styles.len());
-    println!("   🖼️  총 이미지: {} 개", images.len());
     
     (styles, images)
 }
