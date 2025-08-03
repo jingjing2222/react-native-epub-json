@@ -1,5 +1,5 @@
 {
-  "name": "epub_to_rn",
+  "name": "react-native-epub-json",
   "collaborators": [
     "gudwjd1208@koreatech.ac.kr"
   ],
@@ -11,9 +11,9 @@
     "url": "https://github.com/jingjing2222/epub-to-rn"
   },
   "files": [
-    "epub_to_rn_bg.wasm",
-    "epub_to_rn.js",
-    "epub_to_rn.d.ts",
+    "react_native_epub_json_bg.wasm",
+    "react_native_epub_json.js",
+    "react_native_epub_json.d.ts",
     "index.js",
     "index.d.ts"
   ],

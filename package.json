@@ -1,5 +1,5 @@
 {
-  "name": "epub-to-rn-monorepo",
+  "name": "react-native-epub-json-monorepo",
   "version": "0.1.0",
   "description": "EPUB to React Native converter monorepo with WASM build tools",
   "private": true,
@@ -7,12 +7,12 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "cd packages/epub_to_rn_rust && ./build-wasm.sh && cd ../.. && npm run copy-build",
-    "build:wasm": "cd packages/epub_to_rn_rust && RUSTFLAGS=\"--cfg getrandom_backend=\\\"wasm_js\\\"\" wasm-pack build --target nodejs",
-    "copy-build": "rm -rf packages/epub_to_rn/* && cp -r packages/epub_to_rn_rust/pkg/* packages/epub_to_rn/",
-    "test": "cd packages/epub_to_rn_rust && node test.js",
-    "clean": "rm -rf packages/epub_to_rn_rust/pkg packages/epub_to_rn_rust/target packages/epub_to_rn/*",
-    "dev": "cd packages/epub_to_rn_rust && cargo run",
+    "build": "cd packages/react-native-epub-json-rust && ./build-wasm.sh && cd ../.. && npm run copy-build",
+    "build:wasm": "cd packages/react-native-epub-json-rust && RUSTFLAGS=\"--cfg getrandom_backend=\\\"wasm_js\\\"\" wasm-pack build --target nodejs",
+    "copy-build": "rm -rf packages/react-native-epub-json/* && cp -r packages/react-native-epub-json-rust/pkg/* packages/react-native-epub-json/",
+    "test": "cd packages/react-native-epub-json-rust && node test.js",
+    "clean": "rm -rf packages/react-native-epub-json-rust/pkg packages/react-native-epub-json-rust/target packages/react-native-epub-json/*",
+    "dev": "cd packages/react-native-epub-json-rust && cargo run",
     "prepare": "npm run build"
   },
   "keywords": [

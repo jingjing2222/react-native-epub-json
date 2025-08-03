@@ -1,4 +1,4 @@
-# EPUB to React Native JSON Converter
+# React Native EPUB JSON Converter
 
 This project is a high-performance toolkit for converting EPUB files into a structured JSON format, specifically designed for rendering in React Native applications without needing a WebView. The core logic is written in Rust and compiled to WebAssembly (WASM) for performance and portability.
 
@@ -15,8 +15,8 @@ This project is a high-performance toolkit for converting EPUB files into a stru
 
 The project is organized as a monorepo with two main packages:
 
-- `packages/epub_to_rn_rust`: Contains the core Rust source code for the EPUB parsing and conversion logic. This is where all development happens.
-- `packages/epub_to_rn`: The distributable NPM package. The build artifacts from `epub_to_rn_rust` are placed here. This is the package you would publish or consume in another project.
+- `packages/react-native-epub-json-rust`: Contains the core Rust source code for the EPUB parsing and conversion logic. This is where all development happens.
+- `packages/react-native-epub-json`: The distributable NPM package. The build artifacts from `react-native-epub-json-rust` are placed here. This is the package you would publish or consume in another project.
 
 ## How It Works
 
@@ -33,8 +33,8 @@ The project is organized as a monorepo with two main packages:
 To use the compiled package in a Node.js project:
 
 ```javascript
-// Make sure you have the 'epub_to_rn' package available
-const { epubToJson } = require('epub-to-rn');
+// Make sure you have the 'react-native-epub-json' package available
+const { epubToJson } = require('react-native-epub-json');
 
 // Define the path to your EPUB file and the output directory
 const epubPath = 'path/to/your/book.epub';
@@ -54,18 +54,18 @@ try {
 
 ## Building from Source
 
-To build the WASM package from the Rust source code, navigate to the `packages/epub_to_rn_rust` directory and run the build script.
+To build the WASM package from the Rust source code, navigate to the `packages/react-native-epub-json-rust` directory and run the build script.
 
 **Prerequisites:**
 - Rust toolchain
 - `wasm-pack`
 
 ```bash
-cd packages/epub_to_rn_rust
+cd packages/react-native-epub-json-rust
 ./build-wasm.sh
 ```
 
-This script will compile the Rust code to WASM, create the necessary JavaScript bindings, and place the final package contents into the `packages/epub_to_rn_rust/pkg` directory. You would then typically copy these files to the `packages/epub_to_rn` directory for distribution.
+This script will compile the Rust code to WASM, create the necessary JavaScript bindings, and place the final package contents into the `packages/react-native-epub-json-rust/pkg` directory. You would then typically copy these files to the `packages/react-native-epub-json` directory for distribution.
 
 ## Output JSON Structure
 

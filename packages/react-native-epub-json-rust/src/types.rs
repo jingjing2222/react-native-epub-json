@@ -48,6 +48,7 @@ pub struct SpineItemInfo {
 
 // React Native 스타일 구조
 #[derive(Serialize, Deserialize, Debug, Clone)]
+#[allow(non_snake_case)]
 pub struct RnStyles {
     #[serde(skip_serializing_if = "Option::is_none")]
     pub fontSize: Option<f32>,

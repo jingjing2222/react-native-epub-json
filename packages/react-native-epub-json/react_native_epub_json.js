@@ -121,7 +121,7 @@ function takeFromExternrefTable0(idx) {
  *
  * # JavaScript 사용법
  * ```javascript
- * import { epubToJson } from 'epub-to-rn';
+ * import { epubToJson } from 'react-native-epub-json';
  *
  * const result = epubToJson('path/to/book.epub', './output');
  * console.log(result.metadata.title);
@@ -314,7 +314,7 @@ module.exports.__wbindgen_throw = function(arg0, arg1) {
     throw new Error(getStringFromWasm0(arg0, arg1));
 };
 
-const path = require('path').join(__dirname, 'epub_to_rn_bg.wasm');
+const path = require('path').join(__dirname, 'react_native_epub_json_bg.wasm');
 const bytes = require('fs').readFileSync(path);
 
 const wasmModule = new WebAssembly.Module(bytes);

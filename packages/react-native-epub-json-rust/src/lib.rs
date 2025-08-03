@@ -30,7 +30,7 @@ pub use types::*;
 pub use epub_extractor::{extract_complete_epub_info, extract_complete_epub_info_from_bytes};
 
 /// CLI와 WASM에서 공통으로 사용할 변환 함수
-pub fn convert_epub_to_rn_json(epub_path: &str, output_path: &str) -> Result<CompleteEpubInfo, Box<dyn std::error::Error>> {
+pub fn convert_epub_to_json(epub_path: &str, output_path: &str) -> Result<CompleteEpubInfo, Box<dyn std::error::Error>> {
     let epub_info = extract_complete_epub_info(epub_path)?;
     let json = serde_json::to_string_pretty(&epub_info)?;
     std::fs::write(output_path, json)?;
@@ -56,7 +56,7 @@ pub fn main() {
 /// 
 /// # JavaScript 사용법
 /// ```javascript
-/// import { epubToJson } from 'epub-to-rn';
+/// import { epubToJson } from 'react-native-epub-json';
 /// 
 /// const result = epubToJson('path/to/book.epub', './output');
 /// console.log(result.metadata.title);

@@ -180,27 +180,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "epub_to_rn"
-version = "0.1.0"
-dependencies = [
- "base64",
- "console_error_panic_hook",
- "cssparser",
- "epub",
- "getrandom 0.2.16",
- "getrandom 0.3.3",
- "html2text",
- "js-sys",
- "scraper",
- "serde",
- "serde-wasm-bindgen",
- "serde_json",
- "wasm-bindgen",
- "web-sys",
- "wee_alloc",
-]
-
-[[package]]
 name = "equivalent"
 version = "1.0.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -592,6 +571,27 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ec0be4795e2f6a28069bec0b5ff3e2ac9bafc99e6a9a7dc3547996c5c816922c"
 dependencies = [
  "getrandom 0.2.16",
+]
+
+[[package]]
+name = "react-native-epub-json"
+version = "0.1.0"
+dependencies = [
+ "base64",
+ "console_error_panic_hook",
+ "cssparser",
+ "epub",
+ "getrandom 0.2.16",
+ "getrandom 0.3.3",
+ "html2text",
+ "js-sys",
+ "scraper",
+ "serde",
+ "serde-wasm-bindgen",
+ "serde_json",
+ "wasm-bindgen",
+ "web-sys",
+ "wee_alloc",
 ]
 
 [[package]]

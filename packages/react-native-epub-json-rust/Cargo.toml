@@ -1,5 +1,5 @@
 [package]
-name = "epub_to_rn"
+name = "react-native-epub-json"
 version = "0.1.0"
 edition = "2024"
 authors = ["gudwjd1208@koreatech.ac.kr"]
@@ -11,12 +11,12 @@ repository = "https://github.com/jingjing2222/epub-to-rn"
 readme = "README.md"
 
 [lib]
-name = "epub_to_rn"
+name = "react_native_epub_json"
 path = "src/lib.rs"
 crate-type = ["cdylib", "rlib"]
 
 [[bin]]
-name = "epub2rn"
+name = "rn-epub-json-cli"
 path = "src/main.rs"
 
 [dependencies]

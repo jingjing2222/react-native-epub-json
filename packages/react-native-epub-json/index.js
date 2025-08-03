@@ -4,7 +4,7 @@ const path = require("path");
 // WASM 모듈 로드
 let wasmModule;
 try {
-  wasmModule = require("./epub_to_rn.js");
+  wasmModule = require("./react_native_epub_json.js");
   console.log("🔧 WASM 모듈 로드 성공");
 } catch (error) {
   console.error("❌ WASM 모듈 로드 실패:", error.message);
