@@ -15,6 +15,8 @@ app.get("/", (c) => {
   const epubPath =
     "/Users/kimhyeongjeong/Desktop/code/ebook/hemingway-old-man-and-the-sea.epub";
 
+  // const epubPath = "/Users/kimhyeongjeong/Downloads/khj.epub";
+
   try {
     // 1. EPUB 파일 존재 확인
     if (!fs.existsSync(epubPath)) {
@@ -32,7 +34,6 @@ app.get("/", (c) => {
 
     // 4. JSON 응답 전송
     return c.json(jsonObject);
-
   } catch (error) {
     console.error("❌ 파일 처리 또는 변환 오류:", error);
     return c.text("파일 처리 중 오류가 발생했습니다.", 500);
