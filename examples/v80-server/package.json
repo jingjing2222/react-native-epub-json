@@ -11,7 +11,7 @@
   "dependencies": {
     "@hono/node-server": "^1.18.1",
     "hono": "^4.8.12",
-    "react-native-epub-json": "file:../../packages/react-native-epub-json"
+    "react-native-epub-json": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",

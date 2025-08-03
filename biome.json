@@ -6,7 +6,8 @@
       "!packages/react-native-epub-json-rust/pkg/**",
       "!packages/react-native-epub-json/src/lib/**",
       "!examples/v80-server/dist/**",
-      "!.nx/**"
+      "!.nx/**",
+      "!packages/react-native-epub-json-rust/target/**"
     ]
   },
   "linter": {
@@ -16,7 +17,8 @@
       "!packages/react-native-epub-json-rust/pkg/**",
       "!packages/react-native-epub-json/src/lib/**",
       "!examples/v80-server/dist/**",
-      "!.nx/**"
+      "!.nx/**",
+      "!packages/react-native-epub-json-rust/target/**"
     ],
     "rules": {
       "recommended": true
@@ -29,7 +31,8 @@
       "!packages/react-native-epub-json-rust/pkg/**",
       "!packages/react-native-epub-json/src/lib/**",
       "!examples/v80-server/dist/**",
-      "!.nx/**"
+      "!.nx/**",
+      "!packages/react-native-epub-json-rust/target/**"
     ],
     "enabled": true,
     "indentStyle": "space",

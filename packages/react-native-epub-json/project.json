@@ -7,7 +7,7 @@
     "build": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd packages/react-native-epub-json && yarn && yarn build"
+        "command": "cd packages/react-native-epub-json && pnpm install && pnpm build"
       }
     },
     "test": {

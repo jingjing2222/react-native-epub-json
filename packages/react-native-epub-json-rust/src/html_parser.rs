@@ -24,13 +24,7 @@ fn parse_css_declarations(declarations: &str) -> RnStyles {
         Ok(style) => style,
         Err(_) => {
             // 폴백: 간단한 파싱
-            let mut style = RnStyles {
-                fontSize: None, fontWeight: None, fontFamily: None, color: None,
-                backgroundColor: None, textAlign: None, marginTop: None, marginBottom: None,
-                marginLeft: None, marginRight: None, paddingTop: None, paddingBottom: None,
-                paddingLeft: None, paddingRight: None, lineHeight: None, textDecorationLine: None,
-                fontStyle: None,
-            };
+            let mut style = RnStyles::default();
             
             for declaration in declarations.split(';') {
                 let parts: Vec<&str> = declaration.split(':').collect();
@@ -485,14 +479,9 @@ fn get_default_class_style(class_name: &str) -> Option<RnStyles> {
 
 /// 빈 스타일 생성 (헬퍼 함수)
 fn create_empty_style() -> RnStyles {
-    RnStyles {
-        fontSize: None, fontWeight: None, fontFamily: None, color: None,
-        backgroundColor: None, textAlign: None, marginTop: None, marginBottom: None,
-        marginLeft: None, marginRight: None, paddingTop: None, paddingBottom: None,
-        paddingLeft: None, paddingRight: None, lineHeight: None, textDecorationLine: None,
-        fontStyle: None,
-    }
+    RnStyles::default()
 }
+
 
 /// 자식 노드들의 텍스트에 스타일 적용
 fn apply_text_style_to_children(children: Vec<RnNode>, text_style: &RnStyles) -> Vec<RnNode> {
@@ -523,20 +512,26 @@ fn apply_text_style_to_children(children: Vec<RnNode>, text_style: &RnStyles) ->
 
 /// 레이아웃 스타일만 추출 (텍스트 스타일 제외)
 fn extract_layout_styles(style: &RnStyles) -> Option<RnStyles> {
-    let layout_style = RnStyles {
-        fontSize: None, fontWeight: None, fontFamily: None, color: None,
-        fontStyle: None, textDecorationLine: None, lineHeight: None,
-        backgroundColor: style.backgroundColor.clone(),
-        textAlign: style.textAlign.clone(),
-        marginTop: style.marginTop,
-        marginBottom: style.marginBottom,
-        marginLeft: style.marginLeft,
-        marginRight: style.marginRight,
-        paddingTop: style.paddingTop,
-        paddingBottom: style.paddingBottom,
-        paddingLeft: style.paddingLeft,
-        paddingRight: style.paddingRight,
-    };
+    let mut layout_style = RnStyles::default();
+    
+    // 레이아웃 관련 속성만 복사
+    layout_style.backgroundColor = style.backgroundColor.clone();
+    layout_style.textAlign = style.textAlign.clone();
+    layout_style.marginTop = style.marginTop;
+    layout_style.marginBottom = style.marginBottom;
+    layout_style.marginLeft = style.marginLeft;
+    layout_style.marginRight = style.marginRight;
+    layout_style.paddingTop = style.paddingTop;
+    layout_style.paddingBottom = style.paddingBottom;
+    layout_style.paddingLeft = style.paddingLeft;
+    layout_style.paddingRight = style.paddingRight;
+    layout_style.width = style.width;
+    layout_style.height = style.height;
+    layout_style.position = style.position.clone();
+    layout_style.display = style.display.clone();
+    layout_style.flexDirection = style.flexDirection.clone();
+    layout_style.justifyContent = style.justifyContent.clone();
+    layout_style.alignItems = style.alignItems.clone();
     
     // 레이아웃 스타일이 하나라도 있으면 반환
     if layout_style.backgroundColor.is_some() || layout_style.textAlign.is_some() ||
