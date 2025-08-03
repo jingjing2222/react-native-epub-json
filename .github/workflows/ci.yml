@@ -7,40 +7,40 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
 
-    - name: Install Rust toolchain
-      uses: actions-rs/toolchain@v1
-      with:
-        toolchain: stable
-        profile: minimal
-        override: true
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          profile: minimal
+          override: true
 
-    - name: Cache wasm-pack
-      id: cache-wasm-pack
-      uses: actions/cache@v4
-      with:
-        path: ~/.cargo/bin/wasm-pack
-        key: ${{ runner.os }}-wasm-pack-v1 # Increment v1 to v2, v3 etc. to invalidate cache
+      - name: Cache wasm-pack
+        id: cache-wasm-pack
+        uses: actions/cache@v4
+        with:
+          path: ~/.cargo/bin/wasm-pack
+          key: ${{ runner.os }}-wasm-pack-v1 # Increment v1 to v2, v3 etc. to invalidate cache
 
-    - name: Install wasm-pack
-      if: steps.cache-wasm-pack.outputs.cache-hit != 'true'
-      run: cargo install wasm-pack
+      - name: Install wasm-pack
+        if: steps.cache-wasm-pack.outputs.cache-hit != 'true'
+        run: cargo install wasm-pack
 
-    - name: Install dependencies
-      run: yarn install --frozen-lockfile
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-    - name: Run typecheck
-      run: yarn nx run-many --target=typecheck --all
+      - name: Run typecheck
+        run: pnpm nx run-many --target=typecheck --all
 
-    - name: Run lint
-      run: yarn nx run-many --target=lint --all
+      - name: Run lint
+        run: pnpm nx run-many --target=lint --all
 
-    - name: Run build
-      run: yarn nx run-many --target=build --all
+      - name: Run build
+        run: pnpm nx run-many --target=build --all
