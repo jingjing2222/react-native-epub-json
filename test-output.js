@@ -1,4 +1,4 @@
-const path = require("path");
+const path = require("node:path");
 const { epubToJson } = require("./packages/react-native-epub-json/dist/index.js");
 
 const epubFilePath = path.join(__dirname, "packages/react-native-epub-json-rust/hemingway.epub");
@@ -11,7 +11,7 @@ try {
 
   const result = epubToJson(epubFilePath, outputDir);
 
-  if (result && result.metadata && result.metadata.title) {
+  if (result?.metadata?.title) {
     console.log(`✅ Test successful!`);
     console.log(`   - Book Title: ${result.metadata.title}`);
     console.log(`   - JSON output saved in: ${outputDir}`);

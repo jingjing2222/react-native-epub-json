@@ -24,8 +24,8 @@ var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__ge
 }) : target, mod));
 
 //#endregion
-const fs = __toESM(require("fs"));
-const path = __toESM(require("path"));
+const node_fs = __toESM(require("node:fs"));
+const node_path = __toESM(require("node:path"));
 
 //#region src/lib/react_native_epub_json.js
 var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react_native_epub_json.js": ((exports, module) => {
@@ -291,8 +291,8 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 	module.exports.__wbindgen_throw = function(arg0, arg1) {
 		throw new Error(getStringFromWasm0(arg0, arg1));
 	};
-	const path$1 = require("path").join(__dirname, "react_native_epub_json_bg.wasm");
-	const bytes = require("fs").readFileSync(path$1);
+	const path = require("path").join(__dirname, "react_native_epub_json_bg.wasm");
+	const bytes = require("fs").readFileSync(path);
 	const wasmModule$1 = new WebAssembly.Module(bytes);
 	const wasmInstance = new WebAssembly.Instance(wasmModule$1, imports);
 	wasm = wasmInstance.exports;
@@ -311,15 +311,16 @@ var import_react_native_epub_json = /* @__PURE__ */ __toESM(require_react_native
 */
 function epubToJson(epub_path, output_dir) {
 	try {
-		const fileBuffer = fs.readFileSync(epub_path);
+		const fileBuffer = node_fs.readFileSync(epub_path);
 		const result = import_react_native_epub_json.epubBytesToJson(new Uint8Array(fileBuffer));
-		if (!fs.existsSync(output_dir)) fs.mkdirSync(output_dir, { recursive: true });
-		const outputPath = path.join(output_dir, "book.json");
+		if (!node_fs.existsSync(output_dir)) node_fs.mkdirSync(output_dir, { recursive: true });
+		const outputPath = node_path.join(output_dir, "book.json");
 		const jsonString = JSON.stringify(result, null, 2);
-		fs.writeFileSync(outputPath, jsonString);
+		node_fs.writeFileSync(outputPath, jsonString);
 		return result;
 	} catch (error) {
-		throw new Error(`EPUB conversion failed: ${error.message}`);
+		if (error instanceof Error) throw new Error(`EPUB conversion failed: ${error.message}`);
+		throw new Error(`EPUB conversion failed: ${String(error)}`);
 	}
 }
 /**
@@ -329,11 +330,12 @@ function epubToJson(epub_path, output_dir) {
 */
 function epubToJsonString(epub_path) {
 	try {
-		const fileBuffer = fs.readFileSync(epub_path);
+		const fileBuffer = node_fs.readFileSync(epub_path);
 		const result = import_react_native_epub_json.epubBytesToJson(new Uint8Array(fileBuffer));
 		return JSON.stringify(result, null, 2);
 	} catch (error) {
-		throw new Error(`EPUB conversion failed: ${error.message}`);
+		if (error instanceof Error) throw new Error(`EPUB conversion failed: ${error.message}`);
+		throw new Error(`EPUB conversion failed: ${String(error)}`);
 	}
 }
 /**

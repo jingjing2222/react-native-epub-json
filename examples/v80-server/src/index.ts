@@ -1,3 +1,6 @@
+import fs from "node:fs";
+import { createRequire } from "node:module";
+import path from "node:path";
 import { serve } from "@hono/node-server";
 import fs from "fs";
 import { Hono } from "hono";

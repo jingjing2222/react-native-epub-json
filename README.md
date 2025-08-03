@@ -1,80 +1,117 @@
 # React Native EPUB JSON Converter
 
-This project is a high-performance toolkit for converting EPUB files into a structured JSON format, specifically designed for rendering in React Native applications without needing a WebView. The core logic is written in Rust and compiled to WebAssembly (WASM) for performance and portability.
+This project is a high-performance EPUB-to-JSON converter designed for **server-driven UI rendering** in React Native. It parses EPUB files into a fully structured JSON format on the **server**, enabling React Native clients to render content using native components (`<View>`, `<Text>`, etc.) without directly processing EPUB files on-device.
+
+## ✅ Purpose
+
+- **Security-first rendering**: EPUB files are parsed on a trusted server, mitigating the risk of content leakage on mobile devices.
+- **React Native compatibility**: Output JSON is structured to work seamlessly with native components.
+- **Server-driven UI**: Clients only receive the processed JSON, reducing app complexity and runtime cost.
+
+---
 
 ## Features
 
-- **WebView-Free Rendering:** The output JSON is structured to be rendered directly with native React Native components (`<View>`, `<Text>`, etc.).
-- **Comprehensive Parsing:** Parses EPUB metadata, table of contents, spine, HTML content, and CSS styles.
-- **Style Conversion:** Automatically converts CSS rules into React Native-compatible StyleSheet objects.
-- **Embedded Resources:** Images are extracted and embedded directly into the JSON as base64 data URIs.
-- **High Performance:** Core processing is handled by Rust and WASM, making it fast and efficient.
-- **Node.js Compatible:** Provides a simple JavaScript wrapper for easy integration into Node.js environments.
+- **Server-side EPUB parsing** using Rust for speed and reliability.
+- **WebView-Free Rendering**: No need for WebViews—output is fully compatible with native rendering.
+- **Rich EPUB support**: Parses metadata, TOC, spine, HTML content, and CSS styles.
+- **Style Conversion**: Converts CSS into React Native-compatible `StyleSheet` objects.
+- **Embedded Resources**: Base64-encoded images included in JSON.
+- **Modular Output**: Clean JSON structure for easy consumption and rendering on mobile or web.
+
+---
 
 ## Project Structure
 
-The project is organized as a monorepo with two main packages:
+This is a monorepo organized as follows:
 
-- `packages/react-native-epub-json-rust`: Contains the core Rust source code for the EPUB parsing and conversion logic. This is where all development happens.
-- `packages/react-native-epub-json`: The distributable NPM package. The build artifacts from `react-native-epub-json-rust` are placed here. This is the package you would publish or consume in another project.
+- `packages/react-native-epub-json-rust`:
+  Rust-based EPUB parsing engine. Parses EPUB and outputs JSON.
+
+- `packages/react-native-epub-json`:
+  WASM wrapper of the Rust parser (used for future client-side rendering or offline processing).
+
+- `examples/v80`:
+  Example React Native 0.80.5 project used to test JSON rendering from server.
+
+- `examples/v80-server`:
+  Hono-based server that parses EPUB and serves the resulting JSON to clients.
+
+---
 
 ## How It Works
 
-1.  An EPUB file is read either from the filesystem (in Node.js) or as a byte array.
-2.  The Rust/WASM module parses the EPUB container to extract metadata, chapters, images, and CSS files.
-3.  The `scraper` library parses the HTML content of each chapter.
-4.  The `cssparser` library parses the CSS files.
-5.  The HTML structure is transformed into a tree of virtual "React Native" nodes (e.g., `View`, `Text`, `Image`).
-6.  CSS rules are converted into JSON objects compatible with React Native's `StyleSheet` and linked to the corresponding nodes.
-7.  The final result is a single `book.json` file containing the entire structured content of the EPUB.
+1. The server receives an EPUB file.
+2. The Rust module parses the EPUB, extracts all relevant content and assets.
+3. CSS is converted into a format React Native can render (`StyleSheet`-compatible).
+4. A single `book.json` file is generated, containing:
 
-## Usage
+   - Metadata (title, author, etc.)
+   - TOC
+   - Chapters as renderable node trees
+   - Images (base64)
+   - Styles
 
-To use the compiled package in a Node.js project:
+5. The JSON is sent to the client or stored on a CDN for rendering.
 
-```javascript
-// Make sure you have the 'react-native-epub-json' package available
-const { epubToJson } = require('react-native-epub-json');
+---
 
-// Define the path to your EPUB file and the output directory
-const epubPath = 'path/to/your/book.epub';
-const outputDir = './output';
+## Usage (Server)
 
-try {
-  // Convert the EPUB to JSON
-  const bookData = epubToJson(epubPath, outputDir);
+After setting up the server (e.g., via `v80-server`):
 
-  // The JSON is also saved to 'output/book.json'
-  console.log('Successfully converted EPUB!');
-  console.log('Book Title:', bookData.metadata.title);
-} catch (error) {
-  console.error('Failed to convert EPUB:', error);
+1. POST an EPUB file to the server.
+2. Receive a parsed `book.json` in response or access it via CDN.
+3. In React Native, consume the JSON and render using native components.
+
+---
+
+## Future Plans
+
+- **Client-side (offline) support** using a Babel-based parser and `EncryptedStorage`
+- **Pulumi-based infrastructure setup** for automating server deployment and CDN upload
+- **Edge-first delivery**: Pre-parse EPUB files and serve JSON via CDN (e.g., Cloudflare R2 or S3)
+
+---
+
+## Output JSON Structure
+
+```jsonc
+{
+  "metadata": { /* title, author, publisher, etc. */ },
+  "structure": { /* counts for TOC, spine, etc. */ },
+  "toc": [ /* table of contents */ ],
+  "spine": [ /* linear reading order */ ],
+  "styles": { /* converted CSS rules */ },
+  "images": { /* base64-encoded images */ },
+  "chapters": [
+    {
+      "type": "View",
+      "children": [
+        {
+          "type": "Text",
+          "styles": { "fontWeight": "bold", "lineHeight": 1.20000004768372}
+        },
+        {
+          "type": "Image",
+          "src": "data:image/png;base64,...",
+          "style": {...}
+        }
+      ]
+    }
+  ]
 }
 ```
 
-## Building from Source
+---
 
-To build the WASM package from the Rust source code, navigate to the `packages/react-native-epub-json-rust` directory and run the build script.
+## Building the Parser
 
-**Prerequisites:**
-- Rust toolchain
-- `wasm-pack`
+To build the WASM module (optional use):
 
 ```bash
 cd packages/react-native-epub-json-rust
 ./build-wasm.sh
 ```
 
-This script will compile the Rust code to WASM, create the necessary JavaScript bindings, and place the final package contents into the `packages/react-native-epub-json-rust/pkg` directory. You would then typically copy these files to the `packages/react-native-epub-json` directory for distribution.
-
-## Output JSON Structure
-
-The generated `book.json` has the following top-level structure:
-
-- `metadata`: Contains book metadata like title, author, publisher, etc.
-- `structure`: Provides counts of spine items, resources, and TOC entries.
-- `toc`: The table of contents, as an ordered list of items.
-- `spine`: A list of all content documents in their linear reading order.
-- `styles`: A map of all parsed CSS rules, converted to React Native style objects.
-- `images`: A map of all images, with keys as resource IDs and values as base64 data URIs.
-- `chapters`: An array containing the content of each chapter, structured as a tree of renderable nodes (`View`, `Text`, `Image`).
+> This will output WASM and JS bindings into `pkg/`.

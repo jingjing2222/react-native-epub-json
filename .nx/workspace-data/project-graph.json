@@ -54,7 +54,9 @@
         ],
         "metadata": {
           "targetGroups": {
-            "NPM Scripts": ["prepublishOnly"]
+            "NPM Scripts": [
+              "prepublishOnly"
+            ]
           },
           "description": "Convert EPUB files to React Native component structures without WebView",
           "js": {
@@ -127,7 +129,9 @@
       "data": {
         "root": "examples/v80-server",
         "name": "v80-server",
-        "tags": ["npm:public"],
+        "tags": [
+          "npm:public"
+        ],
         "metadata": {
           "targetGroups": {},
           "js": {
@@ -179,10 +183,16 @@
       "data": {
         "root": "examples/v80",
         "name": "v80",
-        "tags": ["npm:private"],
+        "tags": [
+          "npm:private"
+        ],
         "metadata": {
           "targetGroups": {
-            "NPM Scripts": ["android", "ios", "lint"]
+            "NPM Scripts": [
+              "android",
+              "ios",
+              "lint"
+            ]
           },
           "js": {
             "packageName": "v80",
@@ -16327,5 +16337,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1754241360456
+  "computedAt": 1754241583753
 }

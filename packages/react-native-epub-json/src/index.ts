@@ -1,6 +1,100 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import * as wasm from "./lib/react_native_epub_json";
+
+export interface CompleteEpubInfo {
+  metadata: EpubMetadata;
+  structure: EpubStructure;
+  toc: TocItem[];
+  spine: SpineItemInfo[];
+  styles: Record<string, RnStyles>;
+  images: Record<string, string>;
+  chapters: ChapterStructure[];
+}
+
+export interface EpubMetadata {
+  title?: string;
+  author?: string;
+  language?: string;
+  publisher?: string;
+  description?: string;
+  date?: string;
+  identifier?: string;
+  rights?: string;
+  subject?: string;
+}
+
+export interface EpubStructure {
+  spine_count: number;
+  resource_count: number;
+  toc_count: number;
+}
+
+export interface TocItem {
+  label: string;
+  content_path: string;
+}
+
+export interface SpineItemInfo {
+  idref: string;
+  id?: string;
+  properties?: string;
+  linear: boolean;
+}
+
+export interface RnStyles {
+  fontSize?: number;
+  fontWeight?: string;
+  fontFamily?: string;
+  fontStyle?: string;
+  color?: string;
+  backgroundColor?: string;
+  textAlign?: string;
+  lineHeight?: number;
+  textDecorationLine?: string;
+  marginTop?: number;
+  marginBottom?: number;
+  marginLeft?: number;
+  marginRight?: number;
+  paddingTop?: number;
+  paddingBottom?: number;
+  paddingLeft?: number;
+  paddingRight?: number;
+}
+
+export type RnNode = TextNode | ViewNode | ImageNode | ScrollViewNode;
+
+export interface TextNode {
+  type: "Text";
+  content: string;
+  styles?: RnStyles;
+}
+
+export interface ViewNode {
+  type: "View";
+  children: RnNode[];
+  styles?: RnStyles;
+}
+
+export interface ImageNode {
+  type: "Image";
+  source: string;
+  alt?: string;
+  styles?: RnStyles;
+}
+
+export interface ScrollViewNode {
+  type: "ScrollView";
+  children: RnNode[];
+  styles?: RnStyles;
+}
+
+export interface ChapterStructure {
+  spine_index: number;
+  idref: string;
+  title?: string;
+  content: RnNode;
+}
 
 /**
  * Converts an EPUB file to a JSON object and saves it to a file.
@@ -8,10 +102,10 @@ import * as wasm from "./lib/react_native_epub_json";
  * @param output_dir Directory to save the output JSON file.
  * @returns The converted JSON object.
  */
-export function epubToJson(epub_path: string, output_dir: string): any {
+export function epubToJson(epub_path: string, output_dir: string): CompleteEpubInfo {
   try {
     const fileBuffer = fs.readFileSync(epub_path);
-    const result = wasm.epubBytesToJson(new Uint8Array(fileBuffer));
+    const result: CompleteEpubInfo = wasm.epubBytesToJson(new Uint8Array(fileBuffer));
 
     if (!fs.existsSync(output_dir)) {
       fs.mkdirSync(output_dir, { recursive: true });
@@ -22,8 +116,11 @@ export function epubToJson(epub_path: string, output_dir: string): any {
     fs.writeFileSync(outputPath, jsonString);
 
     return result;
-  } catch (error: any) {
-    throw new Error(`EPUB conversion failed: ${error.message}`);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(`EPUB conversion failed: ${error.message}`);
+    }
+    throw new Error(`EPUB conversion failed: ${String(error)}`);
   }
 }
 
@@ -35,10 +132,13 @@ export function epubToJson(epub_path: string, output_dir: string): any {
 export function epubToJsonString(epub_path: string): string {
   try {
     const fileBuffer = fs.readFileSync(epub_path);
-    const result = wasm.epubBytesToJson(new Uint8Array(fileBuffer));
+    const result: CompleteEpubInfo = wasm.epubBytesToJson(new Uint8Array(fileBuffer));
     return JSON.stringify(result, null, 2);
-  } catch (error: any) {
-    throw new Error(`EPUB conversion failed: ${error.message}`);
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      throw new Error(`EPUB conversion failed: ${error.message}`);
+    }
+    throw new Error(`EPUB conversion failed: ${String(error)}`);
   }
 }
 
@@ -47,7 +147,7 @@ export function epubToJsonString(epub_path: string): string {
  * @param epub_bytes The EPUB file content as a byte array.
  * @returns The converted JSON object.
  */
-export function epubBytesToJson(epub_bytes: Uint8Array): any {
+export function epubBytesToJson(epub_bytes: Uint8Array): CompleteEpubInfo {
   return wasm.epubBytesToJson(epub_bytes);
 }
 
