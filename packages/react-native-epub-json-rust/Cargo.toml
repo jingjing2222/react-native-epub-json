@@ -1,5 +1,5 @@
 [package]
-name = "react-native-epub-json"
+name = "react-native-epub-json-rust"
 version = "0.1.0"
 edition = "2024"
 authors = ["gudwjd1208@koreatech.ac.kr"]

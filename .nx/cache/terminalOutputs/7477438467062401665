@@ -1,0 +1,3 @@
+> cd packages/react-native-epub-json && tsc --noEmit
+
+

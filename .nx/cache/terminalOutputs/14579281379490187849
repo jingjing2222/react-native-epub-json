@@ -1,0 +1,3 @@
+> cd examples/v80-server && tsc --noEmit
+
+

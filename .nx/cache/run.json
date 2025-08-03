@@ -1,0 +1,43 @@
+{
+  "run": {
+    "command": "nx run-many --target=typecheck --all",
+    "startTime": "2025-08-03T17:02:46.472Z",
+    "endTime": "2025-08-03T17:02:47.614Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "v80-server:typecheck",
+      "target": "typecheck",
+      "projectName": "v80-server",
+      "hash": "14579281379490187849",
+      "startTime": "2025-08-03T17:02:46.526Z",
+      "endTime": "2025-08-03T17:02:47.374Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "react-native-epub-json:typecheck",
+      "target": "typecheck",
+      "projectName": "react-native-epub-json",
+      "hash": "7477438467062401665",
+      "startTime": "2025-08-03T17:02:46.526Z",
+      "endTime": "2025-08-03T17:02:47.429Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    },
+    {
+      "taskId": "v80:typecheck",
+      "target": "typecheck",
+      "projectName": "v80",
+      "hash": "10748539634334180136",
+      "startTime": "2025-08-03T17:02:46.526Z",
+      "endTime": "2025-08-03T17:02:47.613Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 0
+    }
+  ]
+}

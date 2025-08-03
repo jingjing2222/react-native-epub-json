@@ -1,0 +1,3 @@
+> cd examples/v80-server && yarn build
+
+[2K[1G[2m$ tsc[22m

@@ -1,0 +1,429 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.3.11",
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {
+      "react-native-epub-json-rust": [
+        {
+          "file": "packages/react-native-epub-json-rust/.cargo/config.toml",
+          "hash": "2487967050367282486"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/.gitignore",
+          "hash": "1654711916329814962"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/Cargo.lock",
+          "hash": "578968432204690416"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/Cargo.toml",
+          "hash": "9581713612204154561"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/JSON_TYPES.md",
+          "hash": "12981027675914843704"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/project.json",
+          "hash": "11021433010536636871"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/css_parser.rs",
+          "hash": "7590260861367679449"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/epub_extractor.rs",
+          "hash": "8796689519042246333"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/html_parser.rs",
+          "hash": "1902054564587246189"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/lib.rs",
+          "hash": "13039838069738763707"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/main.rs",
+          "hash": "11264274074729292458"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/types.rs",
+          "hash": "14604665804918126190"
+        },
+        {
+          "file": "packages/react-native-epub-json-rust/src/utils.rs",
+          "hash": "6584819943839054860"
+        }
+      ],
+      "v80": [
+        {
+          "file": "examples/v80/.bundle/config",
+          "hash": "9116505824108018199"
+        },
+        {
+          "file": "examples/v80/.gitignore",
+          "hash": "5050593768160088275"
+        },
+        {
+          "file": "examples/v80/.prettierrc.js",
+          "hash": "12664079852674925924"
+        },
+        {
+          "file": "examples/v80/.watchmanconfig",
+          "hash": "15753941481085060538"
+        },
+        {
+          "file": "examples/v80/App.tsx",
+          "hash": "11128553021934597261"
+        },
+        {
+          "file": "examples/v80/Gemfile",
+          "hash": "12884890766378124899"
+        },
+        {
+          "file": "examples/v80/README.md",
+          "hash": "10575641548894021443"
+        },
+        {
+          "file": "examples/v80/__tests__/App.test.tsx",
+          "hash": "11979997392917346929"
+        },
+        {
+          "file": "examples/v80/android/app/build.gradle",
+          "hash": "7619081303539739665"
+        },
+        {
+          "file": "examples/v80/android/app/debug.keystore",
+          "hash": "5037686243849261810"
+        },
+        {
+          "file": "examples/v80/android/app/proguard-rules.pro",
+          "hash": "13814197385154279786"
+        },
+        {
+          "file": "examples/v80/android/app/src/debug/AndroidManifest.xml",
+          "hash": "9217300540490017338"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/AndroidManifest.xml",
+          "hash": "8439592262627536205"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/assets/index.android.bundle",
+          "hash": "10819138250946212034"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/java/com/v80/MainActivity.kt",
+          "hash": "12286045131125212912"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/java/com/v80/MainApplication.kt",
+          "hash": "8700773176847867553"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/drawable/rn_edit_text_material.xml",
+          "hash": "4466596183044014152"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-hdpi/ic_launcher.png",
+          "hash": "10788509195642110029"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-hdpi/ic_launcher_round.png",
+          "hash": "14348562046770238248"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-mdpi/ic_launcher.png",
+          "hash": "328692529308011025"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-mdpi/ic_launcher_round.png",
+          "hash": "11802043336826859502"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png",
+          "hash": "13006206334539413900"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-xhdpi/ic_launcher_round.png",
+          "hash": "1812825738055967771"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png",
+          "hash": "6104457872863500683"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-xxhdpi/ic_launcher_round.png",
+          "hash": "2478168592410677995"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png",
+          "hash": "12283149652938275290"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher_round.png",
+          "hash": "7126668675123994836"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/values/strings.xml",
+          "hash": "8976100401929051919"
+        },
+        {
+          "file": "examples/v80/android/app/src/main/res/values/styles.xml",
+          "hash": "14052910750539201041"
+        },
+        {
+          "file": "examples/v80/android/build.gradle",
+          "hash": "17909378631708385154"
+        },
+        {
+          "file": "examples/v80/android/gradle.properties",
+          "hash": "13198926122350436103"
+        },
+        {
+          "file": "examples/v80/android/gradle/wrapper/gradle-wrapper.jar",
+          "hash": "5961704579857758315"
+        },
+        {
+          "file": "examples/v80/android/gradle/wrapper/gradle-wrapper.properties",
+          "hash": "15941671296399212470"
+        },
+        {
+          "file": "examples/v80/android/gradlew",
+          "hash": "2029539514094064532"
+        },
+        {
+          "file": "examples/v80/android/gradlew.bat",
+          "hash": "11696202184983665693"
+        },
+        {
+          "file": "examples/v80/android/settings.gradle",
+          "hash": "17601162183210546723"
+        },
+        {
+          "file": "examples/v80/app.json",
+          "hash": "167673068319540071"
+        },
+        {
+          "file": "examples/v80/babel.config.js",
+          "hash": "11500306903941541164"
+        },
+        {
+          "file": "examples/v80/index.js",
+          "hash": "9955981489087569585"
+        },
+        {
+          "file": "examples/v80/ios/.xcode.env",
+          "hash": "2240437479405059044"
+        },
+        {
+          "file": "examples/v80/ios/Podfile",
+          "hash": "12732626093500404306"
+        },
+        {
+          "file": "examples/v80/ios/Podfile.lock",
+          "hash": "15338916917059652457"
+        },
+        {
+          "file": "examples/v80/ios/v80.xcodeproj/project.pbxproj",
+          "hash": "15527973873283813871"
+        },
+        {
+          "file": "examples/v80/ios/v80.xcodeproj/xcshareddata/xcschemes/v80.xcscheme",
+          "hash": "7931435858801838818"
+        },
+        {
+          "file": "examples/v80/ios/v80.xcworkspace/contents.xcworkspacedata",
+          "hash": "12628857565278547361"
+        },
+        {
+          "file": "examples/v80/ios/v80/AppDelegate.swift",
+          "hash": "1063343107164455926"
+        },
+        {
+          "file": "examples/v80/ios/v80/Images.xcassets/AppIcon.appiconset/Contents.json",
+          "hash": "11595540762170193386"
+        },
+        {
+          "file": "examples/v80/ios/v80/Images.xcassets/Contents.json",
+          "hash": "16272710630576636421"
+        },
+        {
+          "file": "examples/v80/ios/v80/Info.plist",
+          "hash": "18099668374247222957"
+        },
+        {
+          "file": "examples/v80/ios/v80/LaunchScreen.storyboard",
+          "hash": "12021688501901568885"
+        },
+        {
+          "file": "examples/v80/ios/v80/PrivacyInfo.xcprivacy",
+          "hash": "16670914145149810597"
+        },
+        {
+          "file": "examples/v80/jest.config.js",
+          "hash": "10943328892119299009"
+        },
+        {
+          "file": "examples/v80/metro.config.js",
+          "hash": "15890857278038934586"
+        },
+        {
+          "file": "examples/v80/package.json",
+          "hash": "10217582395578188374",
+          "deps": [
+            "npm:@babel/core",
+            "npm:@babel/preset-env",
+            "npm:@babel/runtime",
+            "npm:@react-native-community/cli",
+            "npm:@react-native-community/cli-platform-android",
+            "npm:@react-native-community/cli-platform-ios",
+            "npm:@react-native/babel-preset",
+            "npm:@react-native/metro-config",
+            "npm:@react-native/typescript-config",
+            "npm:@types/jest",
+            "npm:@types/react",
+            "npm:@types/react-test-renderer",
+            "npm:jest",
+            "npm:react-test-renderer",
+            "npm:typescript@5.0.4",
+            "npm:react",
+            "npm:react-native",
+            "npm:@react-native/new-app-screen"
+          ]
+        },
+        {
+          "file": "examples/v80/project.json",
+          "hash": "3246947446402756560"
+        },
+        {
+          "file": "examples/v80/tsconfig.json",
+          "hash": "6458722530602904736"
+        },
+        {
+          "file": "examples/v80/types.ts",
+          "hash": "5056789769330716879"
+        }
+      ],
+      "v80-server": [
+        {
+          "file": "examples/v80-server/.gitignore",
+          "hash": "13759582651390510797"
+        },
+        {
+          "file": "examples/v80-server/README.md",
+          "hash": "4913168686649881444"
+        },
+        {
+          "file": "examples/v80-server/package.json",
+          "hash": "2743493344215983195",
+          "deps": [
+            "npm:@types/node",
+            "npm:tsx",
+            "npm:typescript",
+            "npm:@hono/node-server",
+            "npm:hono",
+            "react-native-epub-json"
+          ]
+        },
+        {
+          "file": "examples/v80-server/project.json",
+          "hash": "7175023920973252086"
+        },
+        {
+          "file": "examples/v80-server/src/index.ts",
+          "hash": "2649292475269331019"
+        },
+        {
+          "file": "examples/v80-server/tsconfig.json",
+          "hash": "343149074949445622"
+        }
+      ],
+      "react-native-epub-json": [
+        {
+          "file": "packages/react-native-epub-json/package.json",
+          "hash": "4308870438143722861",
+          "deps": [
+            "npm:@types/node",
+            "npm:tsdown",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "packages/react-native-epub-json/project.json",
+          "hash": "2381296736675018480"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/index.ts",
+          "hash": "4880171518881675385"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json.d.ts",
+          "hash": "65771589695547750"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json.js",
+          "hash": "9976402497037615728"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.js",
+          "hash": "8375753161706912119"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.wasm",
+          "hash": "13976221653049230673"
+        },
+        {
+          "file": "packages/react-native-epub-json/src/lib/react_native_epub_json_bg.wasm.d.ts",
+          "hash": "7293751373101772103"
+        },
+        {
+          "file": "packages/react-native-epub-json/test.js",
+          "hash": "15916758426428006177"
+        },
+        {
+          "file": "packages/react-native-epub-json/tsconfig.json",
+          "hash": "2062062927074877327"
+        },
+        {
+          "file": "packages/react-native-epub-json/tsdown.config.ts",
+          "hash": "4257820808304440966"
+        }
+      ]
+    },
+    "nonProjectFiles": [
+      {
+        "file": ".cursor/mcp.json",
+        "hash": "18205495240532117577"
+      },
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "11939081350613642172"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "6513666654597408177"
+      },
+      {
+        "file": "README.md",
+        "hash": "11880328608142032060"
+      },
+      {
+        "file": "package.json",
+        "hash": "486885982501127398"
+      },
+      {
+        "file": "test-output.js",
+        "hash": "11368176338880324425"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "10561682707473918827"
+      }
+    ]
+  }
+}
