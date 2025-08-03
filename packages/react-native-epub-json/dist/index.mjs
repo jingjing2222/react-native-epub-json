@@ -1,6 +1,6 @@
 import { __commonJS, __require, __toESM } from "./chunk-Dx39-ABv.mjs";
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 
 //#region src/lib/react_native_epub_json.js
 var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react_native_epub_json.js": ((exports, module) => {
@@ -294,7 +294,8 @@ function epubToJson(epub_path, output_dir) {
 		fs.writeFileSync(outputPath, jsonString);
 		return result;
 	} catch (error) {
-		throw new Error(`EPUB conversion failed: ${error.message}`);
+		if (error instanceof Error) throw new Error(`EPUB conversion failed: ${error.message}`);
+		throw new Error(`EPUB conversion failed: ${String(error)}`);
 	}
 }
 /**
@@ -308,7 +309,8 @@ function epubToJsonString(epub_path) {
 		const result = import_react_native_epub_json.epubBytesToJson(new Uint8Array(fileBuffer));
 		return JSON.stringify(result, null, 2);
 	} catch (error) {
-		throw new Error(`EPUB conversion failed: ${error.message}`);
+		if (error instanceof Error) throw new Error(`EPUB conversion failed: ${error.message}`);
+		throw new Error(`EPUB conversion failed: ${String(error)}`);
 	}
 }
 /**
