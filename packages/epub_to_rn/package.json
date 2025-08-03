@@ -13,10 +13,12 @@
   "files": [
     "epub_to_rn_bg.wasm",
     "epub_to_rn.js",
-    "epub_to_rn.d.ts"
+    "epub_to_rn.d.ts",
+    "index.js",
+    "index.d.ts"
   ],
-  "main": "epub_to_rn.js",
-  "types": "epub_to_rn.d.ts",
+  "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [
     "epub",
     "react-native",
