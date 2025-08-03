@@ -1,18 +1,30 @@
 use epub::doc::EpubDoc;
 use std::collections::HashMap;
 use base64::{Engine as _, engine::general_purpose};
-use std::io::{Read, Seek};
+use std::io::{Read, Seek, Cursor};
 
 use crate::types::*;
 use crate::css_parser::parse_css_to_rn_styles;
 use crate::html_parser::{parse_html_to_rn_nodes, extract_title_from_html};
 
+/// EPUB 바이트에서 완전한 정보를 추출하여 React Native 구조로 변환
+pub fn extract_complete_epub_info_from_bytes(epub_bytes: &[u8]) -> Result<CompleteEpubInfo, Box<dyn std::error::Error>> {
+    let cursor = Cursor::new(epub_bytes);
+    let mut doc = EpubDoc::from_reader(cursor)?;
+    extract_epub_data(&mut doc)
+}
+
 /// EPUB 파일에서 완전한 정보를 추출하여 React Native 구조로 변환
 pub fn extract_complete_epub_info(epub_path: &str) -> Result<CompleteEpubInfo, Box<dyn std::error::Error>> {
     let mut doc = EpubDoc::new(epub_path)?;
+    extract_epub_data(&mut doc)
+}
+
+/// 공통 EPUB 데이터 추출 로직
+fn extract_epub_data<R: Read + Seek>(doc: &mut EpubDoc<R>) -> Result<CompleteEpubInfo, Box<dyn std::error::Error>> {
     
     // 메타데이터 추출
-    let metadata = extract_metadata(&mut doc);
+    let metadata = extract_metadata(doc);
     
     // 구조 정보
     let structure = EpubStructure {
@@ -38,10 +50,10 @@ pub fn extract_complete_epub_info(epub_path: &str) -> Result<CompleteEpubInfo, B
     
     // CSS 스타일 및 이미지 추출
     let resources_map = doc.resources.clone();
-    let (styles, images) = extract_styles_and_images(&mut doc, &resources_map);
+    let (styles, images) = extract_styles_and_images(doc, &resources_map);
     
     // 챕터 내용을 RN 노드 구조로 변환
-    let chapters = extract_chapters(&mut doc, &spine_items, &resources_map, &styles, &images);
+    let chapters = extract_chapters(doc, &spine_items, &resources_map, &styles, &images);
     
     Ok(CompleteEpubInfo {
         metadata,

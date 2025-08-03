@@ -1,0 +1,30 @@
+{
+  "name": "epub-to-rn-builder",
+  "version": "0.1.0",
+  "description": "EPUB to React Native converter with WASM build tools",
+  "main": "pkg/index.js",
+  "scripts": {
+    "build": "./build-wasm.sh",
+    "build:wasm": "RUSTFLAGS=\"--cfg getrandom_backend=\\\"wasm_js\\\"\" wasm-pack build --target nodejs",
+    "test": "node test.js",
+    "clean": "rm -rf pkg target",
+    "dev": "cargo run",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "epub", 
+    "react-native", 
+    "wasm", 
+    "converter", 
+    "ebook", 
+    "parser"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {},
+  "files": [
+    "pkg/",
+    "build-wasm.sh",
+    "wrapper.js"
+  ]
+}
