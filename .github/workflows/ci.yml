@@ -40,7 +40,7 @@ jobs:
       run: yarn nx run-many --target=typecheck --all
 
     - name: Run lint
-      run: yarn nx lint
+      run: yarn nx run-many --target=lint --all
 
     - name: Run build
-      run: yarn nx build
+      run: yarn nx run-many --target=build --all
