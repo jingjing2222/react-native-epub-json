@@ -29,7 +29,7 @@ const node_path = __toESM(require("node:path"));
 
 //#region src/lib/react_native_epub_json.js
 var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react_native_epub_json.js": ((exports, module) => {
-	let imports = {};
+	const imports = {};
 	imports["__wbindgen_placeholder__"] = module.exports;
 	let wasm;
 	const { TextEncoder, TextDecoder } = require("util");
@@ -39,10 +39,8 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 		if (cachedUint8ArrayMemory0 === null || cachedUint8ArrayMemory0.byteLength === 0) cachedUint8ArrayMemory0 = new Uint8Array(wasm.memory.buffer);
 		return cachedUint8ArrayMemory0;
 	}
-	let cachedTextEncoder = new TextEncoder("utf-8");
-	const encodeString = typeof cachedTextEncoder.encodeInto === "function" ? function(arg, view) {
-		return cachedTextEncoder.encodeInto(arg, view);
-	} : function(arg, view) {
+	const cachedTextEncoder = new TextEncoder("utf-8");
+	const encodeString = typeof cachedTextEncoder.encodeInto === "function" ? (arg, view) => cachedTextEncoder.encodeInto(arg, view) : (arg, view) => {
 		const buf = cachedTextEncoder.encode(arg);
 		view.set(buf);
 		return {
@@ -83,7 +81,7 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 		if (cachedDataViewMemory0 === null || cachedDataViewMemory0.buffer.detached === true || cachedDataViewMemory0.buffer.detached === void 0 && cachedDataViewMemory0.buffer !== wasm.memory.buffer) cachedDataViewMemory0 = new DataView(wasm.memory.buffer);
 		return cachedDataViewMemory0;
 	}
-	let cachedTextDecoder = new TextDecoder("utf-8", {
+	const cachedTextDecoder = new TextDecoder("utf-8", {
 		ignoreBOM: true,
 		fatal: true
 	});
@@ -109,7 +107,7 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 			wasm.__wbindgen_exn_store(idx);
 		}
 	}
-	module.exports.main = function() {
+	module.exports.main = () => {
 		wasm.main();
 	};
 	function takeFromExternrefTable0(idx) {
@@ -131,7 +129,7 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 	* @param {string} output_dir
 	* @returns {any}
 	*/
-	module.exports.epubToJson = function(epub_path, output_dir) {
+	module.exports.epubToJson = (epub_path, output_dir) => {
 		const ptr0 = passStringToWasm0(epub_path, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
 		const len0 = WASM_VECTOR_LEN;
 		const ptr1 = passStringToWasm0(output_dir, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
@@ -159,7 +157,7 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 	* @param {Uint8Array} epub_bytes
 	* @returns {any}
 	*/
-	module.exports.epubBytesToJson = function(epub_bytes) {
+	module.exports.epubBytesToJson = (epub_bytes) => {
 		const ptr0 = passArray8ToWasm0(epub_bytes, wasm.__wbindgen_malloc);
 		const len0 = WASM_VECTOR_LEN;
 		const ret = wasm.epubBytesToJson(ptr0, len0);
@@ -179,7 +177,7 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 	* @param {string} epub_path
 	* @returns {string}
 	*/
-	module.exports.epubToJsonString = function(epub_path) {
+	module.exports.epubToJsonString = (epub_path) => {
 		let deferred3_0;
 		let deferred3_1;
 		try {
@@ -200,14 +198,14 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 			wasm.__wbindgen_free(deferred3_0, deferred3_1, 1);
 		}
 	};
-	module.exports.__wbg_String_8f0eb39a4a4c2f66 = function(arg0, arg1) {
+	module.exports.__wbg_String_8f0eb39a4a4c2f66 = (arg0, arg1) => {
 		const ret = String(arg1);
 		const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
 		const len1 = WASM_VECTOR_LEN;
 		getDataViewMemory0().setInt32(arg0 + 4, len1, true);
 		getDataViewMemory0().setInt32(arg0 + 0, ptr1, true);
 	};
-	module.exports.__wbg_error_7534b8e9a36f1ab4 = function(arg0, arg1) {
+	module.exports.__wbg_error_7534b8e9a36f1ab4 = (arg0, arg1) => {
 		let deferred0_0;
 		let deferred0_1;
 		try {
@@ -218,56 +216,54 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 			wasm.__wbindgen_free(deferred0_0, deferred0_1, 1);
 		}
 	};
-	module.exports.__wbg_getRandomValues_3c9c0d586e575a16 = function() {
-		return handleError(function(arg0, arg1) {
-			globalThis.crypto.getRandomValues(getArrayU8FromWasm0(arg0, arg1));
-		}, arguments);
-	};
-	module.exports.__wbg_log_c222819a41e063d3 = function(arg0) {
+	module.exports.__wbg_getRandomValues_3c9c0d586e575a16 = () => handleError((arg0, arg1) => {
+		globalThis.crypto.getRandomValues(getArrayU8FromWasm0(arg0, arg1));
+	}, arguments);
+	module.exports.__wbg_log_c222819a41e063d3 = (arg0) => {
 		console.log(arg0);
 	};
-	module.exports.__wbg_new_405e22f390576ce2 = function() {
+	module.exports.__wbg_new_405e22f390576ce2 = () => {
 		const ret = /* @__PURE__ */ new Object();
 		return ret;
 	};
-	module.exports.__wbg_new_5e0be73521bc8c17 = function() {
+	module.exports.__wbg_new_5e0be73521bc8c17 = () => {
 		const ret = /* @__PURE__ */ new Map();
 		return ret;
 	};
-	module.exports.__wbg_new_78feb108b6472713 = function() {
-		const ret = new Array();
+	module.exports.__wbg_new_78feb108b6472713 = () => {
+		const ret = [];
 		return ret;
 	};
-	module.exports.__wbg_new_8a6f238a6ece86ea = function() {
+	module.exports.__wbg_new_8a6f238a6ece86ea = () => {
 		const ret = /* @__PURE__ */ new Error();
 		return ret;
 	};
-	module.exports.__wbg_set_37837023f3d740e8 = function(arg0, arg1, arg2) {
+	module.exports.__wbg_set_37837023f3d740e8 = (arg0, arg1, arg2) => {
 		arg0[arg1 >>> 0] = arg2;
 	};
-	module.exports.__wbg_set_3f1d0b984ed272ed = function(arg0, arg1, arg2) {
+	module.exports.__wbg_set_3f1d0b984ed272ed = (arg0, arg1, arg2) => {
 		arg0[arg1] = arg2;
 	};
-	module.exports.__wbg_set_8fc6bf8a5b1071d1 = function(arg0, arg1, arg2) {
+	module.exports.__wbg_set_8fc6bf8a5b1071d1 = (arg0, arg1, arg2) => {
 		const ret = arg0.set(arg1, arg2);
 		return ret;
 	};
-	module.exports.__wbg_stack_0ed75d68575b0f3c = function(arg0, arg1) {
+	module.exports.__wbg_stack_0ed75d68575b0f3c = (arg0, arg1) => {
 		const ret = arg1.stack;
 		const ptr1 = passStringToWasm0(ret, wasm.__wbindgen_malloc, wasm.__wbindgen_realloc);
 		const len1 = WASM_VECTOR_LEN;
 		getDataViewMemory0().setInt32(arg0 + 4, len1, true);
 		getDataViewMemory0().setInt32(arg0 + 0, ptr1, true);
 	};
-	module.exports.__wbindgen_bigint_from_u64 = function(arg0) {
+	module.exports.__wbindgen_bigint_from_u64 = (arg0) => {
 		const ret = BigInt.asUintN(64, arg0);
 		return ret;
 	};
-	module.exports.__wbindgen_error_new = function(arg0, arg1) {
+	module.exports.__wbindgen_error_new = (arg0, arg1) => {
 		const ret = new Error(getStringFromWasm0(arg0, arg1));
 		return ret;
 	};
-	module.exports.__wbindgen_init_externref_table = function() {
+	module.exports.__wbindgen_init_externref_table = () => {
 		const table = wasm.__wbindgen_export_5;
 		const offset = table.grow(4);
 		table.set(0, void 0);
@@ -276,19 +272,19 @@ var require_react_native_epub_json = /* @__PURE__ */ __commonJS({ "src/lib/react
 		table.set(offset + 2, true);
 		table.set(offset + 3, false);
 	};
-	module.exports.__wbindgen_is_string = function(arg0) {
+	module.exports.__wbindgen_is_string = (arg0) => {
 		const ret = typeof arg0 === "string";
 		return ret;
 	};
-	module.exports.__wbindgen_number_new = function(arg0) {
+	module.exports.__wbindgen_number_new = (arg0) => {
 		const ret = arg0;
 		return ret;
 	};
-	module.exports.__wbindgen_string_new = function(arg0, arg1) {
+	module.exports.__wbindgen_string_new = (arg0, arg1) => {
 		const ret = getStringFromWasm0(arg0, arg1);
 		return ret;
 	};
-	module.exports.__wbindgen_throw = function(arg0, arg1) {
+	module.exports.__wbindgen_throw = (arg0, arg1) => {
 		throw new Error(getStringFromWasm0(arg0, arg1));
 	};
 	const path = require("path").join(__dirname, "react_native_epub_json_bg.wasm");
