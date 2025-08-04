@@ -1,22 +1,20 @@
-export { EPUBReader } from "./components/EPUBReader";
-export { EPUBPage } from "./components/EPUBPage";
-export { ComponentRenderer } from "./components/ComponentRenderer";
-export { TOCModal } from "./components/TOCModal";
-
-export type { EPUBReaderProps, EPUBPageProps } from "./types";
-
 // Re-export types from react-native-epub-json for convenience
 export type {
+  ChapterStructure,
   CompleteEpubInfo,
   EpubMetadata,
   EpubStructure,
-  TocItem,
-  SpineItemInfo,
-  RnStyles,
-  RnNode,
-  TextNode,
-  ViewNode,
   ImageNode,
+  RnNode,
+  RnStyles,
   ScrollViewNode,
-  ChapterStructure,
-} from "react-native-epub-json";
+  SpineItemInfo,
+  TextNode,
+  TocItem,
+  ViewNode,
+} from 'react-native-epub-json';
+export { ComponentRenderer } from './components/ComponentRenderer';
+export { EPUBPage } from './components/EPUBPage';
+export { EPUBReader } from './components/EPUBReader';
+export { TOCModal } from './components/TOCModal';
+export type { EPUBPageProps, EPUBReaderProps } from './types';

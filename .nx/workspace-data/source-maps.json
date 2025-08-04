@@ -32,6 +32,10 @@
       "examples/v80/package.json",
       "nx/core/package-json"
     ],
+    "metadata.targetGroups.NPM Scripts.2": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
     "metadata.js": [
       "examples/v80/package.json",
       "nx/core/package-json"
@@ -101,6 +105,34 @@
       "nx/core/package-json"
     ],
     "targets.ios.metadata.runCommand": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.executor": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options.script": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.scriptContent": [
+      "examples/v80/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.runCommand": [
       "examples/v80/package.json",
       "nx/core/package-json"
     ],
@@ -210,6 +242,18 @@
       "examples/v80-server/package.json",
       "nx/core/package-json"
     ],
+    "metadata.targetGroups.NPM Scripts": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
     "metadata.js": [
       "examples/v80-server/package.json",
       "nx/core/package-json"
@@ -223,6 +267,62 @@
       "nx/core/package-json"
     ],
     "targets": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.executor": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options.script": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.scriptContent": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.runCommand": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.executor": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.options": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.metadata": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.options.script": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.metadata.scriptContent": [
+      "examples/v80-server/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.metadata.runCommand": [
       "examples/v80-server/package.json",
       "nx/core/package-json"
     ],
@@ -348,6 +448,14 @@
       "packages/react-native-epub-builder/package.json",
       "nx/core/package-json"
     ],
+    "metadata.targetGroups.NPM Scripts.2": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.3": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
     "metadata.description": [
       "packages/react-native-epub-builder/package.json",
       "nx/core/package-json"
@@ -431,6 +539,62 @@
     "targets.prepublishOnly.metadata.runCommand": [
       "packages/react-native-epub-builder/package.json",
       "nx/core/package-json"
+    ],
+    "targets.lint": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.executor": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options.script": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.scriptContent": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.runCommand": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.executor": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.options": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.metadata": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.options.script": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.metadata.scriptContent": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.metadata.runCommand": [
+      "packages/react-native-epub-builder/package.json",
+      "nx/core/package-json"
     ]
   },
   "packages/react-native-epub-json": {
@@ -479,6 +643,14 @@
       "nx/core/package-json"
     ],
     "metadata.targetGroups.NPM Scripts.0": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.2": [
       "packages/react-native-epub-json/package.json",
       "nx/core/package-json"
     ],
@@ -535,6 +707,62 @@
       "nx/core/package-json"
     ],
     "targets.prepublishOnly.metadata.runCommand": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.executor": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options.script": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.scriptContent": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.runCommand": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.executor": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.options": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.metadata": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.options.script": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.metadata.scriptContent": [
+      "packages/react-native-epub-json/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint:fix.metadata.runCommand": [
       "packages/react-native-epub-json/package.json",
       "nx/core/package-json"
     ],

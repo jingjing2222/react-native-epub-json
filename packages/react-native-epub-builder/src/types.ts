@@ -1,5 +1,5 @@
-import { CompleteEpubInfo, RnNode } from "react-native-epub-json";
-import { ViewStyle } from "react-native";
+import type { ViewStyle } from 'react-native';
+import type { CompleteEpubInfo, RnNode } from 'react-native-epub-json';
 
 export interface EPUBReaderProps {
   data: CompleteEpubInfo;

@@ -1,43 +1,14 @@
 {
-  "files": {
-    "includes": [
-      "**",
-      "!packages/react-native-epub-json/dist/**",
-      "!packages/react-native-epub-json-rust/pkg/**",
-      "!packages/react-native-epub-json/src/lib/**",
-      "!examples/v80-server/dist/**",
-      "!.nx/**",
-      "!packages/react-native-epub-json-rust/target/**"
-    ]
-  },
   "linter": {
-    "includes": [
-      "**",
-      "!packages/react-native-epub-json/dist/**",
-      "!packages/react-native-epub-json-rust/pkg/**",
-      "!packages/react-native-epub-json/src/lib/**",
-      "!examples/v80-server/dist/**",
-      "!.nx/**",
-      "!packages/react-native-epub-json-rust/target/**"
-    ],
     "rules": {
       "recommended": true
     }
   },
   "formatter": {
-    "includes": [
-      "**",
-      "!packages/react-native-epub-json/dist/**",
-      "!packages/react-native-epub-json-rust/pkg/**",
-      "!packages/react-native-epub-json/src/lib/**",
-      "!examples/v80-server/dist/**",
-      "!.nx/**",
-      "!packages/react-native-epub-json-rust/target/**"
-    ],
     "enabled": true,
-    "indentStyle": "space",
     "indentWidth": 2,
-    "lineWidth": 80
+    "lineWidth": 80,
+    "indentStyle": "space"
   },
   "javascript": {
     "formatter": {

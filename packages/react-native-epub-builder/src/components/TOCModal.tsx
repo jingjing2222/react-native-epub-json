@@ -1,14 +1,14 @@
-import React from "react";
+import type React from 'react';
 import {
-  View,
-  Text,
-  TouchableOpacity,
   FlatList,
   Modal,
-  StyleSheet,
   SafeAreaView,
-} from "react-native";
-import { CompleteEpubInfo } from "react-native-epub-json";
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import type { CompleteEpubInfo } from 'react-native-epub-json';
 
 interface TOCModalProps {
   visible: boolean;
@@ -78,26 +78,26 @@ export const TOCModal: React.FC<TOCModalProps> = ({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: '#fff',
   },
   header: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
     padding: 16,
     borderBottomWidth: 1,
-    borderBottomColor: "#e0e0e0",
+    borderBottomColor: '#e0e0e0',
   },
   title: {
     fontSize: 18,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   closeButton: {
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
   closeButtonText: {
-    color: "#007AFF",
+    color: '#007AFF',
     fontSize: 16,
   },
   list: {
@@ -107,17 +107,17 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     borderBottomWidth: 1,
-    borderBottomColor: "#f0f0f0",
+    borderBottomColor: '#f0f0f0',
   },
   activeTocItem: {
-    backgroundColor: "#007AFF10",
+    backgroundColor: '#007AFF10',
   },
   tocLabel: {
     fontSize: 16,
-    color: "#333",
+    color: '#333',
   },
   activeTocLabel: {
-    color: "#007AFF",
-    fontWeight: "500",
+    color: '#007AFF',
+    fontWeight: '500',
   },
 });

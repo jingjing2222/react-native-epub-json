@@ -1,7 +1,7 @@
-import React from "react";
-import { View, Text, Image, ScrollView, StyleSheet } from "react-native";
-import type { ViewStyle, TextStyle, ImageStyle } from "react-native";
-import type { RnNode, RnStyles } from "react-native-epub-json";
+import type React from 'react';
+import type { ImageStyle, TextStyle, ViewStyle } from 'react-native';
+import { Image, ScrollView, Text, View } from 'react-native';
+import type { RnNode, RnStyles } from 'react-native-epub-json';
 
 interface ComponentRendererProps {
   node: RnNode;
@@ -9,7 +9,7 @@ interface ComponentRendererProps {
 }
 
 const convertToReactNativeStyle = (
-  styles: RnStyles | undefined
+  styles: RnStyles | undefined,
 ): ViewStyle & TextStyle & ImageStyle => {
   if (!styles) return {};
 
@@ -18,16 +18,16 @@ const convertToReactNativeStyle = (
   Object.entries(styles).forEach(([key, value]) => {
     if (value !== undefined) {
       // Fix specific type mismatches
-      if (key === "fontStyle" && typeof value === "string") {
-        converted[key] = value === "italic" ? "italic" : "normal";
-      } else if (key === "borderStyle" && typeof value === "string") {
-        converted[key] = ["solid", "dotted", "dashed"].includes(value)
+      if (key === 'fontStyle' && typeof value === 'string') {
+        converted[key] = value === 'italic' ? 'italic' : 'normal';
+      } else if (key === 'borderStyle' && typeof value === 'string') {
+        converted[key] = ['solid', 'dotted', 'dashed'].includes(value)
           ? value
-          : "solid";
-      } else if (key === "overflow" && typeof value === "string") {
-        converted[key] = ["visible", "hidden"].includes(value)
+          : 'solid';
+      } else if (key === 'overflow' && typeof value === 'string') {
+        converted[key] = ['visible', 'hidden'].includes(value)
           ? value
-          : "visible";
+          : 'visible';
       } else {
         converted[key] = value;
       }
@@ -53,28 +53,28 @@ export const ComponentRenderer: React.FC<ComponentRendererProps> = ({
     const convertedStyles = convertToReactNativeStyle(currentNode.styles);
 
     switch (type) {
-      case "Text":
+      case 'Text':
         return (
           <Text key={index} style={convertedStyles}>
             {currentNode.content}
           </Text>
         );
 
-      case "View":
+      case 'View':
         return (
           <View key={index} style={convertedStyles}>
             {currentNode.children?.map(renderNode)}
           </View>
         );
 
-      case "ScrollView":
+      case 'ScrollView':
         return (
           <ScrollView key={index} style={convertedStyles}>
             {currentNode.children?.map(renderNode)}
           </ScrollView>
         );
 
-      case "Image":
+      case 'Image':
         return (
           <Image
             key={index}

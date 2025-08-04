@@ -10,8 +10,8 @@
     "test": "nx test react-native-epub-json",
     "clean": "nx run-many --target=clean --all",
     "dev": "nx serve react-native-epub-json-rust",
-    "lint": "biome check .",
-    "lint:fix": "biome check . --write",
+    "lint": "nx run-many --target=lint --all",
+    "lint:fix": "nx run-many --target=lint:fix --all",
     "typecheck": "nx run-many --target=typecheck --all"
   },
   "keywords": [

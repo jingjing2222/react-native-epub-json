@@ -18,7 +18,9 @@
   ],
   "scripts": {
     "build": "tsdown",
-    "prepublishOnly": "yarn build"
+    "prepublishOnly": "yarn build",
+    "lint": "biome check .",
+    "lint:fix": "biome check . --write"
   },
   "peerDependencies": {
     "react": ">=16.8.0",

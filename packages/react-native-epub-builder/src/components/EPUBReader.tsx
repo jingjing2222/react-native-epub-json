@@ -1,26 +1,19 @@
-import React, { useState, useMemo } from "react";
-import { View, ScrollView, Text, StyleSheet } from "react-native";
-import { ComponentRenderer } from "./ComponentRenderer";
-import { EPUBReaderProps } from "../types";
+import type React from 'react';
+import { useMemo, useState } from 'react';
+import { ScrollView, StyleSheet, Text, View } from 'react-native';
+import type { EPUBReaderProps } from '../types';
+import { ComponentRenderer } from './ComponentRenderer';
 
 export const EPUBReader: React.FC<EPUBReaderProps> = ({
   data,
   style,
-  onChapterChange,
   renderCustomComponent,
 }) => {
-  const [currentChapterIndex, setCurrentChapterIndex] = useState(0);
+  const [currentChapterIndex, _setCurrentChapterIndex] = useState(0);
 
   const currentChapter = useMemo(() => {
     return data.chapters[currentChapterIndex];
   }, [data.chapters, currentChapterIndex]);
-
-  const handleChapterChange = (newIndex: number) => {
-    if (newIndex >= 0 && newIndex < data.chapters.length) {
-      setCurrentChapterIndex(newIndex);
-      onChapterChange?.(newIndex);
-    }
-  };
 
   if (!currentChapter) {
     return (
@@ -56,9 +49,9 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   errorText: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 16,
-    color: "#666",
+    color: '#666',
     marginTop: 50,
   },
 });

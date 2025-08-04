@@ -1,8 +1,15 @@
-import React, { useState } from 'react';
-import { View, TouchableOpacity, Text, StyleSheet, SafeAreaView } from 'react-native';
+import type React from 'react';
+import { useState } from 'react';
+import {
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import type { EPUBPageProps } from '../types';
 import { EPUBReader } from './EPUBReader';
 import { TOCModal } from './TOCModal';
-import { EPUBPageProps } from '../types';
 
 export const EPUBPage: React.FC<EPUBPageProps> = ({
   data,
@@ -11,7 +18,8 @@ export const EPUBPage: React.FC<EPUBPageProps> = ({
   style,
   onTOCPress,
 }) => {
-  const [currentChapterIndex, setCurrentChapterIndex] = useState(initialChapter);
+  const [currentChapterIndex, setCurrentChapterIndex] =
+    useState(initialChapter);
   const [showTOCModal, setShowTOCModal] = useState(false);
 
   const handleChapterChange = (newIndex: number) => {
@@ -49,11 +57,19 @@ export const EPUBPage: React.FC<EPUBPageProps> = ({
 
       <View style={styles.navigation}>
         <TouchableOpacity
-          style={[styles.navButton, currentChapterIndex === 0 && styles.disabledButton]}
+          style={[
+            styles.navButton,
+            currentChapterIndex === 0 && styles.disabledButton,
+          ]}
           onPress={() => handleChapterChange(currentChapterIndex - 1)}
           disabled={currentChapterIndex === 0}
         >
-          <Text style={[styles.navButtonText, currentChapterIndex === 0 && styles.disabledText]}>
+          <Text
+            style={[
+              styles.navButtonText,
+              currentChapterIndex === 0 && styles.disabledText,
+            ]}
+          >
             Previous
           </Text>
         </TouchableOpacity>
@@ -65,7 +81,8 @@ export const EPUBPage: React.FC<EPUBPageProps> = ({
         <TouchableOpacity
           style={[
             styles.navButton,
-            currentChapterIndex === data.chapters.length - 1 && styles.disabledButton,
+            currentChapterIndex === data.chapters.length - 1 &&
+              styles.disabledButton,
           ]}
           onPress={() => handleChapterChange(currentChapterIndex + 1)}
           disabled={currentChapterIndex === data.chapters.length - 1}
@@ -73,7 +90,8 @@ export const EPUBPage: React.FC<EPUBPageProps> = ({
           <Text
             style={[
               styles.navButtonText,
-              currentChapterIndex === data.chapters.length - 1 && styles.disabledText,
+              currentChapterIndex === data.chapters.length - 1 &&
+                styles.disabledText,
             ]}
           >
             Next
