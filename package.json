@@ -1,13 +1,13 @@
 {
-  "name": "react-native-epub-json-monorepo",
+  "name": "react-native-server-driven-epub-monorepo",
   "version": "0.1.0",
-  "description": "EPUB to React Native converter monorepo with WASM build tools",
+  "description": "React Native Server-Driven EPUB converter with WASM-powered parsing",
   "private": true,
   "scripts": {
     "build": "nx run-many --target=build --all",
     "build:wasm": "nx build react-native-epub-json-rust",
-    "build:ts": "nx build react-native-epub-json",
-    "test": "nx test react-native-epub-json",
+    "build:ts": "nx build react-native-server-driven-epub",
+    "test": "nx test react-native-server-driven-epub",
     "clean": "nx run-many --target=clean --all",
     "dev": "nx serve react-native-epub-json-rust",
     "lint": "nx run-many --target=lint --all",
@@ -17,13 +17,14 @@
   "keywords": [
     "epub",
     "react-native",
+    "server-driven",
     "wasm",
     "converter",
     "ebook",
     "parser",
-    "monorepo"
+    "ui"
   ],
-  "author": "jingjing2222",
+  "author": "jingjing2222 <gudwjd1208@koreatech.ac.kr>",
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "^2.1.3",

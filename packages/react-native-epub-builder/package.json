@@ -27,7 +27,7 @@
     "react-native": ">=0.60.0"
   },
   "dependencies": {
-    "react-native-epub-json": "workspace:*"
+    "react-native-server-driven-epub": "workspace:*"
   },
   "devDependencies": {
     "react": "18.3.1",

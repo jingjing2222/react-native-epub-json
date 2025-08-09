@@ -6,7 +6,7 @@ import { Hono } from 'hono';
 
 // ES 모듈 환경에서 CommonJS 모듈을 불러오기 위한 설정
 const require = createRequire(import.meta.url);
-const { epubBytesToJson } = require('react-native-epub-json');
+const { epubBytesToJson } = require('react-native-server-driven-epub');
 
 const app = new Hono();
 

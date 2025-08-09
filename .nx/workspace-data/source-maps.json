@@ -597,245 +597,257 @@
       "nx/core/package-json"
     ]
   },
-  "packages/react-native-epub-json": {
+  "packages/react-native-server-driven-epub": {
     "root": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "name": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "tags": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "tags.npm:public": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "tags.npm:epub": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "tags.npm:react-native": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:server-driven": [
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "tags.npm:converter": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "tags.npm:ebook": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "tags.npm:parser": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:wasm": [
+      "packages/react-native-server-driven-epub/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:ui": [
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.targetGroups": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.targetGroups.NPM Scripts": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.targetGroups.NPM Scripts.0": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.targetGroups.NPM Scripts.1": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.targetGroups.NPM Scripts.2": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.description": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.js": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.js.packageName": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.js.packageExports": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.js.packageMain": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "metadata.js.isInPackageManagerWorkspaces": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.prepublishOnly": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.prepublishOnly.executor": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.prepublishOnly.options": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.prepublishOnly.metadata": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.prepublishOnly.options.script": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.prepublishOnly.metadata.scriptContent": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.prepublishOnly.metadata.runCommand": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint.executor": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint.options": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint.metadata": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint.options.script": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint.metadata.scriptContent": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint.metadata.runCommand": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint:fix": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint:fix.executor": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint:fix.options": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint:fix.metadata": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint:fix.options.script": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint:fix.metadata.scriptContent": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "targets.lint:fix.metadata.runCommand": [
-      "packages/react-native-epub-json/package.json",
+      "packages/react-native-server-driven-epub/package.json",
       "nx/core/package-json"
     ],
     "projectType": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "sourceRoot": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.build": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.build.executor": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.build.options": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.build.options.command": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.test": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.test.executor": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.test.options": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.test.options.command": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.clean": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.clean.executor": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.clean.options": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.clean.options.command": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.typecheck": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.typecheck.executor": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.typecheck.options": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ],
     "targets.typecheck.options.command": [
-      "packages/react-native-epub-json/project.json",
+      "packages/react-native-server-driven-epub/project.json",
       "nx/core/project-json"
     ]
   },

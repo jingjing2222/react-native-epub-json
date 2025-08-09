@@ -1,5 +1,119 @@
 {
   "nodes": {
+    "react-native-server-driven-epub": {
+      "name": "react-native-server-driven-epub",
+      "type": "lib",
+      "data": {
+        "root": "packages/react-native-server-driven-epub",
+        "name": "react-native-server-driven-epub",
+        "tags": [
+          "npm:public",
+          "npm:epub",
+          "npm:react-native",
+          "npm:server-driven",
+          "npm:converter",
+          "npm:ebook",
+          "npm:parser",
+          "npm:wasm",
+          "npm:ui"
+        ],
+        "metadata": {
+          "targetGroups": {
+            "NPM Scripts": [
+              "prepublishOnly",
+              "lint",
+              "lint:fix"
+            ]
+          },
+          "description": "Convert EPUB files to React Native server-driven UI components with WASM-powered parsing",
+          "js": {
+            "packageName": "react-native-server-driven-epub",
+            "packageExports": {
+              ".": {
+                "require": "./dist/index.js",
+                "import": "./dist/index.mjs",
+                "types": "./dist/index.d.ts"
+              }
+            },
+            "packageMain": "dist/index.js",
+            "isInPackageManagerWorkspaces": true
+          }
+        },
+        "targets": {
+          "prepublishOnly": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "prepublishOnly"
+            },
+            "metadata": {
+              "scriptContent": "pnpm build",
+              "runCommand": "pnpm run prepublishOnly"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "lint"
+            },
+            "metadata": {
+              "scriptContent": "biome check .",
+              "runCommand": "pnpm run lint"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "lint:fix": {
+            "executor": "nx:run-script",
+            "options": {
+              "script": "lint:fix"
+            },
+            "metadata": {
+              "scriptContent": "biome check . --write",
+              "runCommand": "pnpm run lint:fix"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "build": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "cd packages/react-native-server-driven-epub && pnpm install && pnpm build"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "cd packages/react-native-server-driven-epub && node test.js"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "clean": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "rm -rf packages/react-native-server-driven-epub/dist"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "typecheck": {
+            "executor": "nx:run-commands",
+            "options": {
+              "command": "cd packages/react-native-server-driven-epub && tsc --noEmit"
+            },
+            "configurations": {},
+            "parallelism": true
+          }
+        },
+        "projectType": "library",
+        "sourceRoot": "packages/react-native-server-driven-epub/src",
+        "implicitDependencies": []
+      }
+    },
     "react-native-epub-json-rust": {
       "name": "react-native-epub-json-rust",
       "type": "lib",
@@ -125,117 +239,6 @@
             "parallelism": true
           }
         },
-        "implicitDependencies": []
-      }
-    },
-    "react-native-epub-json": {
-      "name": "react-native-epub-json",
-      "type": "lib",
-      "data": {
-        "root": "packages/react-native-epub-json",
-        "name": "react-native-epub-json",
-        "tags": [
-          "npm:public",
-          "npm:epub",
-          "npm:react-native",
-          "npm:converter",
-          "npm:ebook",
-          "npm:parser"
-        ],
-        "metadata": {
-          "targetGroups": {
-            "NPM Scripts": [
-              "prepublishOnly",
-              "lint",
-              "lint:fix"
-            ]
-          },
-          "description": "Convert EPUB files to React Native component structures without WebView",
-          "js": {
-            "packageName": "react-native-epub-json",
-            "packageExports": {
-              ".": {
-                "require": "./dist/index.js",
-                "import": "./dist/index.mjs",
-                "types": "./dist/index.d.ts"
-              }
-            },
-            "packageMain": "dist/index.js",
-            "isInPackageManagerWorkspaces": true
-          }
-        },
-        "targets": {
-          "prepublishOnly": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "prepublishOnly"
-            },
-            "metadata": {
-              "scriptContent": "yarn build",
-              "runCommand": "pnpm run prepublishOnly"
-            },
-            "configurations": {},
-            "parallelism": true
-          },
-          "lint": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "lint"
-            },
-            "metadata": {
-              "scriptContent": "biome check .",
-              "runCommand": "pnpm run lint"
-            },
-            "configurations": {},
-            "parallelism": true
-          },
-          "lint:fix": {
-            "executor": "nx:run-script",
-            "options": {
-              "script": "lint:fix"
-            },
-            "metadata": {
-              "scriptContent": "biome check . --write",
-              "runCommand": "pnpm run lint:fix"
-            },
-            "configurations": {},
-            "parallelism": true
-          },
-          "build": {
-            "executor": "nx:run-commands",
-            "options": {
-              "command": "cd packages/react-native-epub-json && pnpm install && pnpm build"
-            },
-            "configurations": {},
-            "parallelism": true
-          },
-          "test": {
-            "executor": "nx:run-commands",
-            "options": {
-              "command": "cd packages/react-native-epub-json && node test.js"
-            },
-            "configurations": {},
-            "parallelism": true
-          },
-          "clean": {
-            "executor": "nx:run-commands",
-            "options": {
-              "command": "rm -rf packages/react-native-epub-json/dist"
-            },
-            "configurations": {},
-            "parallelism": true
-          },
-          "typecheck": {
-            "executor": "nx:run-commands",
-            "options": {
-              "command": "cd packages/react-native-epub-json && tsc --noEmit"
-            },
-            "configurations": {},
-            "parallelism": true
-          }
-        },
-        "projectType": "library",
-        "sourceRoot": "packages/react-native-epub-json/src",
         "implicitDependencies": []
       }
     },
@@ -8080,6 +8083,23 @@
     }
   },
   "dependencies": {
+    "react-native-server-driven-epub": [
+      {
+        "source": "react-native-server-driven-epub",
+        "target": "npm:@types/node",
+        "type": "static"
+      },
+      {
+        "source": "react-native-server-driven-epub",
+        "target": "npm:tsdown",
+        "type": "static"
+      },
+      {
+        "source": "react-native-server-driven-epub",
+        "target": "npm:typescript",
+        "type": "static"
+      }
+    ],
     "react-native-epub-json-rust": [],
     "@react-native-epub-builder/core": [
       {
@@ -8104,24 +8124,7 @@
       },
       {
         "source": "@react-native-epub-builder/core",
-        "target": "react-native-epub-json",
-        "type": "static"
-      }
-    ],
-    "react-native-epub-json": [
-      {
-        "source": "react-native-epub-json",
-        "target": "npm:@types/node",
-        "type": "static"
-      },
-      {
-        "source": "react-native-epub-json",
-        "target": "npm:tsdown",
-        "type": "static"
-      },
-      {
-        "source": "react-native-epub-json",
-        "target": "npm:typescript",
+        "target": "react-native-server-driven-epub",
         "type": "static"
       }
     ],
@@ -8153,7 +8156,7 @@
       },
       {
         "source": "v80-server",
-        "target": "react-native-epub-json",
+        "target": "react-native-server-driven-epub",
         "type": "static"
       }
     ],
@@ -19426,5 +19429,5 @@
   },
   "version": "6.0",
   "errors": [],
-  "computedAt": 1754348258306
+  "computedAt": 1754700435036
 }

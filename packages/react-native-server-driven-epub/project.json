@@ -1,0 +1,32 @@
+{
+  "name": "react-native-server-driven-epub",
+  "root": "packages/react-native-server-driven-epub",
+  "projectType": "library",
+  "sourceRoot": "packages/react-native-server-driven-epub/src",
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd packages/react-native-server-driven-epub && pnpm install && pnpm build"
+      }
+    },
+    "test": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd packages/react-native-server-driven-epub && node test.js"
+      }
+    },
+    "clean": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "rm -rf packages/react-native-server-driven-epub/dist"
+      }
+    },
+    "typecheck": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cd packages/react-native-server-driven-epub && tsc --noEmit"
+      }
+    }
+  }
+}

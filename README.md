@@ -1,23 +1,46 @@
-# React Native EPUB JSON Converter
+# React Native Server-Driven EPUB
 
-This project is a high-performance EPUB-to-JSON converter designed for **server-driven UI rendering** in React Native. It parses EPUB files into a fully structured JSON format on the **server**, enabling React Native clients to render content using native components (`<View>`, `<Text>`, etc.) without directly processing EPUB files on-device.
+> ⚠️ **DEPRECATED & NOT MAINTAINING** - This project is currently deprecated and not actively maintained. 
 
-## ✅ Purpose
+This project is a WASM-powered EPUB-to-JSON converter designed for **server-driven UI rendering** in React Native. It parses EPUB files into a fully structured JSON format on the **server**, enabling React Native clients to render content using native components (`<View>`, `<Text>`, etc.) without directly processing EPUB files on-device.
 
-- **Security-first rendering**: EPUB files are parsed on a trusted server, mitigating the risk of content leakage on mobile devices.
-- **React Native compatibility**: Output JSON is structured to work seamlessly with native components.
-- **Server-driven UI**: Clients only receive the processed JSON, reducing app complexity and runtime cost.
+## 🚧 Current Status & Future Plans
+
+This project was developed as a **Proof of Concept (POC)** for server-driven EPUB rendering. Currently:
+
+- ⚠️ **Deprecated**: Not actively maintained
+- 📦 **WASM-based**: Built with Rust and WebAssembly for performance
+- 🔮 **Future Ready**: Waiting for React Native Node API support
+
+### Why WASM?
+
+This project uses **WebAssembly (WASM)** for EPUB parsing, which will become more valuable when React Native officially supports Node API. Once Node API is available in React Native:
+
+- ✨ Direct WASM integration in React Native apps
+- 🚀 Client-side EPUB processing without servers
+- 📱 Offline-capable EPUB readers
+
+## 🛠️ For Developers
+
+If you're interested in developing this further:
+
+1. **Current POC**: The server-driven implementation is functional and ready for extension
+2. **WASM Module**: The core parsing engine is complete and performant
+3. **React Native Components**: Basic rendering components are implemented
+4. **Future Integration**: Ready for Node API when it becomes available in RN
+
+Feel free to fork, extend, or build upon this work!
 
 ---
 
 ## Features
 
-- **Server-side EPUB parsing** using Rust for speed and reliability.
-- **WebView-Free Rendering**: No need for WebViews—output is fully compatible with native rendering.
-- **Rich EPUB support**: Parses metadata, TOC, spine, HTML content, and CSS styles.
-- **Style Conversion**: Converts CSS into React Native-compatible `StyleSheet` objects.
-- **Embedded Resources**: Base64-encoded images included in JSON.
-- **Modular Output**: Clean JSON structure for easy consumption and rendering on mobile or web.
+- **Server-side EPUB parsing** using Rust/WASM for speed and reliability
+- **WebView-Free Rendering**: Output is fully compatible with native React Native components
+- **Rich EPUB support**: Parses metadata, TOC, spine, HTML content, and CSS styles
+- **Style Conversion**: Converts CSS into React Native-compatible `StyleSheet` objects
+- **Embedded Resources**: Base64-encoded images included in JSON
+- **Modular Output**: Clean JSON structure for easy consumption and rendering
 
 ---
 
@@ -26,51 +49,80 @@ This project is a high-performance EPUB-to-JSON converter designed for **server-
 This is a monorepo organized as follows:
 
 - `packages/react-native-epub-json-rust`:
-  Rust-based EPUB parsing engine. Parses EPUB and outputs JSON.
+  Rust-based EPUB parsing engine with WASM bindings
 
-- `packages/react-native-epub-json`:
-  WASM wrapper of the Rust parser (used for future client-side rendering or offline processing).
+- `packages/react-native-server-driven-epub`:
+  Published NPM package with TypeScript bindings for server-side usage
+
+- `packages/react-native-epub-builder`:
+  React Native UI components for rendering parsed EPUB content
 
 - `examples/v80`:
-  Example React Native 0.80.5 project used to test JSON rendering from server.
+  Example React Native 0.80.5 project demonstrating JSON rendering
 
 - `examples/v80-server`:
-  Hono-based server that parses EPUB and serves the resulting JSON to clients.
+  Hono-based server that parses EPUB and serves JSON to clients
 
 ---
 
 ## How It Works
 
-1. The server receives an EPUB file.
-2. The Rust module parses the EPUB, extracts all relevant content and assets.
-3. CSS is converted into a format React Native can render (`StyleSheet`-compatible).
-4. A single `book.json` file is generated, containing:
-
+1. **Server receives** an EPUB file
+2. **WASM module parses** the EPUB, extracts content and assets
+3. **CSS is converted** into React Native-compatible styles
+4. **JSON is generated** containing:
    - Metadata (title, author, etc.)
-   - TOC
-   - Chapters as renderable node trees
-   - Images (base64)
-   - Styles
+   - Table of Contents
+   - Chapters as renderable component trees
+   - Images (base64 encoded)
+   - Converted styles
 
-5. The JSON is sent to the client or stored on a CDN for rendering.
-
----
-
-## Usage (Server)
-
-After setting up the server (e.g., via `v80-server`):
-
-1. POST an EPUB file to the server.
-2. Receive a parsed `book.json` in response or access it via CDN.
-3. In React Native, consume the JSON and render using native components.
+5. **Client consumes** the JSON and renders using native RN components
 
 ---
 
-## Future Plans
+## Usage Example
 
-- **Client-side (offline) support** using a Babel-based parser and `EncryptedStorage`
-- **Pulumi-based infrastructure setup** for automating server deployment and CDN upload
-- **Edge-first delivery**: Pre-parse EPUB files and serve JSON via CDN (e.g., Cloudflare R2 or S3)
+### Server-side (Current Implementation)
+
+```typescript
+import { epubBytesToJson } from 'react-native-server-driven-epub';
+
+// Parse EPUB to JSON
+const fileBuffer = fs.readFileSync('./book.epub');
+const epubData = epubBytesToJson(new Uint8Array(fileBuffer));
+
+// Serve to React Native client
+app.get('/epub/:id', (c) => c.json(epubData));
+```
+
+### React Native Client
+
+```tsx
+import { renderEpubNode } from './EpubRenderer';
+
+const EpubReader = ({ epubData }) => (
+  <ScrollView>
+    {epubData.chapters.map(chapter => 
+      renderEpubNode(chapter.content)
+    )}
+  </ScrollView>
+);
+```
+
+---
+
+## Future Integration (Node API)
+
+Once React Native supports Node API, this WASM module can be integrated directly:
+
+```typescript
+// Future client-side usage (when Node API is available)
+import { parseEpub } from 'react-native-server-driven-epub/wasm';
+
+const epubData = await parseEpub(epubBuffer);
+// Render directly in RN without server
+```
 
 ---
 
@@ -78,24 +130,23 @@ After setting up the server (e.g., via `v80-server`):
 
 ```jsonc
 {
-  "metadata": { /* title, author, publisher, etc. */ },
-  "structure": { /* counts for TOC, spine, etc. */ },
+  "metadata": { 
+    "title": "Book Title",
+    "author": "Author Name",
+    // ... other metadata
+  },
   "toc": [ /* table of contents */ ],
-  "spine": [ /* linear reading order */ ],
-  "styles": { /* converted CSS rules */ },
-  "images": { /* base64-encoded images */ },
+  "spine": [ /* reading order */ ],
+  "styles": { /* RN-compatible styles */ },
+  "images": { /* base64 images */ },
   "chapters": [
     {
       "type": "View",
       "children": [
         {
           "type": "Text",
-          "styles": { "fontWeight": "bold", "lineHeight": 1.20000004768372}
-        },
-        {
-          "type": "Image",
-          "src": "data:image/png;base64,...",
-          "style": {...}
+          "content": "Chapter content",
+          "styles": { "fontSize": 16 }
         }
       ]
     }
@@ -105,13 +156,34 @@ After setting up the server (e.g., via `v80-server`):
 
 ---
 
-## Building the Parser
-
-To build the WASM module (optional use):
+## Development Setup
 
 ```bash
-cd packages/react-native-epub-json-rust
-./build-wasm.sh
+# Install dependencies
+pnpm install
+
+# Build WASM module
+pnpm build:wasm
+
+# Build TypeScript package
+pnpm build:ts
+
+# Run example server
+cd examples/v80-server
+pnpm dev
 ```
 
-> This will output WASM and JS bindings into `pkg/`.
+---
+
+## Contributing
+
+This project is currently **not maintained**, but contributions are welcome if you want to develop it further:
+
+1. Fork the repository
+2. Extend the WASM parsing capabilities
+3. Improve React Native integration
+4. Prepare for Node API support
+
+## License
+
+MIT - Feel free to use, modify, and distribute as needed.

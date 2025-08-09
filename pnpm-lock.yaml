@@ -87,9 +87,9 @@ importers:
       hono:
         specifier: ^4.8.12
         version: 4.8.12
-      react-native-epub-json:
+      react-native-server-driven-epub:
         specifier: workspace:*
-        version: link:../../packages/react-native-epub-json
+        version: link:../../packages/react-native-server-driven-epub
     devDependencies:
       '@types/node':
         specifier: ^20.11.17
@@ -103,9 +103,9 @@ importers:
 
   packages/react-native-epub-builder:
     dependencies:
-      react-native-epub-json:
+      react-native-server-driven-epub:
         specifier: workspace:*
-        version: link:../react-native-epub-json
+        version: link:../react-native-server-driven-epub
     devDependencies:
       react:
         specifier: 18.3.1
@@ -120,7 +120,7 @@ importers:
         specifier: ^5.3.3
         version: 5.9.2
 
-  packages/react-native-epub-json:
+  packages/react-native-server-driven-epub:
     devDependencies:
       '@types/node':
         specifier: ^20.11.24
